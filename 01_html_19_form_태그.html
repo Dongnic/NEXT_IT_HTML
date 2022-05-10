@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>로그인 폼</title>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script>
+		function fn_ajax02(){
+			console.log("fn_ajax02:::");
+			let id = $("#form_id02").val();
+			let pw = $("#form_password02").val();
+			$.ajax({
+				url:"http://localhost:8080/sample01_ajax/html_form_action.do",
+				type:"post",
+				data:{form_id: id, form_password: pw},
+				success:function(){
+					console.log("success");
+				},
+				error:function(e){
+					console.log("error");
+				}
+			});
+		}
+	</script> 
+</head>
+<body>
+<h3>로그인 폼</h3>
+<hr>
+<!-- form 태그 속성들 
+	- name 속성 : <form>태그 이름을 지정
+	- method 속성 : 사용자가 입력한 내용들을 웹 서버로 넘기는 방식을 지정
+		get  방식  
+			- 웹 브라우저 url 입력칸에 사용자가 입력한 내용이 표시 되는 방식
+			- url에 입력한 값이 노출되므로 사용을 권고하지 않음
+			- url에 붙여서 전송하므로 url 전송량에 제한이 존재함 (최대 4096byte 까지
+				(1개의 한글문자는 3byte ))	
+			- 예시)
+				www.example.com?id=mommoo&pass=1234.
+			
+		post 방식 
+			- 대부분 post 방식을 사용
+			- 요청 BODY에 데이터를 넣어서 보내므로 사용자가 입력한 내용이 
+			드러나지 않는다
+				참고 
+					./images/post-request-all.png
+					https://babytiger.netlify.app/posts/http/
+					
+
+	- action 속성 : <form>태그 안에 있는 데이터를 처리할 웹 서버 지정	
+-->
+
+
+
+<!-- 동기방식 -->
+
+<form name="login_form01" method="get" action="http://localhost:8080/sample01_ajax/html_form_action.do">  
+
+	사용자 ID : <input type="text" id="form_id01" name="form_id" size="15" value="" required><br>
+
+	<!-- required : 필수적으로 입력해야 하는 내용에 지정 -->
+	비밀 번호 : <input type="password" id="form_password01" name="form_password"  size="15" value="" required><br>
+
+	<!-- submit : form을 전송하기 위해 사용 -->
+	<input type="submit" value="동기방식으로전송">
+</form>
+<br>
+<hr>
+
+<!-- 비동기방식	 -->
+<form name="login_form02" >
+
+	사용자 ID : <input type="text" id="form_id02" name="form_id" size="15" value="" required><br>
+		<!-- required : 필수적으로 입력해야 하는 내용에 지정 -->
+	비밀 번호 : <input type="password" id="form_password02" name="form_password"  size="15" value="" required><br>
+	<!-- <input type="submit" value="동기방식으로전송"> -->
+	<input type="button" onclick="fn_ajax02()" value="비동기방식으로전송"> 
+</form>
+</body>
+</html>
+
+

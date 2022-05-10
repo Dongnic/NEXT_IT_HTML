@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>00_float</title>
+  <style>
+/* 박스생성 */
+      #box0 {
+        width: 100%;
+        height: 1500px;
+        background-color: grey;
+      }
+      .box1 {
+        width : 100px;
+        height : 100px;
+        background-color: red;  
+      }
+      .box2 {
+        width : 100px;
+        height : 100px;
+        background-color: orange;  
+      }
+
+/* box1, bodx2 float: left 속성주기 */
+    .box1 {
+      float: left;
+      /* box1 부터 float: left; 속성으로 좌측 배치  */
+    }
+    .box2 {
+      float: left;
+      /* - float: left => 왼쪽부터 배치 하도록 설정
+         - box2에 단독으로 적용 하여도 float: left; 적용 되지 않음 
+            앞선 요소에도 float: left; 적용해야 box2에도 적용 되어짐
+        */
+    }
+
+/* box3 생성 및 float:right 속성주기  */
+    .box3 {
+      width : 100px;
+      height : 100px;
+      background-color: yellow;  
+    }
+    .box3 {
+      float: right;
+      /* float: right => 오른쪽 부터 배치 하도록 설정 */
+    }
+
+    .box4 {
+      width : 100px;
+      height : 100px;
+      background-color: green;  
+    }
+    .box4 {
+      float: right;
+      /* float: right => 오른쪽 부터 배치 하도록 설정 */
+    }
+
+    .box5 {
+      clear: both;
+      /* 앞선 fllat 속성을 초기화 */
+    }
+    .box5 {
+      width : 100px;
+      height : 100px;
+      background-color: blue;  
+    }
+    .box5 {
+      position: relative;
+      /* 위치 이동을 위해서 position: relative; 속성 부여 */
+    } 
+    .box5 {
+      top: -50px;
+      left: 50px;
+      /* 위로 50px, 좌측으로 50px 이동 */
+    }
+  </style>
+</head>
+<body>
+  <h3>00_float</h3>
+  <hr>
+  <div id="box0">
+    <div class="box1">box1</div>
+    <div class="box2">box2</div>
+    <div class="box3">box3</div>
+    <div class="box4">box4</div>
+    <div class="box5">box5</div>
+  </div>
+  </body>
+ </html>
+  

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>경로 예시</title>
+</head>
+<body>
+<h3>경로</h3>
+<hr>
+
+<h3>절대경로</h3>
+<div style="background-color: grey;"> 
+	<!-- 윈도우 파일시스템 -->
+	<!-- <img src="C":\workspace_html\html_lecture_01\images\img1.jpg" style="width:300px; height:300px;" alt="배경화면_img1.jpg가 존재하지 않습니다."> -->
+	
+	<!-- 리눅스 파일시스템 (탐색기에서 01_html_13_경로.html을 실행)-->
+	<!-- <img src="/home/[pc이름]/workspace_html/html_lecture_01/images/img1.jpg" style="width:300px; height:300px;" alt="배경화면_img1.jpg가 존재하지 않습니다."> -->
+	
+	<!-- live Server기준으로 루트(/ == "/home/[pc이름]/workspace_html") 부터 경로 -->
+	 <img src="/home/pc41/workspace_html/html_lecture01/images/img1.jpg" style="width:300px; height:300px;" alt="배경화면_img1.jpg가 존재하지 않습니다.">
+	
+	<br/><br/>
+</div>
+
+<h3>상대 경로_현재폴더</h3>
+<div style="background-color: yellow;">
+	<p>배경화면_img1</p>
+	<img src="./images/img1.jpg" style="width:300px; height:300px;" alt="배경화면_img1.jpg 가 존재하지 않습니다.">
+	<br/><br/>
+</div>
+
+<h3>상대 경로_상위폴더</h3>
+<div style="background-color: yellow;">
+	<p>배경화면_img2</p>
+	<!-- ../은 상위 폴더를 지칭 하며 따라서 현재위치에서 한단계 상위 폴더위치에서 up_folder01을 찾고 그 안에 img2.jpg를 찾음 -->
+	<img src="../up_folder01/img2.jpg" style="width:300px; height:300px;" alt="배경화면_img2.jpg 가 존재하지 않습니다.">
+	<br/><br/>
+</div>
+
+
+<h3>외부 경로</h3>
+<div style="background-color:green">
+	<p>다음_로고이미지</p>
+	<img src="https://t1.daumcdn.net/daumtop_chanel/op/20200723055344399.png" style="width:300px; height:300px;"  alt="다음_로고이미지가 존재하지 않습니다." >
+	<br/><br/>
+</div>
+</body>
+</html>
+

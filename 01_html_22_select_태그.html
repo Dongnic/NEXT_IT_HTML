@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>select 태그</title>
+</head>
+<body>
+<h3>select 태그</h3>
+<hr>
+<form>
+	<!-- select 태그만 사용 -->
+	<label for="cars00">Choose a car00:</label>
+	<select name="cars00" id="cars00">
+		<option value="volvo">Volvo</option>
+		<option value="saab" selected>Saab</option>
+		<option value="mercedes">Mercedes</option>
+		<option value="audi">Audi</option>
+	</select>
+	
+	<br><br>
+	<!-- select, optgroup 태그 사용 -->
+	<label for="cars01">Choose a car01:</label>
+	<select  name="cars01" id="cars01">
+		<optgroup label="Swedish Cars">
+			<option value="volvo">Volvo</option>
+			<option value="saab">Saab</option>
+		</optgroup>
+		<optgroup label="German Cars">
+			<option value="mercedes">Mercedes</option>
+			<option value="audi" selected>Audi</option>
+		</optgroup>
+	</select>
+</form>
+</body>
+</html>
+
+

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>input 태그</title>
+	<script>
+		function fn_input_button(){
+			alert("input_버튼이 작동 하였습니다.");
+		}
+	</script>
+	<style>
+		#img_button{
+			background: url("./images/button.png") no-repeat;
+			width: 50px;
+			height: 50px;
+			border: none;
+			background-size: cover;
+		}
+		#button_tag{
+			border: none;
+				/* 경계선 지우기 */
+			background-color:rgba(0, 0, 0, 0);
+				/* 투명도 0 */
+			
+		}
+	</style>
+</head>
+<body>
+<h3>input 태그</h3>
+<hr>
+<form action="">
+	<!--
+		- hidden 태그는 화면상에 보이지 않아 사용자에게 노출되지 않습니다. 
+		- 개발자가 필요에 의해 사용 합니다. ( 각종 key 값, 검색조건 유지 등에 사용 ) 
+		- value : 서버에 보낼 값
+	-->
+	<input type="hidden" id="input_hidden" name="input_hidden" value="">
+	<hr>
+	
+	<!-- 
+		- 텍스트 필드는 한줄 짜리 일반 텍스트를 입력하는 필드입니다.
+		- 폼에서 가장 많이 사용하는 요소로 주로 아이디, 이름, 주소, 제목 등 텍스트를 
+			입력할때 사용합니다.
+		- size : 입력 창의 크기 ( 단위튼 문자 개수 )
+		- maxlength : 텍스트 필드에 입력할 수 있는 최대 문자 개수
+		- autofocus : 페이지를 불러 오자마자 폼의 요소 중에서 원하는 요소에 커서를 표시
+	-->
+	<input type="text" id="input_text" name="input_text" size="30" maxlength="27" 
+		placeholder="제목을 입력해주세요" autofocus value=""><br><br>
+	
+	<!-- readonly : 입력란에 텍스트를 사용자가 입력하지 못하고 읽기만 가능 		-->
+	<input type="text" id="input_readonly" name="input_readonly"  value="NextIT 교육센터" readonly><br><br>
+
+	<!--  암호 입력을 위한 텍스트 창 -->
+	<input type="password" id="input_password" name="input_password" size="20" ><br><br>
+
+	<!-- 
+		- 사용자가 입력한 값을 숫자로 인식합니다.
+		- min : 최소값
+		- min : 최대값
+		- value : 초기 표시 값
+		-->
+	<input type="number" id="input_number" name="input_number" min="1" max="50" value="3">개 
+	<hr>
+	
+	<!--
+		- 시간 지정 ( 크롬, 엣지는 작동 하고 익스플로러는 작동 안함 
+			태그 사용 지원 유무 확인 => https://caniuse.com/
+	-->
+	<input type="time" id="input_time" name="input_time"><br><br>	
+	
+	<!--  년, 월 지정 ( 크롬, 엣지는 작동 하고 익스플로러는 작동 안함 )	-->
+	<input type="month" id="input_month" name="input_month"><br><br> 
+		
+	<!-- 년, 월, 일 지정 ( 크롬, 엣지는 작동 하고 익스플로러는 작동 안함 )-->
+	<input type="date" id="input_date" name="input_date"><br><br>
+		
+	<!-- 년, 월, 일, 시간 지정 ( 크롬, 엣지는 작동 하고 익스플로러는 작동 안함 )-->	
+	<input type="datetime-local" id="input_datetime-local" name="input_datetime-local">
+	<hr>
+
+	<!-- 
+		- 다중 선택을 위한 체크박스 
+		- checked : 페이지 로딩시에 기본적으로 선택할 항목 표시	
+		- label 태그와 함께 사용 권장 ( https://www.w3schools.com/ )
+	-->
+	<label for="Seoul">
+		<input type="checkbox" name="region" id="Seoul" value="Seoul"/>서울&nbsp;
+	</label>
+	<label for="Daejeon">
+		<input type="checkbox" name="region" id="Daejeon" value="Daejeon"/>대전&nbsp;
+	</label>
+	<label for="Gwangju">
+		<input type="checkbox" name="region" id="Gwangju" value="Gwangju" checked/>광주&nbsp;
+	</label>
+	<hr>
+
+	<!--
+		- 하나만 선택 가능한 radio 버튼
+		- checked : 페이지 로딩시에 기본적으로 선택할 항목 표시	
+		- label 태그와 함께 사용 권장
+	-->
+	<label for="student">
+		<input type="radio" name="job" id="student" value="student" checked>학생&nbsp;
+	</label>
+	<label for="developer">
+		<input type="radio" name="job" id="developer" value="developer" >개발자&nbsp;
+	</label>
+	<label for="teacher">
+		<input type="radio" name="job" id="teacher" value="teacher" >선생님&nbsp;
+	</label>
+	<hr>
+
+	<!-- 
+		- 데이터 목록을 가진 텍스트 입력
+		- input 태그의 list 속성 값과 datalist 태그의 id속성 값이 동일
+	-->
+	<input type="text" list="countries">
+	<datalist id="countries">
+		<option value="가나">
+		<option value="스위스">
+		<option value="브라질">
+	</datalist>
+	<hr>	 
+	
+	<!-- 파일 업로드-->
+	<input type="file" id="input_file" name="input_file">
+	<hr>		
+
+	<!-- onclick : 버튼이 눌렸을때 작동 -->
+	<input type="button" id="input_button" name="input_button" onclick="javascript:fn_input_button()" value="input_버튼">
+	<hr>
+
+	<!-- 사용자가 form 에 입력한 정보를 서버로 전송하는 버튼 -->
+	<input type="submit"  value="제출">
+	<hr>
+	
+	<!-- 사용자가 form 에 입력한 모든 정보를 지우는 버튼 -->
+	<input type="reset" value="초기화">
+	<hr>
+
+	<!-- 
+		- input button과 차이점 : button 태그는 종료태그가 있으며 input 태그는 스스로 닫는 태그
+			따라서 button 태그 사이에 img, span 등의 태그가 사용 가능 합니다.
+		- type 에 속성값이 없으면 submit 으로 간주 되어집니다. 
+		- type 종류 ( button, submit, reset )	
+	-->
+	<button type="button" id="button_tag" name="button_tag" onclick="alert('button_tag 태그가 작동 하였습니다.')">클릭해 보세요!</button>
+	<hr>
+
+	<!-- button 태그에 img 태그넣기 -->	
+	<button type="button" id="button_tag" name="button_tag"  onclick="alert('button 태그 버튼이 작동 하였습니다.')">
+		<img src="./images/button.png" style="width: 40px; height: 30px;" alt="버튼이미지">
+	</button>
+	<hr>
+
+	<!-- input 태그에 이미지 넣기 
+		방법1 => css로 태그에 이미지 넣기 -->	 
+	<input type="button"  id="img_button" onclick="alert('css를 사용한 이미지 버튼이 작동 하였습니다.')" >
+	<hr>	
+	<!--
+		input 태그에 이미지 넣기 
+		방법2 => input태그 type에 image 사용하기 
+			<input type="image">는 제출 버튼(submit button)으로 사용될 이미지를 정의합니다.
+			이 속성값은 텍스트가 아닌 이미지 형태로 된 제출 버튼을 생성하며, 
+			이때 해당 이미지의 경로는 src 속성에 명시됩니다.
+	-->
+	<input type="image" src="./images/button.png" style="width: 40px; height: 30px;" 
+		onclick="alert('input 태그 버튼이 작동 하였습니다.')" alt="버튼이미지">
+	
+				
+
+			
+</form>
+</body>
+</html>
+
+

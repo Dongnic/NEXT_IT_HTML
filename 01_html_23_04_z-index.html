@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>z-index</title>
+  <style>
+    #img1_id {
+      width: 1000px;
+      height: 700px;
+      position: relative;
+      z-index: -1;
+      /*
+        -  z-index 는 가상의 Z축을 사용한 HTML 요소의 3차원 개념입니다.
+            z-index를 사용하여 우선순위를 결정할 수 있습니다.
+        
+        -  z-index를 사용하기 위해서는 position:relative, 
+            또는 position: absolute; 와 함께 사용 되어야 합니다.
+      */
+    }
+    #img2_id {
+      width: 1000px;
+      height: 700px;
+      position: absolute;
+      top: 200px;
+      left: 200px;
+      z-index: -2;
+        /*#img2_id는 #img1_id 밑에 깔림*/
+    }
+    #img3_id {
+      width: 1000px;
+      height: 700px;
+      position: absolute;
+      top: 0px;
+      left: 600px;
+      z-index: 2;
+        /*#img3_id는 #img1_id, #img2_id 위에 나타남*/
+    }
+    p{
+      font-size: 50px;
+      margin-top: -100px;
+        /*p태그는  #img3_id 밑에 깔리고 #img1_id, #img2_id 위에 나타남*/
+    }
+  </style>
+</head>
+<body>
+  <h3>z-index</h3>
+  <hr>
+    <div>
+      <img src="./images/img1.jpg" id="img1_id" alt="img1 이미지가 존재하지 않습니다.">
+      <img src="./images/img2.jpg" id="img2_id" alt="img2 이미지가 존재하지 않습니다.">
+      <img src="./images/img3.jpg" id="img3_id" alt="img3 이미지가 존재하지 않습니다.">
+      <p>안녕하세요 NextIT 교육센터입니다. 만나서 반갑습니다.</p>
+    </div>
+</body>
+</html>
+  

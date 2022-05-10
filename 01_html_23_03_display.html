@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>diplay</title>
+  <style>
+/* ppt 5장 5page 참고 */
+
+/* display: inline; */
+    #box0 {
+      width: 100%;
+      height: 200px;
+      background-color: grey;
+    }
+    .box1 {
+      width : 300px;
+      height : 100px;
+      background-color: red;  
+      display: inline;
+      /* - display: inline은 블록태그를 한줄로 정렬할 수 있게 해준다
+         - 하지만 width, height, margin 등의 설정은 되지 않는다.  */
+    }
+    .box2 {
+      width : 300px;
+      height : 100px;
+      background-color: orange;  
+      display: inline;
+    }
+    #box3 {
+      width: 100%;
+      height: 200px;
+      background-color: grey;
+    }
+
+/* display: inline-block; */
+    .box4 {
+      width : 300px;
+      height : 100px;
+      background-color: red;  
+      display: inline-block;
+      /* - display: inline-block은 블록태그를 한줄로 정렬할 수 있게 해준다
+         - display: inline과는 다른게 width, height, margin 을 사용할 수 있다 */
+    }
+    .box5 {
+      width : 300px;
+      height : 100px;
+      background-color: orange;
+      display: inline-block;
+      /* 들어갈수 있는 크기만큼 (box5)div 태그가 한 줄에 채워지며 그 외 블럭은 다음 줄에 정렬 */
+    }
+
+/* display: block; */
+    #span0 {
+      width: 100%;
+      height: 200px;
+      background-color: grey;
+    }
+    .span3 {
+      display: block;
+      /* - span 태그는 대표적인 인라인 태그이지만 
+              display: block;으로 블록태그 처럼 사용할 수 있다. */
+    }
+  
+/* display: none; */
+    #span0{
+      display: none;
+      /* display: none; 속성은 화면에서 보이지 않게 해준다 */
+    }
+    #span0{
+      display: block;
+      /* display: none 속성으로 보이지 않은 것을 다시 보여줌 */
+    }
+    
+/* display: flex; */
+    #box6 {
+      width: 100%;
+      height: 200px;
+      background-color: grey;
+      
+        /* - display: flex는 하위 요소들을 균등 분할 할때 사용하며
+              하위 요소들은 flex-grow 와 같은 속성 값으로 크기를 지정
+           - 하위 요소에 적용되므로 적용하고자 하는 상위 요소에 적용해야 함
+           - 익스폴로러는 부분 지원 
+              */
+    }
+    .box7 {
+      width : 300px;
+      height : 100px;
+      background-color: yellow;
+    }
+    .box8 {
+      width : 300px;
+      height : 100px;
+      background-color: green;
+    }
+    .box9 {
+      width : 300px;
+      height : 100px;
+      background-color: blue;
+    }
+    #box6{
+      display: flex;
+    }
+    .box7{
+      flex-grow: 1  /* flex-grow: 1 은 하위 요소들 끼리 균등 분할 */
+    } 
+    .box8{
+      flex-grow: 1  /* flex-grow: 1 은 하위 요소들 끼리 균등 분할 */
+    }
+    .box9{
+      flex-grow: 1  /* flex-grow: 1 은 하위 요소들 끼리 균등 분할 */
+    }
+    /* .box9 {
+      flex-grow: 2;
+    } */
+    /* flex-grow: 2는 flex-grow: 1 보다 큰 너비가 할당 되어짐 */ 
+  </style>
+</head>
+<body>
+  <h3>diplay</h3>
+  <hr>
+  <div id="box0">
+    <div class="box1">box1</div>
+    <div class="box2">box2</div>
+  </div>
+  <br><br>
+  <div id="box3">
+    <div class="box4">box4</div>
+    <div class="box5">box5</div>
+    <div class="box5">box5</div>
+    <div class="box5">box5</div>
+    <div class="box5">box5</div>
+    <div class="box5">box5</div>
+  </div>
+  <br><br>
+  <div id="span0">
+    <span class="span1">span1</span>
+    <span class="span2">span2</span>
+    <span class="span3">span3</span>
+    <span class="span4">span4</span>
+    <span class="span5">span5</span>
+  </div>
+  <br><br>
+  <div id="box6">
+    <div class="box7">box7</div>
+    <div class="box8">box8</div>
+    <div class="box9">box9</div>
+  </div>   
+</body>
+</html>
+  

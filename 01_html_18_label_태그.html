@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>label 태그</title>
+</head>
+<body>
+<h3>label 태그</h3>
+<hr>
+<!-- label 태그 없는 경우  -->
+사용자 ID : <input type="text" id="form_id" name="form_id" size="15" value=""><br>
+비밀 번호 : <input type="password" id="form_password" name="form_password"  size="15" value="">
+<br/><br/>
+<hr>	
+<!-- label 태그 사용  
+	입력칸이 아닌 안내문구(사용자ID, 비밀번호)를 클릭하여 입력칸에 커서가 위치
+-->
+<label for="form_id01">사용자 ID : </label>
+		<input type="text" id="form_id01" name="form_id01" size="15" value=""><br>
+<label for="form_password01">비밀 번호 :</label>			
+<input type="password" id="form_password01" name="form_password01"  size="15" value="">
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>01_float</title>
+  <style>
+/* position: static; 일때 float */
+    #box0{
+      width: 100%;
+      height: 400px;
+      background-color: lightslategrey;
+      position: static;
+        /*
+          - position: static 기본값이므로 속성 설정 전과 후가 같다. 
+          - position: static 은 float:left, float:right 만 사용가능하다
+          - position: static 은 position: relative 처럼 
+              top, left, rigth, bottom 속성을 사용할 수 없다.
+        */
+    }
+    .box1{
+      width: 200px;
+      height: 100px;
+      background-color: lightgreen;
+      position: static;
+    }
+    .box2{
+      width: 200px; 
+      height: 100px; 
+      background-color: lightpink;
+      position: static;
+    }
+    .box3{
+      width: 200px; 
+      height: 100px; 
+      background-color: lightyellow;
+      position: static;
+    }
+    .box3{
+      float: right;
+      /* box3 오른쪽 배치 */
+    }
+    .box2 {
+      float: left;
+      /* box2 만 적용 하면 안먹음  */
+    }
+    .box1 {
+      float: left;
+      /* box1도 적용해야 box2 float:left 적용 */
+    } 
+
+/* position: relative; 일때 float */
+    .box2{
+      position: relative;
+        /*
+          - position: static 은 float:left, float:right: 사용가능하다
+          - 또한 top, left, rigth, bottom도 사용 가능하다
+          */
+      left: -50px; 
+        /* 처음 위치에서 왼쪽으로 50px이동 */
+      top: 30px;
+        /* 처음 위치에서 위에서 30px 밑으로 이동 */
+    }
+    .box4{
+      width: 300px;
+      height: 150px;
+      background-color:lightsalmon;
+      /* 떠있는 div 들로 인하여 밑에 생성 */
+    }
+    .box4{
+      clear: both;
+      /* clear: both로 초기화 하여 박스1 밑에 생성 */
+    }
+    .box4{
+      float: right;
+      /* box4를 다시 우측 배치 */
+    }
+  </style>
+</head>
+<body>
+<h3>01_float</h3>
+  <hr>
+  <div id="box0">
+    <div class="box1">박스1</div>
+    <div class="box2">박스2</div>
+    <div class="box3">박스3</div>
+    <div class="box4">박스4</div>
+  </div>
+</body>
+</html>
+
+

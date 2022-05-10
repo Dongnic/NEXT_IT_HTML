@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>position</title>
+  <script>
+  /*   
+	1 position (위치개념)
+		절대
+		  position
+        fixed  
+          브라우저 화면을 기준 절대 위치 좌표를 설정 ( 스크롤을 내려도 그자리에 유지 )
+			  absolute 
+          (가장 가까운 부모 또는 조상요소를 기준으로 ) 위치 좌표를 설정합니다.
+            1. (static 이 아닌) 첫 번째 부모 요소 있으면 해당 부모 요소 기준. 
+                ※ 부모 요소가 기준이 되려면 부모 요소에 relative, absolute, fixed 속성 중 하나여야 함.
+            2. (static 이 아닌) 부모 요소 없는 경우엔 브라우저 창이 기준이됨.
+            3. absolute가 적용된 요소의 다음에 있던 요소가  (absolute적용된 요소가 있었던)그 자리를 차지함.                
+            4. top, right, bottom, left 속성 가능.
+            
+		상대
+		  position 
+			  static
+          기본값으로 상->하로 요소를 위치시킨다
+          top, right, bottom, left 속성 값에 영향을 받지 않음(위치조정 불가능)
+            
+        relative (ppt 5장 13page 참고)
+          (가장 가까운 인접요소를 기준 ) 위치 좌표를 설정합니다.
+          top, right, bottom, left 속성 가능
+
+          
+	2 float (배치개념 )
+    개념
+      - float 라는 단어는 원래 ‘뜨다’ 라는 의미이며, 원래 웹페이지에서 이미지를 어떻게 띄워서 
+          텍스트와 함께 배치할 것인가에 대한 속성입니다. (https://www.w3schools.com/css/css_float.asp)
+      - float 속성은 원래 이미지와 텍스트 배치 용도로 등장했지만, 
+          요즘에는 레이아웃용으로 많이 사용하고 있습니다. (https://www.w3schools.com/css/css_float_examples.asp)
+    사용법  
+      - left
+          태그를 왼쪽으로 붙입니다
+      - right
+          태그를 오른쪽으로 붙입니다.
+    
+    참고: left와 right를 통해 부유속성을 지정시 display는 무시됩니다.
+    
+	
+	3 diplay(정렬개념(ppt 5장 5page 참고))
+		block
+      항상 새라인에서 시작
+		inline
+      한 줄로 정렬(공간이 좁을시 다음라인으로 넘어감)
+      width, height 조절 불가능
+		inline-block
+      한 줄로 정렬(공간이 좁을시 다음라인으로 넘어감)
+      width, height, margin 조절 가능
+		none
+      영역을 없애서 화면에 나타나지 않게 함
+
+  우선순위
+    0 순위 
+      display:none
+    1 순위
+      position: absolute, fixed
+    2 순위
+      position: relative
+    3 순위
+      diplay : block, inline, inline-block
+  */
+  </script>
+  <style>
+    #box0 {
+      width: 100%;
+      height: 1500px;
+      background-color: grey;
+      /* position: relative;    */
+    }
+    .box1 {
+      width : 100px;
+      height : 100px;
+      background-color: red;  
+      position: static;
+        /* position: static 기본값이므로 속성 설정 전과 후가 같다. */
+    }
+    .box2 {
+      width : 100px;
+      height : 100px;
+      background-color: orange;  
+      position: static;
+    }
+    .box2 {
+      top: -50px;
+      left: 50px;
+      /* top , left는 적용 되지 않음
+         position: static은 top, left, right, bottom 사용할 수 없음 */
+    }
+    .box3 {
+      width : 100px;
+      height : 100px;
+      background-color: yellow;  
+      position: relative;
+      /* position: relative; 속성부여  */
+    }
+    .box3 {
+      top: -50px;
+      left: 50px;
+      /* position: relative은 top, left, right, bottom 사용할 수 있음
+         기존 생성될 위치가 기준이 되고 top, left 위치이동  */
+    }
+    .box4 {
+      width : 100px;
+      height : 100px;
+      background-color: blue;  
+      position: absolute;
+      /* position: absolute; 속성부여 */
+    }
+    .box4 {
+      top: -50px;
+      left: 500px;
+      /* position: absolute은 top, left, right, bottom 사용할 수 있음 
+         html 문서에서 좌표로 이동  */
+      /* box0에 있는  position: relative; 주석을 해제하면 box4 기준점이 box0으로 바뀌면서 위치가 변경됨 */ 
+    }
+    .box5 {
+      width : 100px;
+      height : 100px;
+      background-color: purple;  
+      position: fixed;
+      /* position: fixed; 속성부여 */
+    }
+    .box5 {
+      right: 0px;
+      bottom: 0px;
+      /* position: fixed은 top, left, right, bottom 사용할 수 있음 
+         브라우저를 기준으로 이동  
+         스크롤이 생겨도 해당 자리에 위치 함   
+      */
+    }
+  </style>
+</head>
+<body>
+  <h3>position</h3>
+  <hr>
+  <div id="box0">
+    <div class="box1">box1</div>
+    <div class="box2">box2</div>
+    <div class="box3">box3</div>
+    <div class="box4">box4</div>
+    <div class="box5">box5</div>
+  </div>
+  </body>
+ </html>
+  
