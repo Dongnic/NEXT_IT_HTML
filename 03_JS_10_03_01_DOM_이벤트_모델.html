@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS_DOM_이벤트_모델</title>
+<script>
+
+/*     
+    이벤트 모델
+        - 문서 객체에 이벤트를 연결하는 방법을 이벤트 모델 이라고 합니다.
+        - 이벤트 모델은 크게 두가지로 분류할수 있고 다시 또 두가지로 나뉘어 총 4가지 방법으로 
+            이벤트를 연결할 수 있습니다.
+
+    이벤트 모델 종류
+        DOM Level 0 에서 이벤트 모델
+            - 고전 이벤트 모델 (기본 이벤트 모델)
+                    자바스크립트에서 문서 객체의 이벤트 속성으로 이벤트를 연결하는 방법입니다.
+                        이름은 고전이지만 현대에도 많이 사용합니다.
+                예시)
+                    <p id="old_event01"></p>
+                    old_event01 = document.getElementById("old_event01");
+                    old_event01.onclick = function () {}
+
+            - 인라인 이벤트 모델
+                    인라인 이벤트 모델은 HTML 페이지의 가장 기초적인 이벤트 연결 방법입니다.
+                        모든 태그의 이벤트 속성에 자바스크립트 코드를 작성합니다.
+                예시)
+                    <h3 onclick="inline_event02()">
+                    function inline_event02(){
+                        
+                    }
+
+        DOM Level 2 에서 이벤트 모델
+            - 마이크로소프트 인터넷 익스플로러 이벤트 모델
+                개요
+                    인터넷 익스플로러 이벤트 모델은 두 가지 메소드로 이벤트를 연결하거나 제거할 수 있습니다.
+                        익스플로러에서만 사용 가능  ( IE 8 이하에서 attachEvent 메소드를 사용한다.)
+                사용방법
+                    연결 메소드 - attachEvent(eventProperty, eventListener);  
+                    제거 메소드 - detachEvent(eventProperty, eventListener);        
+
+            - 표준 이벤트 모델
+                개요
+                    표준 이벤트 모델은 웹 표준을 만드는 단체인 W3C에서 공식적으로 지정한 DOM Level 2  이벤트 모델입니다.
+                        인터넷 익스플로러 이벤트 모델과 마찬가지로 한 번에 여러 가지의 이벤트 리스너를 추가할 수 있습니다.
+                사용방법
+                    연결 메소드 -  addEventListener(eventName, handler, useCature)  
+                                        //useCature는 입력하지 않으면 자동적으로 false 를 입력합니다.
+                    제거 메소드 -  removeEventListener(eventName , handler )
+
+             
+    
+    참고
+        DOM Level 이란? 
+            DOM Level 1 provided a complete model for an entire HTML or XML document, including the means to change any portion of the document.
+            DOM Level 2 was published in late 2000. It introduced the getElementById function as well as an event model and support for XML namespaces and CSS.
+            DOM Level 3, published in April 2004, added support for XPath and keyboard event handling, as well as an interface for serializing documents as XML.
+            DOM Level 4 was published in 2015. It is a snapshot of the WHATWG living standard.[7]
+            (참고: https://en.wikipedia.org/wiki/Document_Object_Model#Levels_of_DOM)
+
+        DOM Level 0 과 DOM Level 2차이점
+            DOM Level 0 버전의 이벤트 연결 방식은 굉장히 쉬우며 널리 사용됩니다. 
+                하지만 이벤트를 중복해서 사용할 수 없다는 단점이 있습니다. 
+                반면에 DOM Level 2 버전의 이벤트 연결 방식은 이벤트를 중복해서 연결할수 있지만
+                브라우저 종류에 따라 연결하는 방법이 달라 문제가 됩니다.
+                이러한 문제는 모두 jQuery 라이브러리를 사용해 극복할 수 있습니다.
+
+*/
+
+  
+let old_event01;
+let old_event02;
+let h3_01;
+let h3_02;
+//<body onload="fn_event()"> (인라인 이벤트 모델)화면이 load 되면 실행 
+function fn_event () {  
+
+    old_event01 = document.getElementById("old_event01");
+//(고전 이벤트 모델 ( 기본 이벤트 모델)방식) 클릭 이벤트 
+    old_event01.onclick = function () {
+        alert("01 고전 이벤트(기본이벤트) 모델을 클릭하셨습니다");
+        /*
+            같은 종류인 onclick은 마지막꺼만 실행 되어집니다.
+                따라서 "01 고전 이벤트...." alert는 출력되지 않으며 
+                아래 "02 고전 이벤트..." alert이 출력 됩니다.
+        */
+    }
+    old_event01.onclick = function () {
+        alert("02 고전 이벤트(기본이벤트) 모델을 클릭하셨습니다 ");
+    }
+   
+
+//(고전 이벤트 모델 ( 기본 이벤트 모델)방식) 클릭 이벤트 제거하기
+    old_event02 = document.getElementById("old_event02");
+    old_event02.onclick = fn_old_event02;
+
+
+
+    h3_01 = document.getElementById("h3_01");
+//(표준 이벤트 모델 방식) 클릭 이벤트
+// 두개 모두 실행
+    h3_01.addEventListener("click", function(e){
+        alert("(첫 번째) 표준 이벤트를 클릭하였습니다.");
+    });
+    h3_01.addEventListener("click", fn_event02);
+    
+    
+
+//(표준 이벤트 모델 방식) 이벤트 제거를 위해서 리스너 연결
+    h3_02 = document.getElementById("h3_02");
+    h3_02.addEventListener("click", fn_event03);
+    
+
+
+//(실행 안되며 콘솔에 에러 발생)인테넷 익스플로러 이벤트 모델 
+    let h3_03 = document.getElementById("h3_03");
+    h3_03.attachEvent("onclick", function(){
+        alert("인테넷 익스플로러 이벤트 모델이 클릭되었습니다.");
+    });
+    
+}
+
+
+//(인라인 이벤트 모델/ 방식2 ) 클릭 이벤트
+function inline_event02() {
+        alert("인라인 이벤트 모델 방식2 를 클릭하셨습니다._event");
+}
+
+
+function fn_old_event02(){
+        old_event01.onclick = null;
+        alert("고전 이벤트 모델 ( 기본 이벤트 모델) click_이벤트를 제거하였습니다.");
+}
+function fn_event02() {
+        alert("(두 번째) 표준 이벤트를 클릭하였습니다.");
+}
+function fn_event03 () {
+        h3_01.removeEventListener("click", fn_event02);
+        alert("(두 번째) 표준 이벤트를 제거하였습니다.");
+}
+
+
+
+
+</script>
+</head>
+<body onload="fn_event()">
+<h3>JS_DOM_이벤트_모델</h3>
+<hr>
+<!-- 고전 이벤트 모델 ( 기본 이벤트 모델) -->
+    <p id="old_event01">고전 이벤트 모델 ( 기본 이벤트 모델) click</p>
+    <p id="old_event02">고전 이벤트 모델 ( 기본 이벤트 모델) click_이벤트 제거하기 </p>
+
+<!--인라인 이벤트 모델(방식 1) -->
+    <p onclick="alert('(인라인 이벤트 모델 방식 1을 클릭 하셨습니다.')">(인라인 이벤트 모델 방식 1)h1 Click</p>
+    <!--이렇게 이벤트 속성에 여러 줄의 코드를 사용하면 굉장히 지저분해집니다. 
+            따라서 HTML태그의 이벤트 속성 안에 코드를 모두 쓰기 보다는 함수를 script 태그
+            안에 만들고 이를 호출하는 방식을 더 많이 사용합니다. -->
+
+    <p onclick="let num01=10; let num02=5; alert('sum:::::'+(num01+num02))">(지저분한 인라인 이벤트 모델 방식 1)h1 Click</p>
+
+<!--인라인 이벤트 모델 (방식 2) -->
+    <p onclick="inline_event02()">(인라인 이벤트 모델 방식 2)h1 Click_event</p>
+    
+
+<!-- (표준 이벤트 모델) -->
+    <p id="h3_01">(표준 이벤트 모델) click</p>
+    <p id="h3_02">(표준 이벤트 모델) click_2 번째 alert 제거 </p>
+
+<!-- 인테넷 익스플로러 이벤트 모델 -->    
+    <p id="h3_03">(인테넷 익스플로러 이벤트 모델) click</p>
+    
+
+</script>
+</body>
+</html>

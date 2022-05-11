@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS_코어_개요</title>
+<script>
+/*
+코어 객체
+    - 코어 객체는 기본 객체로서 표준입니다.
+    - 객체가 생성되면 객체 내부에 프로퍼티와 메소드들 존재
+    - JavaScript 언어가 실행되는 어디서나 사용 가능한 기본 객체이며, 표준 객체입니다.
+    - Number, String, Date, Math, Array 타입 등이며, 웹 페이지 JavaScript에서 사용 가능합니다.
+    - 코어 객체는 new 키워드로 생성합니다.
+    - let today = new Date();
+        시간 정보가 담긴 객체를 만들 수 있는 예시입니다.
+    - today.toDateString();
+        객체에 접근할 때에는 객체와 맴버 변수나 함수 사이에 점 연산자가 사용됩니다.
+    - let arr = new Array();   
+        배열을 만들 때도 기존의 []로 만들수 있지만, 코어 객체로 만들 수도 있습니다.
+
+        
+*/
+
+//기본 자료형과 객체의 차이점
+/* 기본 자료형과 객체의 특성은 다릅니다.
+    하지만 각각의 속성과 메소드를 살펴보면 기본 자료형과 객체는 같은 속성과 메소드가 있습니다.
+    이는 기본 자료형의 속성이나 메소드를 사용하면 기본 자료형이 자동으로 객체로 변환됩니다.
+    따라서 기본 자료형과 객체의 차이점을 찾기 힘듭니다. 따라서 객체라고 부르면 
+    기본 자료형도 포함한다고 생각해주세요
+                
+
+*/
+    let let01 = 273;
+    let obj01 = new Number(273);
+    console.log("let01_typeof::::"+ typeof(let01)+",  obj01_typeof:::"+typeof(obj01));  
+    //console.log(let01. +", "+ obj01.);  
+    /*(console.log(let01. +", "+ obj01.);  주석을 풀고)  서로 타입 틀리지만 "let01." 에서 ctrl+space 했을때와   
+        "obj01."에서 ctrl+space 했을때 비교 해보면 같음을 알 수 있음*/
+
+    
+    
+/*Number 객체
+    Number 객체는 자바스크립트에서 가장 단순한 객체로 숫자를 표현할 때 사용합나다.
+
+    선언 방법
+        let let01 = 273;
+        let obj01 = new Number(273);
+    
+    속성
+        Number.MAX_VALUE
+            표현 가능한 가장 큰 양수.
+            
+        Number.MIN_SAFE_INTEGER
+            JavaScript에서 안전한 최소 정수. (-(2^53 - 1))
+
+        Number.MIN_VALUE
+            표현 가능한 가장 작은 양수. 즉, 0보다 크지만 0에 가장 가까운 양수.
+
+    메서드
+        Number.isInteger()
+            주어진 값이 정수인지 확인합니다.
+
+        Number.parseFloat()
+            전역 객체 parseFloat()와 동일한 값입니다.
+            parseFloat() 함수는 문자열을 분석해 부동소수점 실수로 반환합니다.
+
+        Number.parseInt()
+            전역 객체 parseInt()와 동일한 값입니다.
+            parseInt() 함수는 문자열 인자를 구문분석하여 특정 진수(수의 진법 체계에 기준이 되는 값)의 정수를 반환합니다.
+
+    참고 
+        https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Number
+
+*/
+
+
+
+/*String 객체
+    String 객체는 자바스크립트에서 가장 많이 사용하는 내장 객체입니다.
+    
+    변수선언 
+        let str01 = 'HELLO WORLD';
+        let str02 =  new String('hello world');
+
+    속성
+        length  문자열의 길이를 나타냅니다.
+
+    메소드
+        charAt()	                position에 위치하는 문자를 리턴합니다.
+        charCodeAt()	            position에 위치하는 문자의 유니코드 번호를 리턴합니다.
+        indexOf()	                앞에서부터 일치하는 문자열의 위치를 리턴합니다.
+        lastIndexOf()	            뒤에서부터 일치하는 문자열의 위치를 리턴합니다.
+        replace()	                문자열을 변경합니다.
+        search()	                일치하는 문자열의 위치를 리턴합니다.
+        slice(start, end)	        특정 위치의 문자열을 추출해 리턴합니다.
+        split(separator, limit)	    separator로 문자열을 잘라서 배열에 리턴합니다.
+        substr(start, count)	    start부터 count만큼 문자열을 잘라서 리턴합니다.
+        substring(start, end)	    start 부터 end 까지 문자열을 잘라서 리턴합니다.
+        toLowerCase()	            문자열을 소문자로 바꾸어 리턴합니다.
+        toUpperCase()	            문자열을 대문자로 바꾸어 리턴합니다.
+        trim()                      문자열 앞과 끝에 있는 공백을 제거합니다.
+        ....    
+
+    참고
+        https://www.w3schools.com/jsref/jsref_obj_string.asp
+*/
+
+
+
+/*Array 객체
+    Array 객체는 여러 가지 자료를 쉽게 관리할 수 있게 도와주는 객체 입니다.
+
+    선언방법
+        let arr01 = [];
+        let arr02 = new Array();
+    
+    속성
+        length  요소의 개수를 알아냅니다.
+    
+    메서드 
+        push()  배열의 마지막 부분에 새로운 요소를 추가합니다.
+        join()  배열 안의 모든 요소를 문자열로 만들어 리턴합니다.
+        sort()  배열의 요소를 정렬합니다ㅣ.
+        reverse()   배열의 요소 순서를 뒤집습니다.
+        splice()    요소의 지정한 부분을 삭제하고 삭제한 요소를 리턴합니다.
+        ...
+        
+    참고
+        https://www.w3schools.com/jsref/jsref_obj_array.asp
+*/
+
+
+/*Date 객체
+    Date 객체는 날짜와 시간을 표시하는 객체입니다.
+    
+    선언방법
+        let date01 = new Date();
+        
+    메서드 
+        Date 객체는 정말 많은 메서드를 갖습니다.
+         Date 객체의 메서드는 세가지로 분류할 수 있습니다.
+         1 get..() 형태
+            getDate()   
+         2 set..() 형태
+            setDate()
+         3 to..string() 형태
+            toDateString()
+    참고
+        https://www.w3schools.com/jsref/jsref_obj_date.asp
+*/
+
+/*Math 객체
+    Math 객체는 자바스크립트의 기본 내장 객체 중 유일하게 생성자 함수를 사용하지 않는 객체 입니다.
+    Math 객체는 이름 그대로 수학과 관련된 속성과 메서드를 갖는 객체입니다. 
+    
+    사용방법
+        Math 객체는 생성자 함수가 아니라 그냥 객체 이므로 다음과 같이 사용합니다.
+        console.log(Math.E);
+        console.log(Math.LN2);
+        console.log(Math.PI);
+
+    속성 
+        E   2.718281828459045
+        PI  3.141592653589793
+        ...
+    
+    메소드
+        abs(x)	x의 절대 값을 리턴합니다.
+        floor(x) x보다 작거나 같은 가장 큰 정수를 리턴합니다.
+        log(x)  x의 로그 값을 리턴합니다.
+        randowm()  0부터 1까지의 임의의 수를 리턴합니다.
+        ...
+
+    참고
+        https://www.w3schools.com/JSREF/jsref_obj_math.asp
+*/
+</script>
+</head>
+<body>
+ <h3>JS_코어_개요</h3>   
+<hr>
+
+
+</div>
+
+</body>
+</html>

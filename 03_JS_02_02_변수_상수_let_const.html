@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS_변수_상수_let_const</title>
+<script>
+/*
+    변수
+      개요
+        변수는 변할 수 있는 값을 의미 합니다. 따라서 변수는 값을 변경할 수 있습니다.
+      종류
+        var, let 
+
+    상수
+      개요
+        상수는 변하지 않는 값을 의미 합니다. 
+      종류
+        const
+
+    var
+        재선언, 재할당 가능 
+          var hateNum = 4;
+          var hateNum = 7;
+          hateNum =3;
+
+    let (https://www.w3schools.com/js/js_let.asp)
+        The let keyword was introduced in ES6 (2015).
+        Variables defined with let cannot be Redeclared.
+          //재선언 불가능
+        Variables defined with let must be Declared before use.
+          // 사용하기전에 선언
+        Variables defined with let have Block Scope.
+          // 영역은 block scope
+
+        let nomalNum = 8;
+        nomalNum = 2;
+
+    const (https://www.w3schools.com/js/js_const.asp)
+        The const keyword was introduced in ES6 (2015).
+        Variables defined with const cannot be Redeclared.
+          //재선언 불가능
+        Variables defined with const cannot be Reassigned.
+          // 재할당 불가능
+        Variables defined with const have Block Scope.
+
+        const likeNum =11;
+
+    Google JavaScript Style Guide
+          (https://google.github.io/styleguide/jsguide.html#features-use-const-and-let)
+            5.1.1 Use const and let
+              Declare all local variables with either const or let. 
+              Use const by default, unless a variable needs to be reassigned. 
+              The var keyword must not be used.
+      
+*/        
+
+  //Redeclared(재선언)
+      
+      //var는 재선언 가능
+      var a0 = "NextIT_교육센터";
+      var a0 = "화면구현";
+      console.log("(Redeclared) a0::::"+a0); 
+      //var는 위와 같이 재선언이 가능함
+      
+      // let은 재선언 불가능
+      let b0 = "NextIT_교육센터";
+      // let b0 = "화면구현"; 
+          // 주석풀면 에러발생 함
+      console.log("(Redeclared) b0::::"+b0);
+      // let은 재선언 불가 (주석 풀고 실행하면 에러 발생)
+
+      // const 재선언 불가능
+      const c0 = "NextIT_교육센터";
+      //const c0 = "화면구현";
+      console.log("(Redeclared) c0:::::"+c0);
+      // const는 재할당 불가 (https://www.w3schools.com/js/js_const.asp)    
+
+  //Reassigned(재할당)
+      
+      // let은 재할당 가능
+      let d0 = "NextIT_교육센터";
+      d0 = "화면구현"; 
+      console.log("(Reassigned) d0:::::"+d0);
+
+      // const는 재할당 불가능
+      const e0 = "NextIT_교육센터";
+      //e0 = "화면구현"; 
+        // 주석풀면 에러발생 함
+      console.log("(Reassigned) e0:::::"+e0);
+      // const는 재할당 불가 (https://www.w3schools.com/js/js_const.asp)      
+
+      
+  /*     
+      scope 종류
+        function scope => var
+          var는 함수 내부에 선언된 변수만 지역변수로 한정하며, 나머지는 
+            모두 전역변수로 간주한다.
+        block scope => let, const
+          let, const는 함수 내부는 물론, if문이나 for문 등의 코드 블럭{ ... } 에서 
+            선언된 변수도 지역변수로 취급한다. 
+
+
+      var과 let의 스코프 차이
+        var은 함수레벨 스코프를 let은 블록레벨 스코프를 가집니다.
+          여기서 블록이란 function(){}문, if(){}문, for(){}문, while(){}문 등 중괄호로 
+          묶은 부분을 의미합니다.
+
+        var는 함수(function)에서만 지역변수로 사용되기때문에 for문 등에서는 
+          의도치 않게 전역변수의 값이 변경될 수 있습니다.
+          하지만 let은 블록레벨 스코프이므로 전역변수에는 영향을 미치지 않습니다.
+ 
+  */     
+      let check="";
+      if(true){
+        let pass ="통과";
+        check = pass;
+      }
+      console.log("check:::"+check)
+      //console.log("pass:::"+pass)    
+        //주석 풀면 에러 발생 pass는 지역변수이므로
+
+  // function scope (var) 와 block scope (let, const) 차이
+
+      //전역스코프
+      {
+        //스코프 A
+          var scope_var = "NextIT_교육센터";
+          let scope_let = "NextIT_교육센터";
+          {
+            // 스코프B
+              console.log("(스코프B) scope_var::::"+scope_var);
+              console.log("(스코프B) scope_let::::"+scope_let);
+          }
+      }
+      console.log("(var) scope_var::::"+scope_var);
+      //console.log("(let) scope_let::::"+scope_let);
+        // 주석 풀면 에러발생함
+
+      //var는 함수 내부에 선언된 변수만 지역변수로 한정하며, 나머지는 모두 전역변수로 간주한다.
+          function fn_scope01(){ 
+              var fn_scope_var01 = "NextIT_교육센터";
+                // 함수내부에서 선어된 var는 지역변수이다 
+              console.log("fn_scope_var01:::::"+fn_scope_var01);
+          }
+          fn_scope01();  
+          //console.log("fn_scope_var01:::::"+fn_scope_var01);
+            // 주석풀면 에러 발생
+
+      //하지만 var는 함수를 제외한 영역에서 var로 선언한 변수는 '전역변수'로 취급된다.
+          if(true) {
+              var fn_scope_var02 = "NextIT_교육센터";  
+                //if문 안에서 var로 선언된 변수는 전역변수가 된다.
+              console.log("fn_scope_var02:::::"+fn_scope_var02);
+            } 
+            console.log("fn_scope_var02:::::"+fn_scope_var02);
+
+      // let, const는 함수 내부는 물론, if문이나 for문 등의 코드 블럭{ ... } 에서 선언된 변수도 지역변수로 취급한다.
+          //함수인경우
+          function fn_scope02() { 
+            let fn_scope_var03 = "NextIT_교육센터";  
+              // 지역변수
+            console.log("fn_scope_var03:::::"+fn_scope_var03);
+          }
+          fn_scope02();
+          //console.log("fn_scope_var03:::::"+fn_scope_var03);
+              // 주석풀면 에러 발생
+
+          //if문인경우
+          if(true) {
+            let fn_scope_var04 = "NextIT_교육센터";
+              // 지역변수
+              console.log("fn_scope_var04:::::"+fn_scope_var04);
+          }
+          // console.log("fn_scope_var04:::::"+fn_scope_var04);
+              // 주석풀면 에러 발생
+
+      //비동기 처리시 var 와 let의 차이점 
+          // var을 사용하는 경우	
+            //(setTimeout은 대표적인 비동기 방식입니다.) var은 전역변수, 따라서 3, 3, 3 순으로 출력
+            for(var i=0; i<3; i++){
+                setTimeout(function(){
+                  console.log("var i::::"+i);
+                    //k값이 3인 이유는 k++로 인하여 k값이 증가 후에 for문 밖을 빠져나왔기때문
+                }, 1000);
+                console.log("var_i::::"+i);
+            }
+
+          // let을 사용하는 경우
+            //(setTimeout은 대표적인 비동기 방식입니다.) let은 지역변수, 따라서 0, 1, 2 순으로 출력
+            for(let j=0; j<3; j++){
+              setTimeout(function(){
+                console.log("let j:::::"+j);
+              }, 1000);
+              console.log("let_j"+j);
+            }
+          
+          /* 추가 설명
+            비동기(setTimeout)가 따로 처리되는 동안 for문은 처리를 진행 했으며
+            setTimeout이 1초마다 처리될때  let j 값은 0, 1, 2, 순으로 진입하게 되지만
+            var는 전역변수 이므로 (0, 1, 2 순으로 진입은 하였겟지만 전역변수이여서)
+            0번째 일때 var i 는 0
+            1번째 일때 var i 는 1 
+            2번째 일때 var i 는 2 
+            3번째 var값이 증가해서 3이 되고 for문을 벗어나고 전역변수 var i는 3이 되며
+            0번째, 1번째, 2번째 값 모두 3으로 변경 되므로 최종적으로 비동기가 처리 후
+            var i 값을 찍을 경우 3,3,3 으로 출력 
+          */
+
+</script>
+</head>
+<body>
+ <h3>JS_변수_상수_let_const</h3>   
+<hr>
+</body>
+</html>

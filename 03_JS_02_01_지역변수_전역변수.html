@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS_지역변수_전역변수</title>
+  <script>
+ /* 지역변수
+      함수 내에 var 키워드로 선언
+
+    전역변수
+      함수 밖에 선언되거나, 함수 내에 var 키워드 없이 선언된 변수
+      프로그램 전역에서 사용
+*/
+
+  var x; // 전역변수 x 선언
+  function fn_variable() { 
+      var y; // 지역변수 y 선언
+      x = 10; // 전역 변수 x에 10 저장
+      y = 20; // 지역 변수 y에 20 저장
+      z = 30; // 새로운 전역변수 z 선언. 30으로 초기화
+      
+      console.log("(first)  x::"+x+", y::"+y+", z::"+z);
+  }
+  fn_variable();
+
+  console.log("(second)  x::"+x+", z::"+z);
+  //console.log("(second)  x::"+x+", y::"+y+", z::"+z);
+  //주석을 해제하면 에러 발생 (y는 지역변수이기때문에)
+  
+  </script>
+</head>
+<body>
+ <h3>JS_지역변수_전역변수</h3>   
+<hr>
+</body>
+</html>

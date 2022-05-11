@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head><title>onload로 이미지 크기 출력</title>
+<script>
+// PPT 9장(이벤트 기초 및 활용) 예제
+
+
+function changeImage() {
+
+    let sel = document.getElementById("sel");
+    let img = document.getElementById("myImg");
+    
+    let index= sel.selectedIndex; // 선택된 옵션 인덱스
+    img.src = sel.options[index].value; // <option>의 value 속성
+
+    img.onload = function () { // 이미지 크기 출력
+        let mySpan = document.getElementById("mySpan");
+        mySpan.innerHTML = img.width + "x" + img.height;
+    }
+    
+}
+</script>
+</head>
+<body onload="changeImage()">
+<h3>onload로 이미지 크기 출력</h3>
+<hr>
+<form>
+<select id="sel" onchange="changeImage()">
+    <option value="./images/img1.jpg">런닝
+    <option value="./images/button.png" selected>구독
+    <option value="./images/img13.jpg">백패킹
+</select>
+<span id="mySpan">이미지 크기</span>
+</form>
+<p><img id="myImg" src="" ></p>
+</body>
+</html>

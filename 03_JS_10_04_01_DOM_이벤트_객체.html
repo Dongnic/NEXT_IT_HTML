@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS_DOM_이벤트_객체</title>
+<script>
+ 
+/* 
+
+1 이벤트 객체 전달받기
+    1 개요
+        이벤트 객체는 이벤트 리스너 함수의 첫 번째 매개변수에 전달 
+
+    2 정보
+        이벤트 객체에 들어 있는 정보 ( 이벤트 종류 마다 조금씩 다름 )
+        
+    3 프로퍼티 
+        type    - 현재 발생한 이벤트의 종류를 나타내는 문자열 (click, load 등)
+        target  - 이벤트를 발생시킨 객체 (DOM 객체 또는 HTML 태그 )
+        currentTarget   - 현재 이벤트 리소스를 실행하고 있는 DOM 객체
+        defaultPrevented    - 이벤트의 디폴트 행동이 취소되었는지를 나타내는 true/false 값
+        PreventDefault()    - 이벤트의 디폴트 행동을 취소시키는 메소드
+
+    4 전달 받는 방법 
+        4.1 event 사용하기
+            - event 객체는 이벤트를 발생시킨 요소와 발생한 이벤트에 대한 유용한 정보를 제공한다. 
+            - 이벤트가 발생하면 event 객체는 동적으로 생성되며 이벤트를 처리할 수 있는 이벤트 핸들러에 암묵적으로 전달된다.
+                그러므로 이벤트 핸들러를 선언할 때 event객체를 전달받을 첫번째 매개변수를 명시적으로 선언하여야 한다. 
+                아래 예제에서 e라는 이름으로 매개변수를 지정하였으나 다른 매개변수 이름을 사용하여도 상관없다.
+            - event.target은 this와 일치하지만 반드시 일치하지는 않는다.
+
+        4.2 this 사용하기
+            - this는 이벤트가 처리되고 있는 DOM요소(현재대상)의 참조를 나타냅니다.( this는 이벤트에 바인딩된 요소를 가리킨다 )
+            - this는 이벤트 객체의 event.currentTarget 프로퍼티와 같다. 따라서 this와 event.currentTarget는 언제나 일치한다.
+    
+    5 this 사용시 유의점
+        //(이벤트 발생하지 않은 상태에서) 함수 안에서 this 사용시 this는  DOM요소가 아닌 window 객체를 가리킴
+        function fn_this(){
+            console.log(this);  // 여기서 this는 window 객체를
+        }
+        
+*/
+
+//그냥 함수 안에서 this 사용시 여기서 this는 window객체를 가리킴
+function fn_this(){
+    console.log(this); //window
+}
+let constructor = fn_this();
+
+
+function fn_event(){
+    let h1_event01 = document.getElementById("h1_event01");
+    h1_event01.onclick = function (e){     // e -> event
+        e.target.style.color="red";
+
+        // e.currentTarget, e.target, this 같음
+        console.log("e.type:::::", e.type);
+        console.log("e.target:::::", e.target);
+        console.log("e.currentTarget:::::", e.currentTarget);
+        console.log("this:::::", this);
+        
+        //id확인
+        console.log("e.target.id:::::"+e.target.id );
+        console.log("e.currentTarget.id::::"+e.currentTarget.id );   
+        console.log("this.id::::"+this.id );   
+
+        //텍스트확인
+        console.log("e.target.textContent:::::"+e.target.textContent );
+        console.log("e.currentTarget.textContent::::"+e.currentTarget.textContent );   
+        console.log("this.textContent::::"+this.textContent );   
+
+    }
+}
+ 
+
+
+</script>
+</head>
+<body onload="fn_event()">
+<h3>JS_DOM_이벤트_객체</h3>   
+<hr>    
+<h1 id="h1_event01">01_NextIT 교육센터입니다.</h1>
+</body>
+</html>

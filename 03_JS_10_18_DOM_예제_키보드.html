@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html><head><title>키 이벤트</title>
+<script>
+// PPT 9장(이벤트 기초 및 활용) 예제
+function whatKeyDown(e) {
+    let str = "";
+    let div = document.getElementById("div");
+    div.textContent = ""; // div 객체 내용을 지운다.
+    
+    console.log(e)
+    if(e.code.indexOf("Control")!=-1){
+        if(e.code=="ControlLeft"){
+            str += "왼쪽 Ctrl 키가 눌러졌습니다1.";  
+        }else{
+            str += "오른쪽 Ctrl 키가 눌러졌습니다2.";  
+            str += "<br>";
+        }
+    }
+    else if(e.code.indexOf("Shift")!=-1) {
+        if(e.code=="ShiftLeft"){
+             str += "왼쪽 Shift 키가 눌러졌습니다.";
+        } else{
+            str += "오른쪽 Shift 키가 눌러졌습니다.";
+        }
+        str += "<br>";
+    }
+    else if(e.code.indexOf("Alt")!=-1) {
+        if(e.code=="AltLeft"){
+             str += "왼쪽 Alt 키가 눌러졌습니다.";
+        } else{
+            str += "오른쪽 Alt 키가 눌러졌습니다.";
+        }
+        str += "<br>";
+    }else{
+        /*String.fromCharCode() 메서드는 UTF-16 코드 유닛의 
+            시퀀스로부터 문자열을 생성해 반환합니다.*/
+        str += String.fromCharCode(e.keyCode) + "키가 눌려졌습니다."
+    } 
+    div.textContent = str; // div 객체에 문자열을 출력한다.
+}
+</script>
+</head>
+<body>
+<h3>키 리스너와 키 이벤트 객체의 프로퍼티</h3>
+<hr>
+텍스트 창에 키를 눌러 보세요. Alt, Shift, Ctrl 키도 가능합니다.<br>
+<input type="text" id="text" onkeydown="whatKeyDown(event)">
+<div id="div" style="background-color:skyblue; width:250px; height:50px">
+</div>
+</body>
+</html>

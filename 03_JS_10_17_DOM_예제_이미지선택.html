@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>select 객체에서 선택한 이미지출력</title>
+<style>
+/* PPT 9장(이벤트 기초 및 활용) 예제 */
+    img{
+        width: 700px;
+        height: 500px;
+        display: block;
+    }
+</style>
+<script>
+function drawImage() {
+    let sport = document.getElementById("sport");
+    let img = document.getElementById("sport_image");
+    img.src = sport.options[sport.selectedIndex].value;
+}
+</script>
+</head>
+<body onload="drawImage()">
+<h3>select 객체에서 선택한 과일 출력</h3>
+<hr>
+<p>운동 종목을 선택하면 이미지가 출력됩니다.</p>
+<form>
+<div> 
+    <select id="sport" onchange="drawImage()">
+        <option value="./images/img1.jpg">런닝
+        <option value="./images/img2.jpg" selected>수영
+        <option value="./images/img3.jpg">클라이밍
+    </select>
+    <img id="sport_image" src="" alt="사진이 존재하지 않습니다.">    
+</div>
+</form>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html><head><title>Array 객체로 배열 만들기</title></head>
+<body>
+<h3>Array 객체로 배열 만들기</h3>
+<hr>
+<script>
+let degrees = new Array(); // 빈 배열 생성
+degrees[0] = 15.1;
+degrees[1] = 15.4; 
+degrees[2] = 16.1;
+degrees[3] = 17.5; 
+degrees[4] = 19.2;
+degrees[5] = 21.4;
+
+let sum_nomal_for = 0; 
+let sum_for_in = 0; 
+let sum_foreach_01 = 0; 
+let sum_foreach_02 = 0; 
+
+//for문으로 출력 
+    for(i=0; i<degrees.length; i++){
+        sum_nomal_for += degrees[i];
+    }
+    document.write("(for) 평균 온도는 " + sum_nomal_for/degrees.length + "<br>");
+
+//for in으로 출력
+    for(let i in degrees){
+        sum_for_in += degrees[i];
+    }
+    document.write("(for in) 평균 온도는 " + sum_for_in/degrees.length + "<br>");
+
+//forEach으로 출력 방법 1
+    degrees.forEach(function(item, index){
+        //  sum_foreach += degrees[index];
+        console.log("인덱스 i는 "+ index + ", 값은  " + item ); 
+        sum_foreach_01 += item;
+        
+    });
+    document.write("(forEach 01) 평균 온도는 " + sum_foreach_01/degrees.length + "<br>");
+
+//forEach 출력 방법 2
+    degrees.forEach(myFunction);
+    function myFunction(item, index) {
+        sum_foreach_02 += item;
+    }
+    document.write("(forEach 02) 평균 온도는 " + sum_foreach_02/degrees.length + "<br>");
+
+
+
+</script>
+</body>
+<p id="arr_1"></p>
+<script>
+    
+//foreach 출력 방법 3
+    const numbers = [65, 44, 12, 4];
+    numbers.forEach(myFunction)
+    function myFunction(item, index, arr) {
+        arr[index] = item * 10;  //numbers 값 변경
+        
+    }
+    //참고 (https://www.w3schools.com/jsref/jsref_foreach.asp)
+    
+    document.getElementById("arr_1").textContent = numbers;
+
+
+/* 참고
+    const는 상수 이므로 값을 재할당할 수없다. 
+    아래와 같이 재할당 할경우 에러 발생
+*/
+const arr = [5, 6, 7];
+//arr = [1, 2, 3]; 
+//주석해제 하면 에러 발생
+
+/*따라서 변경하고자 한다면 다음과 같이 값을 변경 하여야 합니다.*/
+arr[0] = 1;
+arr[1] = 2;
+arr[2] = 3;
+console.log("arr:::::"+arr);
+</script>
+</html>

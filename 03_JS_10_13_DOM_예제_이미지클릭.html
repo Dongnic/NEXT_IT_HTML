@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head><title>new Image()로 이미지 로딩</title>
+<style>
+ /* PPT 9장(이벤트 기초 및 활용) 예제 */
+
+
+ img{
+    width: 700px;
+    height: 500px;
+}
+ </style>   
+<script>
+
+// 미리 로딩해둘 이미지 이름 배열
+let files = [
+    "./images/img1.jpg", 
+    "./images/img2.jpg",
+    "./images/img3.jpg",
+    "./images/img4.jpg"
+];
+
+// 다음 이미지 출력
+let next = 1;
+function change() {
+    let img_id = document.getElementById("img_id");
+    console.log(next);
+    img_id.src = files[next]; //이미지 변경
+    next++; // 다음 이미지
+    if(next == files.length){
+        next=0;
+    }
+}
+</script></head>
+<body>
+<h3>new Image()로 이미지 로딩</h3>
+<hr>
+<p>이미지를 클릭하면 다음 이미지를 보여줍니다.</p>
+<img id="img_id" src="./images/img1.jpg" alt="사진이 존재하지 않습니다." onclick="change(this)">
+
+</body>
+</html>

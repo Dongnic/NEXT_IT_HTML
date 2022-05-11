@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>인코딩_디코딩</title>
+<script>
+
+    
+    let str01 = window.location.href;
+    console.log("str01::::"+window.location.href);
+    
+    console.log(str01.slice(str01.indexOf('?') + 1, str01.length));
+    //url에서 "?" 이하로 취득한 후 "&"를 구분자로 하여 split 실시하여 parameters 변수에 배열형태로 대입
+    let parameters = (str01.slice(str01.indexOf('?') + 1, str01.length)).split('&');
+
+    console.log("parameters::::"+parameters);
+    console.log("parameters.length::::"+parameters.length);
+
+    for (var i = 0; i < parameters.length; i++) {
+        console.log(decodeURIComponent(parameters[i].split('=')[1]));
+    }
+
+</script>
+</head>
+<body>
+<h3>인코딩_디코딩</h3>
+<hr>
+ 
+</body>
+</html>

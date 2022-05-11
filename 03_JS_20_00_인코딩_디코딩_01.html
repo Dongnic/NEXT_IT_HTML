@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS_인코딩_디코딩_01</title>
+<script>
+/*
+인코딩과 디코딩 함수
+    인코딩은 문자를 컴퓨터에 저장하거나 통신에 사용할 목적으로
+     부호화하는 방법입니다. 웹에서는 통신할때 한글과 같은 
+      유니코드 문자가 오작동을 일으킬 수 있으므로 인코딩 해야 합니다.
+       문자를 부호화(%EC%9D%B88...)하는 것이 인코딩이고 반대로 문자를
+        원래대로 되돌리는 것이 디코딩 이라 합니다.
+
+    예시
+        https://search.naver.com/search.naver?query=%EB%84%A5%EC%8A%A4%ED%8A%B8+it
+
+    인코딩 디코딩 함수
+        1
+            escape()        적절한 정도로 인코딩 합니다.
+            unescape()      적절한 정도로 디코딩 합니다.
+        2
+            encodeURI()      최소한의 문자로만 인코딩 합니다.
+            decodeURI()   최소한의 문자만 디코딩 합니다.
+        3
+            encodeURIComponent()    문자 대부분을 모두 인코딩합니다.
+            decodeURIComponent()  문자 대부분을 모두 디코딩 합니다.
+
+        적절한, 최소한, 대부분의 차이
+            escape()
+                영문 알파벳, 숫자, 일부 특수문자(@, *, _, +, ../ )을 제외하고 인코딩합니다.
+
+            encodeURI()
+                escape() 함수에서 인터넷 주소에 사용되는 일부 특수 문자 ( :, ;, /, =, ?, &)을
+                    제외하고 인코딩합니다.
+                
+            encodeURIComponent()
+                알파벳과 숫자를 제외한 모든 문자를 인코딩합니다.
+                UTF-8 인코딩과 같습니다.
+*/
+    let url_1 = "http://www.nextit.or.kr/?query=넥스트++++++아이티???????입니다."
+    let output01 = "";
+    let escape01 = escape(url_1);
+    let encodeURI01 = encodeURI(url_1);
+    let encodeURIComponent01 = encodeURIComponent(url_1);
+
+    document.write("인코딩!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br>");
+    output01 += "01. escape()<br>"; // "++++++"는 인코딩 안되어짐
+    output01 += escape01 + "<br><br>"; 
+    output01 += "02. escapeURI()<br>"; // "++++++" , "???????"는 인코딩 안되어짐
+    output01 += encodeURI01+ "<br><br>";
+    output01 += "03. encodeURIComponent()<br>"; // 모두 인코딩함
+    output01 += encodeURIComponent01 + "";
+
+    document.write(output01);
+
+    let output02 = "";
+    document.write("<br><br><br>디코딩!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!<br>");
+    output02 += "01. escape()<br>";
+    output02 += unescape(escape01) + "<br><br>";
+    output02 += "02. escapeURI()<br>";
+    output02 += decodeURI(encodeURI01) + "<br><br>";
+    output02 += "03. encodeURIComponent()<br>";
+    output02 += decodeURIComponent(encodeURIComponent01) + "";
+    
+    document.write(output02);
+    
+    //(get방식일때) 특수문자가 없는 경우 
+    //      -> 특이사항없음 (03_JS_20_01_인코딩_디코딩_02.html에서 console 보면 query01, query02 정상적으로 출력)
+    function fn_load01(){
+        let url = "./03_JS_20_01_인코딩_디코딩_02.html";
+        url += "?query01=넥스트아이티입니다0101";
+        url += "&query02=넥스트아이티입니다0202";
+        console.log(url);
+        window.open(url, "myWin", "left=300,top=300,width=900,height=300");
+    }
+
+    //(get방식일때)특수문자가 있는 경우 그리고 인코딩 안한 경우 
+    //    -> (03_JS_20_01_인코딩_디코딩_02.html)query02에 "&&&&&&0202" 없음
+    function fn_load02(){
+        let url = "./03_JS_20_01_인코딩_디코딩_02.html";
+        url += "?query01=넥스트아이티입니다++++++0101";
+        url += "&query02=넥스트아이티입니다&&&&&&0202";
+        console.log(url);
+        window.open(url, "myWin", "left=300,top=300,width=900,height=300");
+    }
+    //(get방식일때)특수문자가 있는 경우 그리고 인코딩 한 경우
+    //    -> (03_JS_20_01_인코딩_디코딩_02.html)query02 정상적으로 출력
+    function fn_load03(){
+        let url = "./03_JS_20_01_인코딩_디코딩_02.html";
+        let encodig01 = encodeURIComponent("넥스트아이티입니다++++++0101");
+        let encodig02 = encodeURIComponent("넥스트아이티입니다&&&&&&0202");
+        url += "?qury01="+encodig01;
+        url += "&qury02="+encodig02;
+        console.log(url);
+        window.open(url, "myWin", "left=300,top=300,width=900,height=300");
+    }
+</script>
+</head>
+<body>
+<h3>JS_인코딩_디코딩_01</h3>
+<hr>
+<a href="javascript:fn_load01()">(get방식일때)특수문자가 없는 경우 </a><br>
+<a href="javascript:fn_load02()">(get방식일때)특수문자가 있는 경우+인코딩 안한 경우</a><br>
+<a href="javascript:fn_load03()">(get방식일때)특수문자가 있는 경우+인코딩 한 경우</a><br>
+
+</body>
+</html>

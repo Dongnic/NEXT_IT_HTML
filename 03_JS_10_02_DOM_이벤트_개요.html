@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS_DOM_이벤트_개요</title>
+<script>
+
+/*     
+이벤트
+    웹 브라우저에서 사용자가 화면을 클릭하는 사건, 사용자가 키보드를 누르는 사건처럼 다양한 사건이 일어납니다.
+    이러한 사건을 이벤트(event)라고 부릅니다.
+
+용어
+    이벤트 이름 : 이벤트 이름을 나타냅니다. ( load )
+    이벤트 속성 : 특정요소(태그)에 이벤트를 직접 연결할 때 활용하는 속성을 나타냅니다. ( onload )
+    이벤트 리스너 또는 핸들러 : 특정요소(태그)의 이벤트 속성에 연결한 함수를 나타냅니다.    ( function(){}; ) 
+    디폴트 이벤트 : 요소(태그)가 가지고 있는 기본적인 이벤트를 나태냅니다 ( a태그 href 속성 )
+    이벤트 모델 : 이벤트를 연결하는 방법을 나타냅니다. 
+        최신 웹브라우저는 표준 이벤트 모델, 인라인 이벤트 모델, 기본 이벤트 모델을 지원 하지만
+        구버전의 인터넷 익스플로러는 '마이크로소프트 인터넷 익스플로러 이벤트 모델', '인라인 이벤트 모델',
+             '기본 이벤트 모델' 을 지원합니다.
+        따라서 정상적인 이벤트를 사용할 수 있게 하려면 구버전과 최신 버전의 차이를 보완하는 방법이 필요합니다.
+
+예시)
+    window.onload = function(){};
+        => widow 객체의 onload 속성에 함수 자료형을 할당하는 것을 "이벤트 연결 한다" 라고 합니다.
+            이때 load를 이벤트 이름 또는 이벤트 타입 이라고 하며 onload를 이벤트 속성이라고 합니다.
+                또한 이벤트 속성에 할당한 함수를 이벤트 리스너 또는 이벤트 핸들러 라고 합니다. 
+
+
+이벤트 속성 종류
+    onload, onblur, onfocus, onfocusin, onscroll, onclick, onmousedown, onmouseup, onmousemove,
+    onchange, onselect, onsubmit, onkeydown, onkeypress, onkeyup, onerror.........
+
+*/
+    
+
+
+</script>
+</head>
+<body >
+<h3>JS_DOM_이벤트_개요</h3>   
+<hr>
+<div id="header_div01">
+    (클릭해보세요) header_div01
+</div>
+<hr>
+<div id="header_div02">
+    (클릭해보세요) header_div02
+</div>
+<hr>
+ <script>
+    let header_div01 = document.getElementById('header_div01');
+//방법1
+    header_div01.onclick = function(){
+        alert('방법1을 클릭하였습니다.');
+    // 이벤트 이름 : click
+    // 이벤트 속성 : onclick
+    // 이벤트 리스너(핸들러) : function(){}
+    } ;
+
+
+    let header_div02 = document.getElementById('header_div02');
+//방법2
+    header_div02.onclick = whenClick ;
+    // 이벤트 이름 : click
+    // 이벤트 속성 : onclick
+    // 이벤트 리스너(핸들러) : whenClick
+    function whenClick() {
+        alert('방법2를 클릭하였습니다.');
+   
+    }
+
+
+</script>
+</body>
+</html>

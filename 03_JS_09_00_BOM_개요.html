@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS_BOM_개요</title>
+<script>
+/*
+
+Javascript는  3개의 객체가 있다
+
+분류
+
+    1 자바스크립트 BOM 객체
+        브라우저와 관련된 Window ( Navigator, Location, History, Document, Screen ) 객체가 포함
+                참고 
+                    ppt 8장 5page
+                    ./images/BOM_이미지.png                 
+
+    2 자바스크립트 DOM 객체	
+        노드(node), 스타일, 속성, 이벤트 등을 다룰 수 있는 다양한 기능 포함
+            참고 : ppt 8장 7page
+
+    3 기본내장(코어) 객체
+        자바스크립트 언어가 실행되는 어디서나 사용 가능한 기본 객체로서 Array, Date, String, Math 타입등이 있다.
+        코어 객체를 생성할때는 항상 new 키워드로 생성한다.
+      
+    참고:
+        웹브라우저의 구성요소들은 하나하나가 객체화되어 있다.
+            자바스크립트로 이 객체를 제어해서 웹브라우저를 제어할 수 있는데,
+            이 객체들이 서로 계층적인 관계로 구조화되어 있는 것을 객체 모델이라 한다. 
+            참고로, 브라우저에서 웹문서만 담당하는 게 document 객체고 
+            브라우저 전체를 담당하는 게 window 객체다. 
+            document객체가 DOM과 관련되어 있고, window 객체가 BOM과 관련되어 있다.
+------------------------------------------------------------------------------------------------------------------------
+
+1 BOM 객체 ( Browser Object Model ) 
+    Window
+        Document : 웹 페이지 문서의 HTML, CSS 등에 대한 접근 가능. 가장 중요한 개념
+            document.getElementById("header"); 
+                참고( https://www.w3schools.com/js/js_window.asp )
+            document.title : title
+            document.doctype : <!DOCTYPE html>
+            ...
+       
+        Navigator : 브라우저 정보
+            navigator.userAgent : 사용자의 브라우저 식발자를 감지하여 거기에 맞는 디자인이 가능합니다
+            navigator.appCodeName : “Mozilla”
+            navigator.vendor : 크롬 웹브라우저의 경우 “Google Inc.”
+            ...
+
+        Location : 주소창 부분
+            location.href; : 주소 “http://caniuse.com“
+            location.protocol; : “http:”
+            location.host; : “caniuse.com”
+            ...
+               
+        History : 이번보기 다음보기 등
+            history.back() : 한칸 뒤로가기
+            history.forward() : 한칸 앞페이지 가기
+            history.go(-2) : 2칸 뒤로가기 등 제어가능
+            ...
+        
+        Screen : 디스플레이 부분
+            screen.width : 스크린 width
+            screen.height : 스크린 height
+            screen.availHeight : 실제 사용가능한 height
+            screen.orientation : 모바일 등 제어
+            ...
+
+  
+*/
+
+
+ 
+  
+</script>
+</head>
+<body>
+ <h3>JS_BOM_개요</h3>   
+<hr>
+ 
+</div>
+
+</body>
+</html>

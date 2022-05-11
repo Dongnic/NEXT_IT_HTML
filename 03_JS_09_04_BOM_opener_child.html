@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>window.opener</title>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script> 
+ 
+//(제어2) 부모창 닫기 
+//"자식창 띄우기02"에서실행
+//window.opener로 부모창 닫기
+function fn_close_parent(){
+    console.log("fn_close_parent");
+    window.opener.close();
+}
+
+
+//(제어4) 자식창에서 부모창으로 data 보내기
+//"자식창 띄우기02"에서실행
+//부모창에 있는 함수 호출해서 데이터 보내기
+function fn_send_data_to_parent(){
+    console.log("fn_send_data_to_parent");
+    let mem_id = document.getElementById("mem_id").value;
+    window.opener.fn_parent(mem_id);
+   
+}
+
+//부모창에서 보내온 데이터 받기
+function fn_get_pacrent_data(parent_data){
+    console.log("mem_phone::::"+mem_phone);
+    document.getElementById("mem_phone").value=parent_data;
+}
+
+//"자식창 띄우기02"에서실행
+//부모창 페이지 이동시키고 자식창 닫기
+function fn_parent_href(){
+    console.log("fn_parent_href");
+    window.opener.parent.location.replace("http://www.nextit.or.kr/");
+    window.close();
+}
+
+ 
+
+</script>
+</head>
+<body  >
+<h3>window.opener_자식창</h3>
+<hr>
+<input type="button" onclick="fn_close_parent()" value="부모창닫기">
+<hr>
+<input type="text" id="mem_id" value="" placeholder="성함을 입력해주세요">
+<input type="button" onclick="fn_send_data_to_parent()" value="부모창에 데이터 보내기">
+<hr>
+<input type="text" id="mem_phone"  placeholder="부모창에서 받은 데이터">
+<hr>
+<input type="button" onclick="fn_parent_href()" value="부모창 사이트 이동 후 창 닫기">
+</body>
+</html>

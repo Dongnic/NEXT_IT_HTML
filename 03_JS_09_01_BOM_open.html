@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>윈도우_열기</title>
+<script>
+
+/*
+window.open()  사용법
+    window.open( URL, name, specs, replace )
+
+        URL : 웹 문서 URL이다. 이 인자를 생략하거나 빈 문자열이면 about:blank라는 특별한 빈 페이지 URL이 사용된다.
+        name : 창의 이름을 가리키는 문자열이다. 이미 사용한 이름 이라면 접근도 허용된다면 해당 창을 사용한다. 
+                그렇지 않다면 지정한 이름을 사용하여 새로운 창을 생성한다. 이 인자가 생략되면 "_blank"가 사용되고 
+                    이름 붙지 않은 새로운 창을 연다.
+                
+                옵션 종류
+                    1. _blank    : (기본값) 새로운 창이 열림. 
+                    2. _self     : 현재 페이지를 대체해서 열림
+                    3. 임의의 이름 : 새로운창이 열리고 창의 이름을 지정함. 
+                                            동일한 이름에 다시 open()을하면 기존의 열린창의     
+                                            내용이 바뀜. 다른 이름 사용시 또 다른 새창이 열림
+
+        specs : 새로 열릴 창의 크기와 기능 속성의 목록을 콤마로 구분한 문자열이다. 
+                    이 인자를 생략하면 새 창은 기본 크기에 메뉴바, 상태표시줄, 도구 바 
+                        그리고 이외의 모든 UI 구성요소를 포함한다. 
+
+                specs 옵션
+                    left        창의 왼쪽 위치
+                    top         창의 위쪽 위치
+                    height      창의 높이
+                    width       창의 넓이
+                    meunbar     메뉴창 표시 속성 (yes or no)
+                    loaction    주소표시줄 표시 속성 (yes or no)
+                                    //( 피싱 위험 으로 인하여 )브라우저에서 location 옵션은 차단
+                    status      상태바 표시 속성 (yes or no)    
+                    resizable   창의 리사이즈 가능 여부 지정(yes or no). IE만 동작
+                    scrollbars  스크롤바 표시 속성 (yes or no)    
+
+        replace  
+           히스토리 목록에 새 항목을 만들지 현재 항목을 대체할지 지정한다.   
+            지정하지 않은 경우 false가 기본값
+            - true : 현재 히스토리를 대체
+            - false : 히스토리에 새 항목을 만듬
+            (참고:https://www.w3schools.com/jsref/met_win_open.asp)
+*/
+
+function load1(URL) {
+    window.open(URL, "_blank","left=300,top=300,width=700,height=500,resizable=no" );
+    // resizable=no 는 IE에서만 동작
+}
+function load3(URL) {
+    window.open(URL, "_self", "left=300,top=300,width=700,height=500"  );
+    //_self는 기존 창에서 열리기 때문에 크기지정 의미없음
+}
+function load4(URL) {
+    window.open(URL, "myWin", "left=300,top=300,width=700,height=500" );
+    // myWin 이라는 이름으로 새로운 창 생성
+}
+function load5(URL) {
+    open(URL, "myWin", "left=300,top=300,width=700,height=500" );
+    //window는 생략가능
+    // 기존에 myWin이라는 이름으로 새로운 창이 존재 하면 기존 창에서 페이지 열림
+    
+}
+//load5에서 창 이름을 변경해서 시도해보기
+
+</script>
+</head>
+<body>
+<h3>window.open()으로 윈도우 열기</h3>
+<hr>
+<a href="javascript:load1('http://www.naver.com')">
+    네이버</a><br>
+<a href="javascript:load3('http://www.nate.com')">
+    네이트</a><br>
+<a href="javascript:load4('http://www.daum.net')">
+    다음</a><br>
+<a href="javascript:load5('http://www.nextit.or.kr')">
+    NextIT</a><br>
+</body>
+</html>

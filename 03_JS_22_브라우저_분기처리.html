@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS_브라우저별 분기처리</title>
+<script>
+ 
+let agent = navigator.userAgent.toLowerCase();
+
+//userAgent로 브라우저 정보확인하기
+console.log(navigator.userAgent.toLowerCase());
+//리턴값이 -1이 아니면 엣지브라우져 
+console.log("agent.indexOf(edg)::::"+ agent.indexOf("edg"));
+//리턴값이 -1이 아니면 크롬브라우저 
+console.log("agent.indexOf(chrome):::::"+agent.indexOf("chrome"));  
+
+
+//Edge 브라우저인지 확인
+if (agent.indexOf("edg") != -1) {
+    alert("Edge 브라우저입니다.");
+//익스플로러 인지 확인
+}else if (agent.indexOf("trident") != -1) {
+    alert("IE 브라우저입니다.");
+//크롬 브라우저인지 확인
+}else if(agent.indexOf("chrome") != -1) {
+    alert("chrome 브라우저입니다.");
+}
+
+</script>
+</head>
+<body>
+<h3>JS_브라우저별 분기처리</h3>
+<hr>
+ 
+</body>
+</html>
+
+

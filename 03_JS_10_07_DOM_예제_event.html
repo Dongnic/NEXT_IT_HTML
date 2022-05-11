@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>이벤트 객체 프로퍼티</title>
+<script>
+//PPT 9장(이벤트 기초 및 활용) 예제
+
+
+function fn_event(e) { // e는 현재 발생한 이벤트 객체
+    console.log("type:::",  e.type);
+    console.log("target:::",  e.target);
+    console.log("currentTarget:::",  e.currentTarget);
+    console.log("defaultPrevented:::",  e.defaultPrevented);
+}
+</script>
+</head>
+<body>
+<h3>이벤트 객체의 프로퍼티 출력</h3>
+<hr>
+<p id="p">버튼을 클릭하면 이벤트 객체를 출력합니다. </p>
+<button  onclick="fn_event(event)">클릭하세요</button>
+</body>
+</html>

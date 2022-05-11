@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS_다이얼로그</title>
+<script>
+
+  function fn_confirm() {
+    // 확인 다이얼 로그
+    let ret = confirm("전송할까요");
+    if(ret == true) {
+      // 사용자가 "확인" 버튼을 누른 경우
+      alert("전송하였습니다.");
+    }
+    else {
+      // 취소 버튼을 누른 경우
+      alert("취소하셨습니다.");
+    }
+  }
+
+  function fn_prompt() {
+    // 프롬프트 다이얼로그 ( 사용자 입력 )
+    let ret = prompt("이름을 입력하세요", "NexTIT");
+    if(ret == null) { 
+      // 취소 버튼을 누른 경우
+      alert("취소하셨습니다.");
+    }
+    else if(ret == "") {
+      alert("입력값이 없습니다.");
+    }
+    else {
+      //입력값이 있는 경우 
+      document.getElementById("div_1").textContent = ret;
+    }
+  }
+
+  
+</script>
+</head>
+<body>
+ <h3>JS_다이얼로그</h3>   
+<hr>
+<input type="button" onclick="javascript:fn_confirm()" value="fn_confirm">
+<input type="button" onclick="javascript:fn_prompt()" value="fn_prompt"> 
+<div id="div_1">  
+  <!-- div_1 -->
+</div>
+
+</body>
+</html>

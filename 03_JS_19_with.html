@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS_with 키워드</title>
+<script>
+/*with 키워드
+
+    with 키워드는 복잡하게 사용해야 하는 코드를 짧게 줄여주는 키워드 입니다.
+        하지만 사용을 권고하지 않습니다.
+            참고 
+                https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/with
+
+    사용방법 
+        with( [객체] ){
+
+        }
+    
+*/ 
+    // 예시)
+        // 일반적인 사용
+            let student01 = {
+                name: "신용우",
+                english_01: 91,
+                english_02: 83,
+                english_03: 94,
+                science_01: 77,
+                science_02: 82,
+                science_03: 46
+            
+            }
+
+            let output01="";
+            output01 +=  "이름 : " + student01.name + "\n";
+            output01 +=  "이름 : " + student01.english_01 + "\n";
+            output01 +=  "이름 : " + student01.english_02 + "\n";
+            output01 +=  "이름 : " + student01.english_03 + "\n";
+            output01 +=  "이름 : " + student01.science_02 + "\n";
+            output01 +=  "이름 : " + student01.science_02 + "\n";
+            output01 +=  "이름 : " + student01.science_03 + "\n";
+            output01 +=  "총점 : " + (student01.english_01 + student01.english_02 
+                + student01.english_03 + student01.science_01 + student01.science_02
+                + student01.science_03);
+            console.log(output01);
+        
+        // with 사용
+            let student02 = {
+                name: "한창희",
+                english_01: 91,
+                english_02: 83,
+                english_03: 94,
+                science_01: 77,
+                science_02: 82,
+                science_03: 46
+            
+            }
+
+            let output02="";
+            with (student02){
+
+                output02 +=  "이름 : " + name + "\n";
+                output02 +=  "이름 : " + english_01 + "\n";
+                output02 +=  "이름 : " + english_02 + "\n";
+                output02 +=  "이름 : " + english_03 + "\n";
+                output02 +=  "이름 : " + science_02 + "\n";
+                output02 +=  "이름 : " + science_02 + "\n";
+                output02 +=  "이름 : " + science_03 + "\n";
+                output02 +=  "총점 : " + (english_01 + english_02 
+                    + english_03 + science_01 + science_02 + science_03);
+            }
+            console.log(output02);
+        
+ 
+</script>
+</head>
+<body>
+<h3>JS_with 키워드</h3>
+<hr>
+</body>
+</html>

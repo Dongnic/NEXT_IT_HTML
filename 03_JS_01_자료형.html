@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS_자료형</title>
+  <script>
+/*
+    개요
+      최신 ECMAScript 표준은 7가지 데이터 형을 정의합니다.
+        (참고 (ECMAScript 표준)https://ko.wikipedia.org/wiki/ECMA스크립트 
+              (데이터 형)https://www.w3schools.com/js/js_typeof.asp )
+   
+*/
+    //유형
+      //1. Boolean
+          // 자바스크립트에서는 참과 거짓을 표현할때 Boolean 자료형을 사용합니다.
+          // Boolean 자료형은 true 와 false 두 가지로만 만들수 있습니다.
+            console.log("1. Boolean 자료형");
+            console.log(52<273);
+            console.log(52>273);
+            console.log("(52>273)자료형은:::::"+typeof(52>273));
+                //typeof()는 자료형 형태를 알려줍니다.
+
+      //2. undefined
+          // 선언하지 않은 변수 또는 변수를 선언했지만 초기화 하지 않았을때 해당 변수의 자료형은 undefined 입니다.
+            console.log("2. undefined 자료형");
+            var board_title; 
+            console.log("board_title 자료형은:::::"+typeof(board_title));
+
+      //3. null
+          /* null 자료형이란 변수에 변수값이 비어있다는 표기를 하기 위한 자료형입니다. 
+              undefined형은 정말로 안에 아무 데이터가 없습니다. 하지만 null형은 메모리 안에
+              null이라는 값이 저장된 상태입니다. 출력하면 null형으로 값이 나옵니다.
+                typeof 반환값은 object 입니다.*/
+            console.log("3. null 자료형");
+            var board_no =null;
+            console.log(board_no);
+            console.log("board_no 자료형은:::::"+typeof(board_no));
+              // (참고 https://www.w3schools.com/js/js_typeof.asp)
+
+      // 4. Number
+        // 자바스크립트는 정수와 실수 구분없이 모두 같은 자료형으로 인식합니다.
+            console.log("4. Number 자료형");
+            var num01 = 123;
+            var num02 = 123.456;
+            console.log(num01);
+            console.log("num01 자료형은:::::"+typeof(num01));
+            console.log(num02);
+            console.log("num02 자료형은:::::"+typeof(num02));
+
+      // 5. String
+            console.log("5. String 자료형");
+            var str01 = "NextIT";
+            console.log(str01);
+            console.log("str01 자료형은:::::"+typeof(str01));
+
+      // 6. Object
+          /*객체란?
+              여러 속성을 하나의 변수에 저장할 수 있도록 해주는 데이터 타입으로
+                Key:Value 형태로 저장할 수 있는 구조이다.
+
+            객체의 종류
+                Object
+                Date
+                Array
+                String
+                Number
+                Boolean
+                (참고: https://www.w3schools.com/js/js_typeof.asp)
+          */
+        
+          //객체선언 방법1
+            var place01 = new Object();
+              place01.name="NextIT";
+              place01.address="Daejon";
+
+          //객체선언 방법2
+          var course01 = {
+              name:"화면구현",
+              subject:"javascript"
+          };
+          
+          console.log("6. Objec 자료형");  
+          console.log("place01::::", place01); 
+          console.log("place01.name::::", place01.name); 
+          console.log("course01::::", course01); 
+          console.log("course01.name::::", course01.name); 
+          
+       
+      //7. function 
+          console.log("7. function 자료형");
+          console.log("typeof_function::::"+typeof(
+              function fn_nextit(){
+              }
+          ));
+  </script>
+</head>
+<body>
+ <h3>JS_자료형</h3>   
+<hr>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head><title>윈도우의 위치와 크기 조절</title></head>
+<body>
+<h3>윈도우의 위치와 크기 조절</h3>
+<hr>
+<!--이 예제는 익스플로러에서는 잘 실행되지만, 
+        Chrome, Edge에서는 보안의 이유로 실행되지 않음 -->
+<button onclick="window.moveBy(-10, 0)">left</button>
+<button onclick="window.moveBy(10, 0)">right</button>
+<button onclick="self.moveBy(0, -10)">up</button>
+<button onclick="moveBy(0, 10)">down</button>
+<button onclick="resizeBy(10, 10)">+</button>
+<button onclick="resizeBy(-10, -10)">-</button>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS_Exception(예외) 처리</title>
+<script>
+/*
+Error(에러)
+    응용프로그램에서 심각한 실행 오류로 인하여 시스템이 중단 되는것
+
+Exception(예외)
+    프로세스 동작중 로직 내부에서 예상치 못한 상황이 발생한것으로 시스템이 중단되는 것
+
+Error 와 Exception 차이 
+    Exception(예외)가 발생되면 프로그램은 종료된다는 점에서는 Error(에러)와 동일하다. 
+        그러나 Exception(예외)는 예외처리를 통해 프로그램을 실행 상태로 유지되도록 할 수 있다.
+
+Execption (예외) 처리
+    - try catch
+    - try catch finally
+*/
+
+
+
+// 예외처리 없는 경우  
+function myFunction01() {
+    let p_01= document.getElementById("p_01");
+    p_01.attachEvent("onclick", fn_event02);//익스플로러용 이벤트리스너
+    //크롬에서 attachEvent() 예외 발생
+
+    alert("when_not_exist_try_catch");
+    //예외 처리 없음으로 alert 실행 안됨
+}
+function fn_event02(){
+  alert("fn_event02");
+}
+
+
+// try catch 
+function myFunction02() {
+    try {
+        attachEvent("myFunction02");
+    }
+    catch(execption) { 
+      console.log("execption.name::", execption.name);
+      console.log("execption.message::", execption.message);
+    }
+    alert("when_exist_try_catch")
+}
+
+//try catch finally
+function myFunction03() {
+  try { 
+    attachEvent("myFunction02");
+  }
+  catch(e) {
+      console.log("e.name::", e.name);
+      console.log("e.message::", e.message);
+  }
+  finally {
+    alert("해당 브라우저는 attachEvent 이벤트를 사용할 수 없습니다.")
+  }
+}
+
+</script>
+</head>
+<body>
+<h3>JS_Exception(예외) 처리</h3>
+<hr>
+
+
+<p id="p_01"></p>
+<button type="button" onclick="myFunction01()">예외 처리 없음</button>
+
+
+<p id="p_02"></p>
+<button type="button" onclick="myFunction02()">try catch</button>
+
+
+<p id="p_03"></p>
+<button type="button" onclick="myFunction03()">try catch finally</button>
+
+</body>
+</html>
