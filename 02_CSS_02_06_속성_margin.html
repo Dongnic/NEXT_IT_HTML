@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS_속성_margin</title>
+    <style>
+        /* margin (여백), padding (확장) 
+             ( 
+                - border 가 margin과 padding 기준이 되는 차이점 
+                - margin은 border(경계선)을 기준으로 바깥부분을 크기를 할당하는 개념
+                - padding border(경계선)을 기준으로 안쪽부분에 크기를 할당하는 개념
+             )
+        */
+
+        /* margin(여백) */
+        #box1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border: 2px solid black;
+        }
+        #box2{
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            border: 2px solid black;
+            float: left;
+        }
+        #box3{
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            border: 2px solid black;
+            float: left;
+        }
+        #box4{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            border: 2px solid black;
+            clear: both;
+
+        }  
+        /* 여기 까지 margin을 사용하기 위한 셋팅 */
+
+    
+        /* 방법1 각기 */
+        #box2{ 
+            margin-top : 25px;
+            margin-left : 25px;
+            margin-right : 25px;
+            margin-bottom : 25px;
+        }    
+         /* 방법2 네 면 모두 적용  */
+        #box2{
+            margin: 50px;
+        }            
+        /* 방법3-1 상하 , 좌우(auto)   */
+         #box2{
+            margin: 75px auto;
+        }
+        /* 방법3-2 상하 , 좌우   */
+        #box2{
+            margin: 75px 25px;
+        }            
+        /* 방법4  상, 좌우, 하   */
+        #box2{
+            margin: 25px 50px 75px;
+        }             
+
+        /* margin auto 예시 */
+        #box5{
+            width: 100%;
+            height: 300px;
+            background-color: gray;
+        }
+        #box6{
+            width: 100px;
+            height: 100px;
+            background-color: purple;
+            border: 2px solid black;
+        }
+        /* 여기 까지 margin auto를 사용하기 위한 셋팅 */
+
+        #box6{
+           margin: auto;
+           /* 좌우 auto로 처리 되어 집니다.
+                margin: auto; 는 margin: 0 auto; 와 같음
+                    auto는 좌우를 자동으로 맞추어줌 
+                            (참조 https://www.w3schools.com/css/css_margin.asp)
+           */
+        }
+        #box6{
+            /* top으로 부터 100px 위치이동  */
+           position: relative;
+           top: 100px;
+        }
+    </style>
+</head>
+<body>
+ <h3>CSS_속성_margin</h3>   
+ <hr>
+    <div id="box1">box1</div>
+    <div id="box2">box2</div>
+    <div id="box3">box3</div>
+    <div id="box4">box4</div>
+    <div id="box5">
+        <div id="box6">box6</div>    
+    </div>
+    <div id="box7">box7</div>
+</div>
+</body>
+</html>

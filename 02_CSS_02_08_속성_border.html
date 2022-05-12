@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS_속성_border</title>
+    <style>
+        /* border-style */
+        p.dotted {border-style: dotted;}
+        p.dashed {border-style: dashed;}
+        p.solid {border-style: solid;}
+        p.double {border-style: double;}
+        p.groove {border-style: groove;}
+        p.ridge {border-style: ridge;}
+        p.inset {border-style: inset;}
+        p.outset {border-style: outset;}
+        p.none {border-style: none;}
+        p.hidden {border-style: hidden;}
+        p.mix {border-style: dotted dashed solid double;}           
+
+        /* border-with, board-color
+            border-width: thin|medium|thick 등등등.... 
+         */
+        h1 {
+            border-style: solid;
+            border-width: thin;
+            border-color: red;
+        }
+        div {
+            border-style: solid;
+            border-width: thick;
+            border-color: blue;
+        }
+        
+        /* border-radius */
+        #example1 {
+        border: 2px solid green;
+        padding: 10px;
+        border-radius: 25px;
+        }
+        #example2 {
+        border: 2px solid green;
+        padding: 10px;
+        border-radius: 50px 20px;
+        }
+
+    </style>
+</head>
+<body>
+<h3>CSS_속성_border</h3>   
+<hr>
+    <!-- border-sytle -->
+    <p class="dotted">A dotted border.</p>
+    <p class="dashed">A dashed border.</p>
+    <p class="solid">A solid border.</p>
+    <p class="double">A double border.</p>
+    <p class="groove">A groove border.</p>
+    <p class="ridge">A ridge border.</p>
+    <p class="inset">An inset border.</p>
+    <p class="outset">An outset border.</p>
+    <p class="none">No border.</p>
+    <p class="hidden">A hidden border.</p>
+    <p class="mix">A mixed border.</p>
+
+    <!-- border-with, border-color-->
+    <h1>A heading with a thin border</h1>
+    <div>A div element with a thick border.</div>
+    <!-- border-width, border-color는 border-style과 함께 사용되어야 합니다. 
+        https://www.w3schools.com/cssref/tryit.asp?filename=trycss_border-width
+    -->
+    
+    <!-- border-radius -->
+    <h2>border-radius: 25px:</h2>
+    <div id="example1">
+    <p>The border-radius property defines the radius of the element's corners.</p>
+    </div>
+
+    <h2>border-radius: 50px 20px:</h2>
+    <div id="example2">
+    <p>If two values are set; the first one is for the top-left and bottom-right corner, the second one for the top-right and bottom-left corner.</p>
+    </div>
+    
+</div>
+</body>
+</html>

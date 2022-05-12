@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS_선택자_type</title>
+    <style>
+       /* Checkbox element, when checked */
+       input[type="checkbox"]:checked {
+        box-shadow: 0 0 0 5px red;
+        /* box-shadow 속성
+            0  => (x-position : 가로 위치입니다. 양수면 오른쪽에, 음수면 왼쪽에 그림자가 만들어집니다. (필수))
+            0  => (y-position : 세로 위치입니다. 양수면 아래쪽에, 음수면 위쪽에 그림자가 만들어집니다. (필수))
+            0  => (blur : 그림자를 흐릿하게 만듭니다. 값이 클 수록 더욱 흐려집니다.)
+            5px  => (spread : 양수면 그림자를 확장하고, 음수면 축소합니다.)
+            red  => (color : 색 지정 )
+        */
+        }
+        input[type="text"]:focus {
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+<h3>CSS_선택자_type</h3>
+<hr>
+<div>
+    <div>
+        <input type="checkbox" id="input_checkbox" name="my-checkbox">
+        <label for="input_checkbox">Check me!</label>
+
+        <br><br>    
+        <input type="text" size="30" value="저는 포커스를 받으면 주황색으로 됩니다.">   
+
+    </div>
+
+</div>        
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS_선택자_NOT</title>
+    <style>
+     
+        #div_p p {
+            color: red;
+        }
+        #div_p p:not(.p_tag01) {
+            color: green;
+            /* :not 사용법 => 선택할 요소:not(제외시킬 요소) { ... } */
+        } 
+     
+    </style>
+</head>
+<body>
+<h3>CSS_선택자_NOT</h3>
+<hr>
+    <div id="div_p">
+        <p>NextIt 교육센터입니다.</p>
+        <p class="p_tag01">지금은 화면구현 시간입니다.</p>
+        <p>만나서 반갑습니다.</p>
+     </div>
+  
+
+</body>
+</html>

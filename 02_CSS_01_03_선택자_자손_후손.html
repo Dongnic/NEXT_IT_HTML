@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS_선택자_자손_후손</title>
+    <style>
+        /* 
+            자손태그 선택자 사용법 => 선택자 > 선택자
+            후손태그 선택자 사용법 => 선택자 선택자
+
+            div(기준)
+                h1 (div의 자손, 후손)
+                h2 (div의 자손, 후손)
+                ul (div의 자손, 후손)
+                    li (div의 후손)
+                    li (div의 후손)
+                    li (div의 후손)
+                
+        */
+        div h1, div h2{
+            color: gray;
+        }
+        div > h1{
+            color: red;    
+            /* h1은 div의 자손 태그 이므로 
+                "선택자 > 선택자"를 사용하여 color를 변경할수 있습니다. */
+        }
+        div > h2{
+            color:orange;    
+        }
+        div > li{
+            color: green;    
+            /* "선택자 > 선택자" 는 자손 태그에 사용합니다. 
+                따라서 li는 div의 후손 태그이므로 green으로 
+                변경 되지 않습니다ㅣ. */
+        }
+        div li{
+            color: blue;    
+            /* li는 div의 후손 태그 이므로 "선택자 선택자" 방법으로 
+                css 적용할 수 있습니다. */
+        }
+        
+
+        div h1{
+            color: pink;    
+            /* h1은 자손이면서 후손태그이므로 pink 색으로 변경 */
+        }
+    </style>
+</head>
+<body>
+<h3>CSS_선택자_키워드_자손_후손</h3>
+<hr>
+<div>
+    <h1>h1 태그 입니다.(h1은 div의 자손 태그이면서 더불어 후손태그 입니다.)</h1>
+    <h2>h2 태그 입니다.(h2는 div의 자손 태그이면서 더불어 후손태그 입니다.)</h2>
+    <ul>
+        <li>ul태그의 li태그 입니다(div의 후손 태그입니다.)</li>
+        <li>ul태그의 li태그 입니다(div의 후손 태그입니다.)</li>
+        <li>ul태그의 li태그 입니다(div의 후손 태그입니다.)</li>
+    </ul>
+
+</div>        
+</body>
+</html>

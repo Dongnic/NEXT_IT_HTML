@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS_속성_background</title>
+    <style>
+        #img_div1{
+            width: 700px;
+            height: 500px;
+            background-color: gray;
+            /* div 크기를 정한거임 */
+        }
+        #img_div1{
+            background-image: url("./images/img1.jpg");
+            /* img1.jpg이미지가 img_div1 크기보다 크므로 우측 상단만 
+                    나오고 나머지 부분 안나옴 */
+        }
+        #img_div1{
+            background-size: 700px 500px; 
+            /* background-size로 이미지 크기를 지정하면 img_div에 맞게 들어옴니다.*/
+        }
+
+
+        #img_div2{
+            width: 700px;
+            height: 500px;
+            background-color: gray;
+        }
+        #img_div2{
+            background-image: url("./images/img2.jpg");
+            /* img2.jpg이미지가 img_div2 크기보다 크므로 우측 상단만 
+                    나오고 나머지 부분 안나옴 */
+        }
+        #img_div2{
+            background-size: 280px 200px; 
+            /* background-size로 이미지 크기를 div 보다 작게 지정하면 
+                남은 공간만큼 이미지가 반복되어 보여지게 됩니다.*/
+        }
+        #img_div2{
+            background-repeat: no-repeat;
+            /* no-repeat 를 사용하면 이미지 반복이 발생하지 않습니다.*/
+        }
+
+
+        #img_div3{
+            width: 700px;
+            height: 500px;
+            background-color: gray;
+        }
+        #img_div3{
+            background-image: url("./images/img3.jpg");
+            /* img3.jpg이미지가 img_div3 크기보다 크므로 우측 상단만 
+                    나오고 나머지 부분 안나옴 */
+        }
+        #img_div3{
+            background-size: cover; 
+            /*background-size: cover는 배경이미지로 완전히 덮이도록 
+               이미지를 가능한 크게 해서 표시 하기 때문에 이미지 일부분이
+                보이지 않을 수도 있습니다. ( img3.jpg 우측 조금 짤림..) */
+        }
+
+
+        #img_div4{
+            width: 700px;
+            height: 500px;
+            background-color: gray;
+        }
+        #img_div4{
+            background-image: url("./images/img4.jpg");
+        }
+        #img_div4{
+            background-size: auto; 
+            /*background-size: auto;는 기본값으로 배경이미지 원래의
+                width, height 값 그대로 표시됩니다. 따라서 div크기보다 
+                    이미지 크기가 클 경우 div 크기만큼만 보여지게 됩니다.*/
+            background-size: 700px 500px; 
+        }
+
+
+        #img_div5{
+            width: 700px;
+            height: 500px;
+            background-color: gray;
+        }
+        #img_div5{
+            background-image: url("./images/button.png");
+        }
+        #img_div5{
+            background-size: 50px 50px;
+            background-repeat: no-repeat;
+        }
+        #img_div5{
+            /*위치종류 
+                방향
+                    left top
+                    left center
+                    left bottom
+                    right top
+                    right center
+                    right bottom
+                    center top
+                    center center
+                    center bottom 
+                퍼센트
+                    예시) 50% 50% 
+                좌표    
+                    예시) 50px 50px
+            */
+            background-position:right bottom;
+                /* div안에서 방향으로 지정 */
+            /* background-position:50% 50%; */
+                /* div기준으로 퍼센트 */
+            /* background-position:50px 50px; */
+                /* div기준으로 좌표 */
+        }
+
+
+        #img_div6{
+            width: 700px;
+            height: 500px;
+            background: orange url(./images/button.png) no-repeat 50% 50% / 50px 50px;
+            /* background 축약형
+                background-color: orange;
+                background-image: url(../images/buton.png);
+                background-repeat: no-repeat;
+                background-position: 50% 50%;
+                background-size: 50px 50px 
+                 (position과 siz는 일부 값의 단위를 공유하므로 꼭 슬래시로 구분 해야 하며 
+                    size를 사용할 경우 position 값을 명시하여야 한다.)
+
+                    
+            */
+
+ 
+        }
+
+    </style>
+</head>
+<body>
+<h3>CSS_속성_background</h3>   
+<hr>
+ <div id="img_div1">
+     <!-- img1.jpg -->
+ </div>
+ <div id="img_div2">
+     <!-- img2.jpg -->
+ </div>
+ <div id="img_div3">
+     <!-- img3.jpg -->
+ </div>
+ <div id="img_div4">
+    <!-- img4.jpg -->
+</div>
+<div id="img_div5">
+    <!-- button.png -->
+</div>
+<div id="img_div6">
+    <!-- button.png -->
+</div>
+</div>
+</body>
+</html>

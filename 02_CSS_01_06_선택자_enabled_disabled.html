@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS_선택자_enabled_disabled</title>
+    <style>
+        input:enabled {
+            color: blue;
+            /* 활성 상태의 input 태그는 blue 적용 */
+        }
+
+        input:disabled {
+            color: gray;
+            /* 비활성 상태의 input 태그는 gray 적용 */
+        }
+    </style>
+</head>
+<body>
+<h3>CSS_선택자_enabled_disabled</h3>
+<hr>
+ 
+<form >
+    <input type="text" id="FirstField" size="40" value="이 input 태그는 활성 상태입니다."><br><br>
+    <input type="text" id="SecondField" size="40" value="이 input 태그는 비활성 상태입니다."
+         disabled="disabled"><br><br>
+    <!-- SecondField 는 비활성 상태  -->
+    <input type="button" value="이 버튼은 활성 상태 입니다.">
+</form>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS_속성_overflow</title>
+    <style>
+        #div_1{
+            width: 200px;
+            height: 70px;
+            background-color:gray;
+            overflow: visible;
+        }
+        #div_2{
+            width: 200px;
+            height: 70px;
+            background-color: gray;
+            overflow: hidden;
+        }
+        #div_3{
+            width: 200px;
+            height: 70px;
+            background-color: gray;
+            overflow: scroll;
+            /* x축, y축 모두 scroll 생김  */
+        }
+        #div_4{
+            width: 200px;
+            height: 70px;
+            background-color: gray;
+            overflow: auto;
+            /* scroll 이 필요한 경우에만 생김  
+                따라서 div 안에 내용이 모두 들어올경우 
+                 scroll은 생성되지 않음 
+            */
+        }
+        #div_5 {
+            width: 400px;
+            height: 70px;
+            background-color: gray;
+            overflow-x: scroll; 
+            overflow-y: hidden; 
+            /* 각기 적용 가능 */
+        }
+    </style>
+</head>
+<body>
+<h3>CSS_속성_overflow</h3>   
+<hr>
+    <div id="div_1">
+        안녕하세요 NextIT 입니다. 
+        만나서 반갑습니다. 
+        지금은 화면구현 시간 입니다.   
+        오늘 수업은 overflow 입니다.
+    </div>
+    <br><br> 
+    <div id="div_2">
+        안녕하세요 NextIT 입니다. 
+        만나서 반갑습니다. 
+        지금은 화면구현 시간 입니다.   
+        오늘 수업은 overflow 입니다.
+    </div>
+    <br><br> 
+    <div id="div_3">
+        안녕하세요 NextIT 입니다. 
+        만나서 반갑습니다. 
+        지금은 화면구현 시간 입니다.   
+        오늘 수업은 overflow 입니다.
+    </div>
+    <br><br>
+    <div id="div_4">
+        안녕하세요 NextIT 입니다. 
+        만나서 반갑습니다. 
+        지금은 화면구현 시간 입니다.   
+        오늘 수업은 overflow 입니다.
+    </div>
+    <br><br>
+    <div id="div_5">
+        <pre>안녕하세요 NextIT 입니다. 만나서 반갑습니다. 지금은 화면구현 시간 입니다.오늘 수업은 overflow 입니다.</pre>
+    </div>
+
+</body>
+</html>

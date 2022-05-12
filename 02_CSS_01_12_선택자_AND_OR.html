@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS_선택자_AND_OR</title>
+    <style>
+        /* 
+        AND 조건
+            개요
+                선택자 사이에 공백없이 붙여서 사용하게 되면 여러선택자를 동시에 만족하는 스타일을 적용
+            사용법
+                태그이름#아이디 { 속성1:속성값; 속성2:속성값; } 
+                태그이름.클래스명 { 속성1:속성값; 속성2:속성값; }
+                .클래스명#아이디 { 속성1:속성값; 속성2:속성값; }
+
+        OR 조건
+            개요
+                (,)쉼표를 선택자 사이에 입력하여 여러 선택자 중 하나라도 만족할 경우 적용되는 조건
+            사용법
+                #아이디, .클래스명{ 속성1:속성값; 속성2:속성값; } 
+                태그이름, .클래스명{ 속성1:속성값; 속성2:속성값; } 
+        */
+        
+        /* AND */
+        div#div_1{ 
+            width:150px; 
+            height:150px; 
+            background-color: red;
+        }
+	    div.div_2{ 
+            width:150px; 
+            height:150px; 
+            background-color:blue; 
+        }
+        
+        /* OR */
+        .div_2,#div_3{ 
+            width:150px; 
+            height:150px; 
+            background-color:green !important;
+        }
+	 
+    </style>
+</head>
+<body>
+<h3>CSS_선택자_NOT</h3>
+<hr>
+    <div id="div_1">div_1</div>
+	<div class="div_2">div_2</div>
+    <div id="div_3">div_3</div>
+   
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS_크기_em</title>
+    <style>
+        div p:nth-child(1){
+            /* 기본 크기 일떄  */
+            color: red;
+        }
+        div p:nth-child(2){
+             font-size: 1.0em;
+             /*
+                em은 배수를 나타내는 단위 입니다. 
+                1배 = 1em = 100% 이며 
+                1.5배 = 1.5em = 150% 입니다.
+                font-size: 1.0em; 는 font: size 100% 와 동일합니다.
+             
+             */
+        }
+        div p:nth-child(3){ 
+            font-size: 1.5em;          
+        }
+        div p:nth-child(4){ 
+            font-size: 2.0em;
+            
+        }
+   
+    </style>
+</head>
+<body>
+ <h3>CSS_크기_em</h3>   
+ <hr>
+    <div>
+        <p>안녕하세요 NextIT 교육센터 입니다.</p>
+        <p>안녕하세요 NextIT 교육센터 입니다.</p>
+        <p>안녕하세요 NextIT 교육센터 입니다.</p>
+        <p>안녕하세요 NextIT 교육센터 입니다.</p>
+    </div>
+</body>
+</html>

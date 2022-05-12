@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS_속성_visibility</title>
+    <style>
+        h2.a {
+          visibility: visible;
+        }
+
+        h2.b {
+          visibility: hidden;
+          /* 보이지 않을뿐 영역을 차지 하고 있습니다. */
+        }
+        h2.c {
+          display: none;
+          /* display: none은 보이지도 않고 
+                영역도 차지 하지 않습니다. */
+        }
+ 
+    </style>
+</head>
+<body>
+<h3>CSS_속성_visibility</h3>   
+<hr>
+<h2 class="a">This heading is visible</h2>
+<h2 class="b">This heading is hidden</h2>
+<h2 class="c">display none</h2>
+<p>Notice that the hidden heading still takes up space on the page.</p>
+</body>
+</html>

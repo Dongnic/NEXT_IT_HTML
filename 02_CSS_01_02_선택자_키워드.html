@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS_선택자_키워드</title>
+    <style>
+        /* h3 태그에 title 속성이 newspaper에 적용 */
+        h3[title="newspaper"]{
+            color:red;
+        }
+        /* h3 태그에 title 속성이 news를 포함 */
+        h3[title*="news"]{
+            color:orange;
+        }
+        /* h3 태그에 title 속성이 news를 포함하며 공백이 있는 것 */
+        h3[title~="news"]{
+            color:green;
+        }
+        /* h3 태그에 title 속성이 news를 포함하며 하이픈이 잇는 것 */
+        h3[title|="news"]{
+            color:blue;
+        }
+        /* h3 태그에 title 속성이 newp로 시작하는 것 */
+        h3[title^="newp"]{
+            color:purple;
+        }
+        /* h3 태그에 title 속성이 ers로 끝나는 것 */
+        h3[title$="ers"]{
+            color:gray;
+        }
+
+    </style>
+</head>
+<body>
+<h3>CSS_선택자_키워드</h3>
+<hr>
+    <h3 title="newspaper">newspaper</h3>
+    <h3 title="newspaper01">newspaper01</h3>
+    <h3 title="news paper">news pape</h3>
+    <h3 title="news-paper">news-pape</h3>
+    <h3 title="newpaper">newpaper</h3>
+    <h3 title="newspapers">newspapers</h3>
+
+</body>
+</html>

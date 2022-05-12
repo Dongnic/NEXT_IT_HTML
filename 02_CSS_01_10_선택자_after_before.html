@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS_선택자_after_before</title>
+    <style>
+        /* :: 두개 */
+        div p:first-child::before {
+            content: "여기는 ";
+            /* content는 before 인경우 해당 태그 앞에 content 문구를 붙여 줍니다. */
+        }
+        div p:first-child::after {
+            content: " 교육 센터 입니다.";
+            /* content는 after 인경우 해당 태그 뒤에 content 문구를 붙여 줍니다. */
+        }
+        /* : 한개 */
+        div p:last-child:before {
+            content: "지금은 ";
+        }
+        div p:last-child:after {
+            content: " 시간 입니다. ";
+        }
+    </style>
+</head>
+<body>
+<h3>CSS_선택자_after_before</h3>
+<hr>
+    <div>
+        <p>NextIt</p>
+        <p>화면구현</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS_속성_박스</title>
+    <style>
+        /* margin (여백), padding (확장) 
+             ( 
+                - border 가 margin과 padding 기준이 되는 차이점 
+                - margin은 border(경계선)을 기준으로 바깥부분을 크기를 할당하는 개념
+                - padding border(경계선)을 기준으로 안쪽부분에 크기를 할당하는 개념
+             )
+        */
+         #box0 {
+            width: 100%;
+            height: 1500px;
+            background-color: grey;
+        }
+        .box1 {
+            width : 100px;
+            height : 100px;
+            background-color: red;  
+        }
+        .box2 {
+            width : 100px;
+            height : 100px;
+            background-color: green;  
+        }
+        .box2 {
+            border: 2px solid black;
+        }
+        .box2 {
+            margin-top: 50px;
+            /* margin 스타일은 태그의 경계선 바깥쪽 여백을 뜻합니다.    
+                따라서 box2는 위쪽방향으로 바깥쪽에 50px 여백이 생기게 됩니다
+                  결과적으로 box1과 box2사이에 50px 공간이 생기게 됩니다. 
+             */
+        }
+        .box2 {
+            padding-top: 100px;
+            /* padding은 태그의 경계선을 기준으로 안쪽 영역을 뜻합니다.
+                따라서 padiding-top은 "box2" 글자를 기준으로 위쪽에 100px 안쪽 여백이 
+                    생기게 됩니다.
+            */
+        }
+        .box2 {
+            margin-left: 300px;
+            /* 좌측에 300px 여백 생김
+                따라서 좌측으로 300px 이동한거 처럼 보임
+            */
+        }
+        .box2 {
+            margin-right: 300px;
+            /* 변화없음 
+                margin-left로 여백을 주었기때문에
+                margin-right로 여백을 준다고 해서 좌측으로 움직이지 
+                    않습니다.
+            */
+        }
+        
+    </style>
+</head>
+<body>
+ <h3>CSS_속성_박스</h3>   
+ <hr>
+<div id="box0">
+    
+    <div class="box1">box1</div>
+    <div class="box2">box2</div>
+    <div class="box3">box3</div>
+  
+</div>
+</body>
+</html>

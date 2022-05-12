@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS_속성_padding</title>
+    <style>
+        /* padding (확장) */
+        #box1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border: 2px solid black;
+        }
+        #box2{
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            border: 2px solid black;
+            float: left;
+        }
+        #box3{
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            border: 2px solid black;
+            float: left;
+        }
+        #box4{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            border: 2px solid black;
+            clear: both;
+        }  
+        /* 여기 까지 padding을 사용하기 위한 기본 div 셋팅 */
+
+        
+        /* 방법1 각기 */
+        #box2{ 
+            padding-top : 25px;
+            padding-left : 25px;
+            padding-right : 25px;
+            padding-bottom : 25px;
+        }    
+         /* 방법2 네 면 모두 적용  */
+        #box2{
+            padding: 50px;
+        }            
+        /* 방법3-1 상하 , 좌우   */
+        #box2{
+            padding: 25px 75px;
+        }
+        /* 방법3-2 상하 , 좌우   */
+        #box2{
+            padding: 75px 25px;
+        }            
+        /* 방법4  상, 좌우, 하   */
+        #box2{
+            padding: 25px 50px 75px;
+        }             
+    </style>
+</head>
+<body>
+ <h3>CSS_속성_padding</h3>   
+ <hr>
+    <div id="box1">box1</div>
+    <div id="box2">box2</div>
+    <div id="box3">box3</div>
+    <div id="box4">box4</div>
+</div>
+</body>
+</html>

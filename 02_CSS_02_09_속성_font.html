@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS_속성_font</title>
+    <style>
+        /*
+        font-family는 글꼴을 지정하는 속성입니다. 
+            font-family 속성에는 여러개 글꼴을 지정할 수 있습니다.
+             그러면 웹 브라우저는 지정된 여러 글꼴  중에서 사용자의 
+              컴퓨터에 설치된 글꼴을 찾아 출력합니다.
+               하지만 다국어 사용자를 대상으로 웹페이지르 제공할 경우
+                사용자에게 무슨 글꼴이 있는지 일일이 확인 할수 없으므로 
+                 이러한 문제를 해결하고자 font-family속성의 가장 마지막에
+                  serif (명조체) , Sans-serif(고딕체), Mono space(고정 폭 글꼴) 
+                   같이 웹브라우저에서 지정하는 generic-family 글꼴을 입력합니다.
+
+            형태
+                font-family는 시작은 family-name 으로 시작하고 마지막은 항상 generic family로 설정합니다.
+                    family-name은 하나 이상의 글꼴을 열거할 때 쉼표를 사용하고 ( 예: Arial, Helvetica )
+                      글꼴 이름에 공란이 들어갈 경우  " ", 또는 ' ',를 사용합니다. (예:"Times New Roman")
+
+            종류        font-name                                   generic family
+                            Times New Roman                             Serif
+                            Times
+                            Georgia
+                            Garamond
+                            
+                            Arial                                       Sans-serif
+                            Verdana
+                            Helvetica
+
+                            Courier New                                 Monospace
+                            Lucida Console
+                            Monaco
+        */
+        .p1 { font-family: "Times New Roman", Times, serif; }
+        .p2 { font-family: Arial, Helvetica, sans-serif; }
+        .p3 { font-family: "Lucida Console", "Courier New", monospace; }
+ 
+        /* font-size */
+        .p1 { font-size: 10px; }
+        .p2 { font-size: large }
+        .p3 { font-size: 150% }
+
+        /* font-weight */    
+        p.normal{ font-weight: normal; }
+        p.light {  font-weight: lighter; }
+        p.thick {  font-weight: bold; }
+        p.thicker { font-weight: 900;}
+            /* 참고 https://www.w3schools.com/cssref/pr_font_weight.asp */
+
+
+
+
+    </style>
+</head>
+<body>
+<h3>CSS_속성_font</h3>   
+<hr>
+<p class="p1">This is a paragraph, shown in the Times New Roman font.</p>
+<p class="p2">This is a paragraph, shown in the Arial font.</p>
+<p class="p3">This is a paragraph, shown in the Lucida Console font.</p>
+   
+<p class="normal">This is normal.</p>
+<p class="light">This is light.</p>
+<p class="thick">This is thick.</p>
+<p class="thicker">This is a thicker.</p>
+
+
+</div>
+</body>
+</html>

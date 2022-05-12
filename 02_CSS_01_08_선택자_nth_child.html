@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS_선택자_nth-child</title>
+    <style>
+        ul li {
+            color: blue;
+        }
+        
+        /* 순번은 1부터 시작 */
+        ul li:nth-child(3) { 
+            color: grey; 
+        }
+        ul li:nth-child(2n) {
+            color: red;
+            /* 2n(n은 0부터 시작) 이므로  2, 4, 6, 8... 순으로 red 적용 */
+        }
+        ul li:nth-child(2n+1) {
+            color: green;
+          /* 2n+1 이므로 1, 3, 5, 7... 순으로 green 적용 */
+        }
+        ul li:nth-last-child(2n) {
+            color: purple;
+          /* nth-child 역순으로 2n 적용  */
+        }
+        ul li:nth-last-child(2n+1) {
+            color: orange;
+          /* nth-child 역순으로 2n+1 적용  */
+        }
+    </style>
+</head>
+<body>
+<h3>CSS_선택자_nth-child</h3>
+<hr>
+<ul>
+    <li>Item 1</li> 
+    <li>Item 2</li>
+    <li>Item 3</li>
+    <li>Item 4</li>
+    <li>Item 5</li>
+    <li>Item 6</li>
+    <li>Item 7</li>
+    <li>Item 8</li>
+    <li>Item 9</li>
+    <li>Item 10</li>
+    <li>Item 11</li>
+    <li>Item 12</li>
+</ul>
+</body>
+</html>

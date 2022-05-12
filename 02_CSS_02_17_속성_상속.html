@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS_속성_상속</title>
+    <style>
+         #div_1 > p {
+           color: green;
+         }
+         #div_1 > p > em {
+           font-size: 30px;
+           /* em태그는 부모요소인 p태그에서 적용된 green을 적용받음 */
+         }
+        /* 부모 요소에서 설정된 일부 CSS 속성 값은 자식 요소에 의해 상속되며
+            일부는 그렇지 않습니다. 기본적으로 상속되는 속성과 그렇지 않은 속성은 
+              대체로 상식적입니다.예를 들어, 요소에 color 및 font-family 를 설정하면, 
+               다른 색상 및 글꼴 값을 직접 적용하지 않는 한, 해당 요소 내부의 모든 요소에도 
+                해당 색상 및 글꼴로 스타일이 지정됩니다. */
+    </style>
+</head>
+<body>
+<h3>CSS_속성_상속</h3>   
+<hr>
+<div id="div_1">
+  <p>자식 태그는 부모의 스타일을 <em>상속 </em>받는다.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS_속성_그림자</title>
+    <style>
+        h1 {
+            text-shadow: 10px 10px 5px red;
+                /* text-shadow
+                    순서 :  오른쪽 아래 흐림도 색상 
+                        (흐림도가 올라갈수록 옅어짐) */
+        }  
+        #div_1{
+            width: 600px;
+            height: 50px;
+            border: 3px solid black;
+        }
+        #div_1{
+            box-shadow: 10px 10px 5px gray;
+            /* box-shadow
+                순서는 text-shadow와 마찬가지로 
+                    오른쪽, 아래, 흐림도, 색상순 입니다. */
+        }
+        #div_2{
+            width: 600px;
+            height: 100px;
+            border: 3px solid black;
+            box-shadow: 10px 10px 5px gray, 10px 10px 10px blue, 10px 10px 15px red;
+            /* 중첩하여 사용가능 */
+        }
+        #div_2 > h1{
+            text-shadow: 10px 10px 5px red, 10px 10px 10px blue;
+            /* 중첩하여 사용가능 */
+        }
+ 
+    </style>
+</head>
+<body>
+<h3>CSS_속성_그림자</h3>   
+<hr>
+    <h1>안녕하세요 NextIt 교육센터 입니다.</h1>
+    <br><br>
+    <div id="div_1">안녕하세요 NextIt 교육센터 입니다.</div>
+
+    <br><br>
+    <div id="div_2">
+        <h1>안녕하세요 NextIt 교육센터 입니다.</h1>
+    </div>
+</body>
+</html>
