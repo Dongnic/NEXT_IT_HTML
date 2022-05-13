@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+
+</script>
+<style>
+
+/* 방법1 */
+/* .p_tag {
+    width: 30%; 
+    animation-name: slidein;  
+    animation-duration: 3s;   
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+} */
+/* 방법2 ( 방법1을 줄여서 사용 ) */
+/* .p_tag {
+  width: 30%; 
+  animation: slidein 3s infinite alternate;
+} */
+
+/*  
+Vendor Prefixes
+  개요
+    크로스 브라우징 이슈를 해결하기 위해 접두사를 붙여줍니다.
+
+  종류  
+    크롬&사파리 : -webkit-
+    파이어폭스 : -moz-
+    오페라 : -o-
+    인터넷 익스플로러 : -ms-
+*/
+
+/* Vendor Prefixes 적용 */
+.p_tag {
+  width: 30%; 
+  animation: slidein 3s infinite alternate;
+  /* 크롬&사파리 */
+  -webkit-animation: slidein 3s infinite alternate;
+  /* 파이어폭스 */
+  -moz-animation: slidein 3s infinite alternate;
+  /* 오페라 */
+  -o-animation: slidein 3s infinite alternate;
+  /* 인터넷 익스플로러 */
+  -ms-animation: slidein 3s infinite alternate;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 100%
+  }
+  75% {
+    font-size: 300%;
+    margin-left: 25%;
+    width: 150%;
+  }
+  to {
+    margin-left: 0%;
+    width: 30%;
+  }
+}
+/* 크롬&사파리 */
+@-webkit-keyframes slidein {   
+  from {
+    margin-left: 100%;
+    width: 100%
+  }
+  75% {
+    font-size: 300%;
+    margin-left: 25%;
+    width: 150%;
+  }
+  to {
+    margin-left: 0%;
+    width: 30%;
+  }
+}
+/* 파이어폭스 */
+@-moz-keyframes slidein { 
+  from {
+    margin-left: 100%;
+    width: 100%
+  }
+  75% {
+    font-size: 300%;
+    margin-left: 25%;
+    width: 150%;
+  }
+  to {
+    margin-left: 0%;
+    width: 30%;
+  }
+}
+/* 인터넷 익스플로러 */
+@-ms-keyframes slidein {   
+  from {
+    margin-left: 100%;
+    width: 100%
+  }
+  75% {
+    font-size: 300%;
+    margin-left: 25%;
+    width: 150%;
+  }
+  to {
+    margin-left: 0%;
+    width: 30%;
+  }
+}
+/* 오페라 */
+@-o-keyframes slidein {   
+  from {
+    margin-left: 100%;
+    width: 100%
+  }
+  75% {
+    font-size: 300%;
+    margin-left: 25%;
+    width: 150%;
+  }
+  to {
+    margin-left: 0%;
+    width: 30%;
+  }
+}
+
+</style>
+</head>
+<body>
+<p class="p_tag">The Caterpillar and Alice looked at each other for some time in silence:
+at last the Caterpillar took the hookah out of its mouth, and addressed
+her in a languid, sleepy voice.</p>
+</body>
+</html>

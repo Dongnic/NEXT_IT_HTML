@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+/*
+CSS animation 적용하기
+  CSS 애니메이션을 만드려면 animation 속성과 이 속성의 하위 속성을 지정합니다.
+  애니메이션의 총 시간과 반복 여부등을 지정할 수 있습니다. 
+  애니메이션의 중간 상태는 아래에서 다룰 @keyframes  규칙을 이용하여 기술합니다. 
+    (참고: https://www.w3schools.com/css/css3_animations.asp)
+
+
+
+animation 속성의 하위 속성은 다음과 같습니다.
+  animation-delay
+    엘리먼트가 로드되고 나서 언제 애니메이션이 시작될지 지정합니다.
+  animation-direction
+    애니메이션이 종료되고 다시 처음부터 시작할지 역방향으로 진행할지 지정합니다.
+  animation-duration
+    한 싸이클의 애니메이션이 얼마에 걸쳐 일어날지 지정합니다.
+  animation-iteration-count (en-US)
+    애니메이션이 몇 번 반복될지 지정합니다. infinite로 지정하여 무한히 반복할 수 있습니다.
+  animation-name (en-US)
+    이 애니메이션의 중간 상태를 지정합니다. 중간 상태는  @keyframes 규칙을 이용하여 기술합니다.
+  animation-play-state (en-US)
+    애니메이션을 멈추거나 다시 시작할 수 있습니다.
+  animation-timing-function (en-US)
+    중간 상태들의 전환을 어떤 시간간격으로 진행할지 지정합니다.
+  animation-fill-mode
+    애니메이션이 시작되기 전이나 끝나고 난 후 어떤 값이 적용될지 지정합니다.
+*/
+
+</script>
+<style>
+p {
+    width: 30%; 
+    /* @keyframes 이름 지정 */
+    animation-name: slidein;  
+    /* 3초동안 진행 */
+    animation-duration: 3s;   
+    /* 애니메이션을 무한으로 반복합니다. */
+    animation-iteration-count: infinite;
+    /* 순방향으로 애니메이션을 시작해 역방향과 순방향으로 번갈아 애니메이션을 재생한다. 
+        홀수 번째로 재생할 때는 순방향으로 재생하고, 짝수 번째로 재생할 때는 역방향으로 재생한다.*/
+    animation-direction: alternate;
+    
+}
+
+@keyframes slidein {
+/* 시작 (from == 0%) */  
+  from {
+    margin-left: 100%;
+    width: 100%
+  }
+  /* 전체 진행중 75%일때 
+        애니메이션의 75% 시점에서 엘리먼트의 왼쪽 마진을 25%
+        , 너비를 150%, 글자 크기를 300%로 지정하라는 의미입니다.
+  */
+  75% {
+    font-size: 300%;
+    margin-left: 25%;
+    width: 150%;
+  }
+/* 종료 (to == 100%) */
+  to {
+    margin-left: 0%;
+    width: 30%;
+  }
+}
+</style>
+</head>
+<body>
+<p>The Caterpillar and Alice looked at each other for some time in silence:
+at last the Caterpillar took the hookah out of its mouth, and addressed
+her in a languid, sleepy voice.</p>
+</body>
+</html>

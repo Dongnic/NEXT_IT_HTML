@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+/*
+애니메이션 이벤트 
+  animationstart : 애니메이션이 시작되었을때 
+  animationiteration : CSS 애니메이션 반복 때 발생.
+  animationend : 애니메이션이 완료되었을때
+
+  (참고: https://www.w3schools.com/jsref/obj_animationevent.asp)
+
+*/
+</script>
+<style>
+#ball_div{
+  width: 500px;
+  height: 690px;
+  background-color: lightcyan;
+}
+.ball{
+  position:relative;
+  left: 100px;
+  top:0;
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  background:#000;
+  /* 1번실행 */
+  animation:ball 2s ease-in ;
+}
+@keyframes ball {
+  0% {
+    top:0px;
+  }
+  100% {
+    top:590px;
+  } 
+}
+.ball_bounce{
+  top:590px;
+  animation: ball_bounce 1s ease-in-out infinite alternate;
+}
+@keyframes ball_bounce {
+  from{
+    top:590px;
+  }
+  50%{
+    top:570px;
+  }
+  to{
+    top:590px;
+  }
+}
+
+</style>
+<script>
+let event ="";
+window.onload = function(){
+  event = document.querySelector(".ball");
+  console.log("event", event);
+
+  // 애니메이션이 완료되었을때 이벤트 발생 시키기
+  event.addEventListener("animationend", fn_animation );
+  
+};
+
+function fn_animation(){
+  // alert("123");
+  event.classList.add("ball_bounce");
+}
+</script>
+</head>
+<body>
+  <div id="ball_div">
+    <div class="ball"></div>
+  </div>
+</body>
+</html>

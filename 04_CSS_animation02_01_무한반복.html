@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+</script>
+<style>
+@keyframes ball {
+  0% {
+    top:0px;
+  }
+  35% {
+    width:100px;
+    height:100px;
+    margin-left: 0px; 
+  }
+  40% {
+    top:600px;
+    width:140px;
+    height:90px;
+    margin-left: -20px; 
+  }
+  50%{
+    top:400px;
+    width:100px;
+    height:100px;
+    margin-left: 0px; 
+  }
+  60%{
+    top:600px;
+    width:140px;
+    height:90px;
+    margin-left: -20px;
+  }
+  70%{
+    top:500px;
+    width:100px;
+    height:100px;
+    margin-left: 0px; 
+  }
+  80%{
+    top:600px;
+    width:140px;
+    height:90px;
+    margin-left: -20px;
+  }
+  90%{
+    top:550px;
+    width:100px;
+    height:100px;
+    margin-left: 0px; 
+  }
+  100% {
+    top:600px;
+    width:140px;
+    height:90px;
+    margin-left: -20px;
+  } 
+}
+
+#ball_div{
+  width: 500px;
+  height: 690px;
+  background-color: lightcyan;
+ 
+}
+.ball{
+  position:relative;
+  left: 100px;
+  top:0;
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  background:#000;
+  /* 한번만 실행 */
+  /* animation:ball 4s ease-in ; */
+  /* 반복 실행 */
+  animation:ball 4s ease-in Infinite ;
+  /* 반복실행 + 역방향으로 실행 */
+  /* animation:ball 4s ease-in Infinite alternate ; */
+}
+</style>
+</head>
+<body>
+  <div id="ball_div">
+    <div class="ball"></div>
+  </div>
+</body>
+</html>
