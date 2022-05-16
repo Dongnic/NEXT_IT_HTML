@@ -149,3 +149,8 @@ body:before{
 .caption_ul a:active{
     color: gray;
 }
+
+.int-area label.warning{
+    color: red;
+    animation-duration: .3s ease;
+}
