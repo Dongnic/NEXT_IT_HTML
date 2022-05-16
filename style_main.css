@@ -1,0 +1,251 @@
+/* 전체 스타일 */
+*{
+    font-family: 'Noto Sans KR', sans-serif;
+    list-style: none;
+    /* 밑에 밑줄 */
+    text-decoration: none;
+    /* 중앙 정렬 */
+    margin: 0 auto;
+    padding: 0;
+    color: black;
+}
+
+/* 1차 intro_bg START */
+.intro_bg{
+    width: 100%;
+    height: 720px;
+    background-color: lightblue;
+}
+
+.header{
+    width: 1280px;
+    height: 86px;
+    background-color: red;
+    display: flex;
+}
+/* 1열(가로)로 정렬 */
+.nav{
+    display: flex;
+    margin-top: 30px;
+}
+
+.nav > li{
+    margin-left: 84px;
+}
+
+.nav > li > a{
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.searchArea{
+    width: 320px;
+    height: 40px;
+    background-color: green;
+    margin-top: 30px;
+}
+/* 마우스 올렸을 때 색상 변경  */
+.nav a:hover{
+    color: lime;
+}
+
+.nav li ul{
+    margin-left: 13px;
+    display: none;
+}
+
+.nav li:hover ul{
+    display: block;
+    animation: fade-in .7s;
+    animation-fill-mode: forwards;
+}
+/* fade-in 정의 */
+@keyframes fade-in{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.nav a{
+    color: white;
+    margin-top: 5px;
+    font-size: 18px;
+}
+
+.searchArea > form > span{
+    width: 50px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.searchArea > form > input{
+    width: 250px;
+    height: 25px;
+    outline: none;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    background: rgba(0,0,0,1);
+    padding-left: 15px;
+}
+
+.intro_text{
+    width: 100%;
+    background-color: violet;
+    text-align: center;
+    position: relative;
+    top: 300px;
+}
+
+.intro_text > h1, h4{
+    color: white;
+}
+
+.intro_bg{
+    background-image: url('../images/img102.jpg');
+    background-size: 100% 720px;
+}
+.header, .nav, .searchArea, .intro_text{
+    background-color: transparent;
+}
+
+/* 1차 intro_bg END */
+
+/* 2차 작업 sub_title_div START */
+
+.sub_title{
+    width: 1280px;
+    height: 130px;
+    background-color: tomato;
+    display: flex;
+    position: relative;
+    top: -65px;
+    background-color: white;
+}
+
+.sub_title{
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+.sub_title > li > div {
+    background-color: violet;
+    width: 315px;
+    height: 120px;
+    margin-top: 5px;
+    /* 텍스트 가운데 정렬 */
+    text-align: center;
+    background-color: white;
+}
+
+.sub_title > li > div > h2{
+    padding-top: 30px;
+}
+
+.sub_title > li:not(li:last-child) > div{
+    border-right: 1px solid gray;
+}
+
+/* 2차 작업 sub_title_div END */
+
+/* 3차 작업 main_text0 START */
+
+.main_text0{
+    width: 100%;
+    height: 620px;
+    background-color: lavender;
+    margin-top: -130px;
+}
+
+.main_text0 > h1{
+    text-align: center;
+    padding-top: 100px;
+    font-size: 60px;
+}
+
+.main_text0 > p{
+    text-align: center;
+    margin-top: 10px;
+    font-size: 25px;
+}
+
+.main_text0 > ul{
+    display: flex;
+    width: 1280px;
+    height: 302px;
+    background-color: tomato;
+    padding-top: 30px;
+}
+
+.icons > li{
+    background-color: lightcyan;
+    width: 400px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.main_text0{
+    background-color: #f0f3f5;
+}
+
+.main_text0 > ul{
+    background-color: transparent;
+}
+
+.icons > li{
+    background-color: #8ce7f7;
+}
+
+.contents1_bold > p{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.more{
+    background-color: mediumblue;
+    width: 100px;
+    height: 30px;
+    color: white;
+    padding-top: 5px;
+    margin-top: 25px auto;
+}
+
+/* 3차 작업 main_text0 END */
+
+/* 4차 작업 main_text1 START */
+
+.main_text1{
+    width: 100%;
+    height: 700px;
+    background-color: lightblue;
+
+}
+
+.main_text1 > h1{
+    text-align: center;
+    font-size: 60px;
+    padding-top: 30px;
+}
+
+.contents2 > p{
+    text-align: center;
+    font-size: 25px;
+    margin-top: 20px;
+}
+
+.service{
+    display: flex;
+    background-color: tomato;
+    width: 1280px;
+    height: 440px;
+    margin-top: 20px;
+}
+
+.service > div > img{
+    width: 640px;
+    height: 440px;
+}

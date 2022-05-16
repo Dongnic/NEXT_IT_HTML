@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Next_IT</title>
+<link rel="icon" type="image/x-icon" href="./images/nextit_log.jpg">
+<link rel="stylesheet" type="text/css" href="./css/login.css">
+
+<script>
+
+    window.onload = function(){
+        let mem_id_tag = document.getElementById("mem_id");
+        let mem_pw_tag = document.getElementById("mem_pw");
+        console.log("mem_id_tag >> ", mem_id_tag);
+        console.log("mem_pw_tag >> ", mem_pw_tag);
+
+        mem_id_tag.onclick = function(){
+            document.querySelector(".login_form label[for='mem_id']").classList.remove("warning");
+        }
+        mem_pw_tag.onclick = function(){
+            document.querySelector(".login_form label[for='mem_pw']").classList.remove("warning");
+        }
+    }
+
+    function fn_login(){
+        let mem_id_tag = document.getElementById("mem_id").value;
+        console.log("mem_id_tag >> ", mem_id_tag);
+        let mem_pw_tag = document.getElementById("mem_pw").value;
+        console.log("mem_pw_tag >> ", mem_pw_tag);
+
+        let label_mem_id = document.querySelector(".login_form label[for='mem_id']");
+        console.log("label_mem_id >> ", label_mem_id);
+        let label_mem_pw = document.querySelector(".login_form label[for='mem_pw']");
+        console.log("label_mem_pw >> ", label_mem_pw);
+        
+        if(mem_id_tag === null || mem_id_tag === undefined || mem_id_tag ===''){
+            alert("아이디가 입력되지 않았습니다.");
+            //입력이 되지 않았을 때 경고 표시
+            label_mem_id.classList.add("warning");
+            return false;
+        }
+        if(mem_pw_tag === null || mem_pw_tag === undefined || mem_pw_tag ===''){
+            alert("패스워드가 입력되지 않았습니다.");
+            //입력이 되지 않았을 때 경고 표시
+            label_mem_pw.classList.add("warning");
+            return false;
+        }else{
+            alert("로그인 되었습니다.");
+        }
+
+    }
+</script>
+</head>
+<body>
+<div class="login_form">
+    <h1>Next_IT</h1>
+    <form name="1oginForm" action="">
+        <div class="int-area">
+            <input type="text" name="mem_id" id="mem_id" value="" autocomplete="off" required>
+            <label for="mem_id">USERID</label>
+        </div>
+        <div class="int-area">
+            <input type="password" name="mem_pw" id="mem_pw" autocomplete="off" required>
+            <label for="mem_pw">PASSWORD</label>
+        </div>
+        <div class="btn-area">
+            <button type="button" id="btn_id" name="bnt_id" onclick="fn_login()">LOGIN</button>
+        </div>
+
+    </form>
+<div class="caption">
+    <ul class="caption_ul">
+        <li>
+            <a href="#" onclick="fn_join()">JOIN</a>
+        </li>
+        <li>
+            <a href="#" onclick="fn_forgotPw()">FORGOT PASSWORD</a>
+        </li>
+
+
+    </ul>
+
+</div>    
+</div>
+</body>
+</html>
