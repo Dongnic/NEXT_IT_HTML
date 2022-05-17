@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTP-8">
+<title>NEXT IT</title>
+<link rel="icon" type="image/x-icon" href="./images/nextit_log.jpg">
+<link rel="stylesheet" type="text/css" href="./css/style_main.css">
+<link rel="stylesheet" type="text/css" href="./css/footer.css">
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+    window.onload = function(){
+        $("#page_footer").load("./footer.html");
+
+        let img_files=[
+             "./images/img1.jpg"
+            ,"./images/img2.jpg"
+            ,"./images/img102.jpg"
+        ];
+
+        let div_img = document.getElementById("img_div");
+        let i = 0;
+
+        function fn_change_img(){
+            console.log("fn_change_img");
+            div_img.style.backgroundImage="url("+ img_files[i] +")";
+            if(i==2){
+                i=0;
+            }else{
+                i++;
+            }
+            div_img.style.transitionDuration="2s";
+
+        }
+        // 4초마다 fn_change_img() 실행
+        setInterval(function(){
+            fn_change_img();
+        },4000);
+
+    }
+</script>
+</head>
+<body>
+
+<div id="wrap">
+    <div id="img_div" class="intro_bg">
+        <div class="header">
+            <div class="searchArea">
+                <form action="">
+                    <input type="text" id="input_search" name="input_search" value="" placeholder="Search">
+                    <span>검색</span>
+                </form>
+            </div>
+            <ul class="nav">
+                <li><a href="#">HOME</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#service">SERVICE</a>
+                    <ul>
+                        <li><a href="#">menu1</a></li>
+                        <li><a href="#">menu2</a></li>
+                        <li><a href="#">menu3</a></li>
+                    </ul>
+                </li>
+                <li><a href="#content">CONTENT</a></li>
+                <li><a href="#">NOTICE</a></li>
+            </ul>
+
+            <!-- 반응형 추가 START -->
+            <input type="checkbox" id="menuicon">
+            <!-- 3줄 선모양 메뉴 그리기 -->
+            <label for="menuicon" class="header_icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <div class="header_icon">
+                <ul class="menu">
+                    <li><a href="#"></a></li>
+                    <li><a href="#about">ABOUT</a></li>
+                    <li><a href="#service">SERVICE</a></li>
+                    <li><a href="#content">CONTENT</a></li>
+                    <li><a href="#">NOTICE</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="intro_text">
+            <h1>NEXT_IT</h1>
+            <h4>넥스트아이티</h4>
+        </div>
+
+    </div>
+    <!-- 1차 작업 intro_bg END -->
+
+    <!-- 2차 작업 sub_title_div START -->
+    <div class="sub_title_div">
+        <ul class="sub_title">
+            <li>
+                <div>
+                    <h2>AA</h2>
+                    <p>11</p>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <h2>BB</h2>
+                    <p>22</p>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <h2>CC</h2>
+                    <p>33</p>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <h2>DD</h2>
+                    <p>44</p>
+                </div>
+            </li>
+            
+        </ul>
+        
+    </div>
+    <!-- 2차 작업 sub_title_div END -->
+    
+    <!-- 3차 작업 main_text0 START -->
+    <div class="main_text0">
+        <h1 id="about">ABOUT</h1>
+        <p>4차 산업혁명 신기술</p>
+        <ul class="icons">
+            <li>
+                <div class="icon_img">
+                    <img src="./images/icon0.svg" alt="이미지가 없습니다">
+                </div>
+                <div class="contents1_bold">
+                    <p>ABC</p>
+                </div>
+                <div class="contents2">
+                    <p>23232323232</p>
+                </div>
+                <div class="more">
+                    MORE
+                </div>
+            </li>
+            <li>
+                <div class="icon_img">
+                    <img src="./images/icon1.svg" alt="이미지가 없습니다">
+                </div>
+                <div class="contents1_bold">
+                    <p>ABC</p>
+                </div>
+                <div class="contents2">
+                    <p>23232323232</p>
+                </div>
+                <div class="more">
+                    MORE
+                </div>
+            </li>
+            <li>
+                <div class="icon_img">
+                    <img src="./images/icon2.svg" alt="이미지가 없습니다">
+                </div>
+                <div class="contents1_bold">
+                    <p>ABC</p>
+                </div>
+                <div class="contents2">
+                    <p>23232323232</p>
+                </div>
+                <div class="more">
+                    MORE
+                </div>
+            </li>
+        </ul>
+        
+    </div>
+    <!-- 3차 작업 main_text0 END -->
+    
+    <!-- 4차 작업 main_text1 START -->
+    <div class="main_text1">
+        <h1 id="service">SERVICE</h1>
+        <div class="contents2">
+            <p>3123123123123</p>
+        </div>
+        <div class="service">
+            <div>
+                <img src="./images/img100.jpg" alt="이미지가 존재하지 않습니다.">
+            </div>
+            <div class="contents3">
+                <h2>service content2</h2>
+                <p>
+                    안녕하세요 만나서 반갑습니다.
+                    안녕하세요 만나서 반갑습니다.
+                    안녕하세요 만나서 반갑습니다.
+                    안녕하세요 만나서 반갑습니다.
+                    안녕하세요 만나서 반갑습니다.
+                    안녕하세요 만나서 반갑습니다.
+                    안녕하세요 만나서 반갑습니다.
+                </p>
+            </div>
+            
+        </div>
+    </div>
+    <!-- 4차 작업 main_text1 END -->
+    
+    <!-- 5차 작업 main_text2 START -->
+    <div class="main_text2">
+        <ul>
+            <li>
+                <div class="last_bg1">
+                    <h1 id="content">CONTENT</h1>
+                    <div>
+                        <p>NEXT IT 센터입니다</p>
+                    </div>
+                    <div class="more2">
+                        <p>더 알아보기</p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="last_bg2">
+                    <h1>CUSTOMER</h1>
+                    <div>
+                        <p>NEXT IT 센터입니다</p>
+                    </div>
+                    <div class="more2">
+                        <p>더 알아보기</p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!-- 5차 작업 main_text2 END -->
+    
+    <!-- 6차 작업 footer START -->
+    <footer id="page_footer">
+        <!-- footer -->
+    </footer>
+    <!-- 6차 작업 footer END -->
+
+</div>
+
+</body>
+</html>
