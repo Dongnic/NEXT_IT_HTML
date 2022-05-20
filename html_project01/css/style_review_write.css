@@ -1,0 +1,92 @@
+.intro_bg{
+    width: 100%;
+    height: 700px;
+    background-color: lightblue;
+}
+.intro_text{
+    width: 100%;
+    background-color: tomato;
+    text-align: center;
+    position: relative;
+    top: 300px;
+}
+.intro_bg{
+    background-image: url("../images/img102.jpg");
+    /* 이미지 사이즈 일치 시켜야함 */
+    background-size: 100% 700px;
+}
+.intro_text{
+    /* 부모의 색상 사용 */
+    background-color: transparent;
+}
+.intro_text > h1, .intro_text > h4{
+    color: white;
+}
+
+/* intro_bg END */
+/* contents START */
+
+.contents{
+    width: 1280px;
+    height: 700px;
+    background-color: lightblue;
+}
+.content01{
+    /* 위에서 설정 해줘서 안 잡아도 되는 영역 */
+    width: 1280px;
+    height: 700px;
+    background-color: lightpink;
+}
+.content01_h1{
+    width: 100%;
+    height: 100px;
+    background-color: lightblue;
+    text-align: center;
+}
+.content01_h1 > h1{
+    padding-top: 25px;
+}
+#div_table{
+    width: 1280px;
+    height: 500px;
+    background-color: lightgreen;
+}
+#div_table td{
+    padding: 10px;
+}
+.td_left{
+    text-align: center;
+    background-color: aqua;
+}
+.td_right > input{
+    width: 100%;
+    height: 25px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgba(0,0,0,0.1);
+}
+.td_right > textarea{
+    width: 100%;
+    height: 200px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgba(0,0,0,0.1);
+}
+#div_button{
+    width: 1280px;
+    height: 100px;
+    text-align: right;
+    background-color: red;
+}
+#div_button > input{
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+#div_button > input:active{
+    transform: translate(2px, 2px);
+}
+.content01, .content01 > div, #div_table, #div_button, .td_left{
+    background-color: white;
+}

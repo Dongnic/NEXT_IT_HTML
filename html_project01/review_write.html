@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+<meta charset="UTF-8">
+<title>NEXT_IT</title>
+<link rel="icon" type="image/x-icon" href="./images/nextit_log.jpg" />
+<link rel="stylesheet" type="text/css" href="./css/style_header.css" />
+<link rel="stylesheet" type="text/css" href="./css/style_review_write.css" />
+<link rel="stylesheet" type="text/css" href="./css/footer.css" />
+</head>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+    window.onload = function(){
+        $("#page_footer").load("./footer.html");
+    }
+
+    function fn_submit(){
+        let notice_title = document.getElementById("notice_title").value;
+        console.log("notice_title : ", notice_title);
+        let notice_content = document.getElementById("notice_content").value;
+        console.log("notice_content : ", notice_content);
+        
+        let notice_gender = document.getElementById("gender").value;
+        console.log("notice_gender : ", notice_gender);
+        // ("input[name='job']:checked") "로 input했으면 []안은 ' 반대도 가능
+        let notice_job = document.querySelector("input[name='job']:checked").value;
+        console.log("notice_job : ", notice_job);
+        // querySelectorAll ()안의 모든 값을 취득함
+        let region = document.querySelectorAll('input[name="region"]:checked')
+        // region에 뭐가 담겼는지, 길이 확인
+        console.log("region : ", region);
+        console.log("region length : ", region.length);
+        // console.log("region[0].value : ", region[2].value);
+        // 배열을 만들고 배열 내에 region 값을 한 개씩 넣어줌
+        let notice_region = [];
+        for(let i = 0; i < region.length; i++){
+            notice_region.push(region[i].value);
+        }
+        console.log("notice_region : ", notice_region);
+    }
+</script>
+<body>
+<div id="wrap">
+    <!-- header START -->
+    <div class="header">
+        <div class="top_nav">
+            <div class="searchArea">
+                <form action="">
+                    <input type="text" id="input_search" name="input_search" value=""
+                    placeholder="Search">
+                    <span>검색</span>
+                </form>
+            </div>
+            <ul class="nav">
+                <li><a href="#">HOME</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#service">SERVICE</a></li>
+                <li><a href="#content">CONTENT</a></li>
+                <li><a href="#notice">NOTICE</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- header END -->
+    <!-- intro_bg START -->
+    <div class="intro_bg">
+        <div class="intro_text">
+            <h1>NEXT_IT</h1>
+            <h4>넥스트아이티</h4>
+        </div>
+    </div>
+    <!-- intro_bg END -->
+    <!-- contents START -->
+    <div class="contents">
+        <div class="content01">
+            <div class="content01_h1">
+                <h1>공지사항</h1>
+            </div>
+            <form action="" id="editor_form" method="post">
+                <div id="div_table">
+                    <table>
+                        <colgroup>
+                            <col width="200">
+                            <col width="400">
+                        </colgroup>
+                        <tr>
+                            <td class="td_left">제목</td>
+                            <td class="td_right">
+                                <input type="text" id="notice_title" maxlength="30"
+                                value="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td_left">내용</td>
+                            <td class="td_right">
+                                <textarea type="notice_content" id="notice_content"
+                                cols="30" rows="10"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td_left">성별</td>
+                            <td class="td_right">
+                                <select type="gender" id="gender">
+                                    <option value="men" selected>남성</option>
+                                    <option value="women">여성</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td_left">작업</td>
+                            <td class="td_right">
+                                <label for="student">
+                                <input type="radio" name="job" id="student"
+                                value="student" checked>학생&nbsp;&nbsp;&nbsp;</label>
+
+                                <label for="teacher">
+                                <input type="radio" name="job" id="teacher"
+                                value="teacher">선생님&nbsp;&nbsp;&nbsp;</label>
+
+                                <label for="developer">
+                                <input type="radio" name="job" id="developer"
+                                value="developer">개발자&nbsp;&nbsp;&nbsp;</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td_left">지역</td>
+                            <td class="td_right">
+                                <label for="Seoul">
+                                <input type="checkbox" name="region" id="Seoul"
+                                value="Seoul" checked>서울&nbsp;&nbsp;&nbsp;
+                                </label>
+                                <label for="Deajeon">
+                                <input type="checkbox" name="region" id="Deajeon"
+                                value="Deajeon">대전&nbsp;&nbsp;&nbsp;
+                                </label>
+                                <label for="Gwangju">
+                                <input type="checkbox" name="region" id="Gwangju"
+                                value="Gwangju">광주&nbsp;&nbsp;&nbsp;
+                                </label>
+                        </tr>
+                    </table>
+                </div>
+                <!-- button START -->
+                <div id="div_button">
+                    <input type="button" value="목록">
+                    <input type="button" value="등록" onclick="fn_submit()">
+                    <input type="button" value="수정">
+                    <input type="button" value="삭제">
+                </div>
+                <!-- button END -->
+            </form>
+        </div>
+    </div>
+    <!-- contents END -->
+    <!-- footer START -->
+    <footer id="page_footer">
+        <!-- footer -->
+    </footer>
+
+</div>              
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+.intro_bg{
+    width: 100%;
+    height: 700px;
+}
+.intro_text{
+    width: 100%;
+    text-align: center;
+    position: relative;
+    top: 300px;
+}
+.intro_bg{
+    background-image: url("../images/img102.jpg");
+    /* 이미지 사이즈 일치 시켜야함 */
+    background-size: 100% 700px;
+}
+.intro_text{
+    /* 부모의 색상 사용 */
+    background-color: transparent;
+}
+.intro_text > h1, .intro_text > h4{
+    color: white;
+}
+
+/* intro_bg END */
+/* contents START */
+
+.contents{
+    width: 1280px;
+    height: 700px;
+}
+.content01{
+    /* 위에서 설정 해줘서 안 잡아도 되는 영역 */
+    width: 1280px;
+    height: 700px;
+}
+.content01_h1{
+    width: 100%;
+    height: 100px;
+    text-align: center;
+}
+.content01_h1 > h1{
+    padding-top: 25px;
+}
+#div_table{
+    width: 1280px;
+    height: 500px;
+}
+#div_table td{
+    padding: 10px;
+}
+
+/* list START */
+
+#div_table > table{
+    width: 80%;
+    height: 500px;
+}
+
+th, td{
+    text-align: center;
+    border-bottom: 2px solid black;
+}
+
+/* paging START */
+
+.div_paging{
+    width: 100%;
+    height: 100px;
+}
+.div_paging_a{
+    width: 300px;
+    height: 30px;
+    text-align: center;
+    padding-top: 30px;
+}
+.div_paging_a > a{
+    padding-left: 7px;
+} 
+.div_paging_a > a:hover{
+    color: mediumblue;
+    font-weight: bold;
+}
+
+.div_board_write{
+    width: 100px;
+    height: 50px;
+    position: relative;
+    left: 510px;
+    top: -30px;
+}
+
+.div_board_write > input{
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+}
+.div_board_write > input:active{
+    /* 클릭 시 해당 영역만큼 변경 */
+    transform: translate(2px, 2px);
+}

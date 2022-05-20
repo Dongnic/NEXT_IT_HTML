@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTP-8">
+<title>Cóńte</title>
+<link rel="icon" type="image/x-icon" href="./images/nextit_log.jpg">
+<link rel="stylesheet" type="text/css" href="./css/style_main.css">
+<link rel="stylesheet" type="text/css" href="./css/footer.css">
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+    window.onload = function(){
+        $("#page_footer").load("./footer.html");
+        
+        let img_files=[
+             "./images/img1.jpg"
+            ,"./images/img2.jpg"
+            ,"./images/img102.jpg"
+        ];
+
+        let div_img = document.getElementById("img_div");
+        let i = 0;
+
+        function fn_change_img(){
+            console.log("fn_change_img");
+            div_img.style.backgroundImage="url("+ img_files[i] +")";
+            if(i==2){
+                i=0;
+            }else{
+                i++;
+            }
+            div_img.style.transitionDuration="2s";
+        }
+        setInterval(function(){
+            fn_change_img();
+        }, 3000);
+
+    }
+</script>
+</head>
+<body>
+    
+<div id="wrap">
+    <!-- 메인 로고 시작 -->
+    <div class="intro_logo">
+        <a href="./home.html">
+            <img src="./images/logo.jpg" alt="이미지가 없습니다">
+        </a>
+    </div>
+    <!-- 메인 로고 끝 -->
+    <!-- 로그인 탭 시작 -->
+    <div class ="login_tab">
+        <ul class="login_nav">
+            <li><a href="./login.html">로그인</a></li>
+            <li><a href="./join.html">회원가입</a></li>
+            <li><a href="./help.html">고객센터</a></li>
+        </ul>
+    </div>
+    <!-- 카테고리 탭 시작 -->
+    <div class="catagory_tab">
+        <!-- 반응형 추가 START -->
+        <div class="icon_area">
+        <input type="checkbox" id="menuicon">
+        <!-- 3줄 선모양 메뉴 그리기 -->
+        <label for="menuicon" class="header_icon">
+            <span></span>
+            <span></span>
+            <span></span>
+            <div>전체메뉴</div>
+        </label>
+        </div>
+        <div class="header_icon">
+            <ul class="menu_icon">
+                <li><a href="#"></a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#service">SERVICE</a></li>
+                <li><a href="#content">CONTENT</a></li>
+                <li><a href="#">NOTICE</a></li>
+            </ul>
+        </div>
+        <div>
+        <ul class="catagory_nav">
+            <li><a href="#">홈</a></li>
+            <li><a href="#">메뉴</a>
+                <ul>
+                    <li><a href="#">커피</a></li>
+                    <li><a href="#">음료</a></li>
+                    <li><a href="#">디저트</a></li>
+                </ul>
+            </li> 
+            <li><a href="#">주문</a></li>
+            <li><a href="#">리뷰</a></li>
+        </ul>
+        </div>
+        <div class="searchArea">
+            <form action="">
+                <input type="text" id="input_search" name="input_search" value="" placeholder="Search">
+                <span>검색</span>
+            </form>
+        </div>
+    </div>
+    <!-- 카테고리 탭 끝 -->
+    <!-- 메뉴사진 탭 시작 -->
+    <div id="img_div" class="move_img">
+        <h1>움직이는 메뉴사진.jpg</h1>
+    </div>
+    <!-- 메뉴사진 탭 끝 -->
+    <!-- 추천 메뉴 탭 -->
+    <div class="best_menu">
+        <h1 id="menu1">베스트 메뉴</h1>
+        <ul class="menus1">
+            <li>
+                <div>
+                    <div class="menu_img">
+                        <img src="./images/menu1.jpg" alt="이미지가 없습니다">
+                    </div>
+                        <p>메뉴이름1</p>
+                        <p>1000원</p>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <div class="menu_img">
+                        <img src="./images/menu2.jpg" alt="이미지가 없습니다">
+                    </div>
+                        <p>메뉴이름2</p>
+                        <p>2000원</p>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <div class="menu_img">
+                        <img src="./images/menu3.jpg" alt="이미지가 없습니다">
+                    </div>
+                        <p>메뉴이름3</p>
+                        <p>3000원</p>
+                </div>
+            </li>
+        </ul>
+        <h1 id="menu2">신 메뉴</h1>
+        <ul class="menus2">    
+            <li>
+                <div>
+                    <div class="menu_img">
+                        <img src="./images/menu1.jpg" alt="이미지가 없습니다">
+                    </div>
+                        <p>메뉴이름4</p>
+                        <p>4000원</p>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <div class="menu_img">
+                        <img src="./images/menu2.jpg" alt="이미지가 없습니다">
+                    </div>
+                        <p>메뉴이름5</p>
+                        <p>5000원</p>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <div class="menu_img">
+                        <img src="./images/menu3.jpg" alt="이미지가 없습니다">
+                    </div>
+                        <p>메뉴이름6</p>
+                        <p>6000원</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!-- 추천메뉴 탭 끝 -->
+    <!-- 광고 시작 -->
+    <div id="ad_img" class="ad_img">
+        <h1>광고.jpg</h1>
+    </div>
+    <!-- 광고 끝 -->
+    <!-- 지도 시작 -->
+    <div class="map">
+        <h1>
+            오시는길.jpg or Link
+        </h1>
+        <object data="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12857.595415569294!2d127.4078567!3d36.3268821!3
+        m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8796a0f0c3156a71!2z6r2B7Yq4!5e0!3m2!1sko!2skr!4v1653016436484!5m2!1sko!2skr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            width="800"
+            height="500"
+            type="text/html">
+        </object>
+    </div>
+    <!-- 지도 끝 -->
+    <!-- footer 시작 -->
+    <footer id="page_footer">
+        <!-- footer -->
+    </footer>
+    <!-- footer 끝 -->
+</div>
+
+</body>
+</html>

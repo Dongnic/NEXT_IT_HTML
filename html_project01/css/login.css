@@ -1,0 +1,159 @@
+/* body{
+    background-color: red;
+} */
+
+*{
+    margin: 0 auto;
+    padding: 0;
+}
+
+body{
+    height: 100vh;
+    /* 1vh는 높이값이 100분의 1단위입니다
+       만약 브라우저 높이가 900px이면 1vh는 9px가 된다.
+    */
+    text-align: center;
+}
+
+.login_form{
+    position: fixed;
+    top: 40%;
+    left: calc(50% - 200px);
+    width: 300px;
+    background-color: lightblue;
+}
+
+.login_form > h1{
+    position: absolute;
+    text-align: left;
+    
+    color: black;
+}
+
+.int-area{
+    width: 400px;
+    background-color: lightcoral;
+}
+
+.int-area input{
+    width: 99%;
+    padding-top: 40px;
+    padding-bottom: 10px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #999;
+    font-size: 18px;
+    color: #fff;
+}
+
+.int-area input:focus{
+    outline: none;
+}
+
+.int-area > label{
+    font-size: 18px;
+    color: #fff;
+}
+
+.login_form label[for='mem_id']{
+    position: absolute;
+    top: 80px;
+    left: 10px;
+}
+
+.login_form label[for='mem_pw']{
+    position: absolute;
+    top: 150px;
+    left: 10px;
+}
+
+.btn-area > button{
+    width: 400px;
+    height: 50px;
+    background-color: #166cea;
+    color: #fff;
+    font-size: 20px;
+    border: none;
+    border-radius: 25px;
+    margin-top: 30px;
+    padding: 0 10px 0;
+}
+
+.caption_ul > li{
+    list-style: none;
+    font-size: 20px;
+}
+
+.caption_ul{
+    display: flex;
+    margin-top: 20px;
+}
+
+.caption a{
+    font-size: 20px;
+    color: #fff;
+    text-decoration: none;
+}
+
+body{
+    background: url("../images/img1.jpg") no-repeat center;
+    background-size: cover;
+}
+
+body, .login_form, .int-area{
+    background-color: transparent;
+}
+
+body:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.int-area input[name='mem_id']:focus + label{
+    top : 60px;
+    font-size: 13px;
+    color: #166cea;
+}
+
+.int-area input[name='mem_pw']:focus + label{
+    top : 130px;
+    font-size: 13px;
+    color: #166cea;
+}
+
+.int-area label{
+    transition: all .5s ease;
+    /* transition: all은 top으로 이동될 때 
+        모든 옵션에(all) 에 대해서 애니메이션 효과를 발생
+        0.5초 동안 ease효과(천천히 시작되어 중간에 빨라지고 느려짐) */
+}
+
+.int-area input[name='mem_id']:valid + label{
+    top : 60px;
+    font-size: 13px;
+    color: #166cea;
+}
+
+.int-area input[name='mem_pw']:valid + label{
+    top : 130px;
+    font-size: 13px;
+    color: #166cea;
+}
+
+#btn_id:active{
+    color: gray;
+}
+
+.caption_ul a:active{
+    color: gray;
+}
+
+.int-area label.warning{
+    color: red;
+    animation-duration: .3s ease;
+}

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+<meta charset="UTF-8">
+<title>NEXT_IT</title>
+<link rel="icon" type="image/x-icon" href="./images/nextit_log.jpg" />
+<link rel="stylesheet" type="text/css" href="./css/style_header.css" />
+<link rel="stylesheet" type="text/css" href="./css/style_review_list.css" />
+<link rel="stylesheet" type="text/css" href="./css/footer.css" />
+</head>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+    window.onload = function(){
+        $("#page_footer").load("./footer.html");
+    }
+
+</script>
+<body>
+<div id="wrap">
+    <!-- header START -->
+    <div class="header">
+        <div class="top_nav">
+            <div class="searchArea">
+                <form action="">
+                    <input type="text" id="input_search" name="input_search" value=""
+                    placeholder="Search">
+                    <span>검색</span>
+                </form>
+            </div>
+            <ul class="nav">
+                <li><a href="#">HOME</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#service">SERVICE</a></li>
+                <li><a href="#content">CONTENT</a></li>
+                <li><a href="#notice">NOTICE</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- header END -->
+    <!-- intro_bg START -->
+    <div class="intro_bg">
+        <div class="intro_text">
+            <h1>NEXT_IT</h1>
+            <h4>넥스트아이티</h4>
+        </div>
+    </div>
+    <!-- intro_bg END -->
+    <!-- contents START -->
+    <div class="contents">
+        <div class="content01">
+            <div class="content01_h1">
+                <h1>공지사항</h1>
+            </div>
+            <!-- 리스트 -->
+            <div id="div_table">
+                <table>
+                    <colgroup>
+                        <col width="40">
+                        <!-- 40, 100, 30을 부여하고 나머지를 의미 -->
+                        <col>
+                        <col width="180">
+                        <col width="300">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>제목</th>
+                            <th>작성자</th>
+                            <th>시간</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>10</td>
+                            <td>test01</td>
+                            <td>김기동</td>
+                            <td>22 : 05 : 18</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>test01</td>
+                            <td>김기동</td>
+                            <td>22 : 05 : 10</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>test01</td>
+                            <td>김기동</td>
+                            <td>22 : 00 : 08</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>test01</td>
+                            <td>김기동</td>
+                            <td>21 : 55 : 01</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>test01</td>
+                            <td>김기동</td>
+                            <td>21 : 50 : 18</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>test01</td>
+                            <td>김기동</td>
+                            <td>20 : 05 : 18</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>test01</td>
+                            <td>김기동</td>
+                            <td>19 : 15 : 18</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>test01</td>
+                            <td>김기동</td>
+                            <td>18 : 03 : 38</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>test01</td>
+                            <td>김기동</td>
+                            <td>12 : 35 : 35</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>기상했다</td>
+                            <td>김기동</td>
+                            <td>07 : 15 : 10</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- paging -->
+            <div class="div_paging">
+                <div class="div_paging_a">
+                    <a href="#">&lt;&lt;</a>
+                    <a href="#">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">&gt;&gt;</a>
+                </div>
+                <div class="div_board_write">
+                    <a href="./board_write.html">
+                    <input type="button" value="글쓰기">
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- contents END -->
+    <!-- footer START -->
+    <footer id="page_footer">
+        <!-- footer -->
+    </footer>
+
+</div>              
+</body>
+
+</html>

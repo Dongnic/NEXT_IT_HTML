@@ -1,0 +1,29 @@
+/* 6차 작업 footer START */
+
+.div_footer{
+    position: relative;
+    top: 130px;
+    width: 100%;
+    height: 150px;
+    display: flex;
+}
+
+.div_footer > div{
+    padding-top: 30px;
+    background-color: lightslategrey !important;
+}
+
+.div_footer_log{
+    flex: 5;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.div_footer_addr{
+    flex: 5;
+    background-color: lightgoldenrodyellow;
+    text-align: center;
+}
+
+/* 6차 작업 footer END*/
