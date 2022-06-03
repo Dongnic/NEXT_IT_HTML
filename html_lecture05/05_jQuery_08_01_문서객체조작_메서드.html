@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+
+/* 
+문서객체조작_메서드
+    1) 내용 확인 및 변경 메서드
+            html()		일치된 요소의 html 내용을 가져온다. 이는 요소의 innerHTML 값과 
+                            동일하다. 만일, 일치된 요소가 여러 개라면 그 중 첫 번째 요소의 
+                            HTML을 가져 온다.
+                            
+            html(data)	일치된 요소의 html 본문을 data 값으로 설정한다.
+                            만일, 일치된 요소가 여러 개라면 모든 요소에 이러한 작업을 수행한다.
+                            
+            text()		일치된 모든 요소의 텍스트를 합쳐서 가져온다.        
+            text(data) 	모든 일치된 요소의 텍스트를 data 값으로 설정한다.
+        
+            val() 		해당 입력 요소의 value속성 의 값을 가져 온다.
+            val(data) 	해당 입력 요소의 value속성 에 data를 설 정 한다.
+
+                
+    2) 요소 내부에 추가하는 메서드들
+            append() 
+            		$(A).append(B)  B를 A의 뒷부분에 추가합니다.
+
+            prepend()
+                    $(A).prepend(B)  B를 A의 앞부분에 추가합니다.
+
+            appendTo(selector)
+                    $(A).appendTo(B)  A를 B의 뒷부분에 추가합니다.
+                        선택된 요소를 selector에 일치된 모든 요소들의 내부 마지막 
+                            위치에 추가한다. 만일, 일치된 요소가 본문에 존재하면 
+                            그 요소를 제거한 후 복사한다. (즉, 이동)
+
+            prependTo(selector) 	
+                    $(A).prependTo(B)  A를 B의 앞부분에 추가합니다.
+
+    3) 요소 외부에 추가하는메서드들
+            after(data)		    일치된 요소 뒤에 data를 삽입 한다.
+            before(data)		일치된 요소 앞에 data를 삽입한다.
+            
+    4) 삭제 메서드들
+            empty() 			일치된 모든 요소들의 자식 Content를 삭제한다.
+            remove()			일치된 모든 요소들을 DOM에서 삭제한다.
+
+    5) 복사메서드들
+            clone()         일치된 요소를 복사하고, 그를 선 텍한다.
+            clone(bool)     이벤트 처리기를 포함하여 DOM 요소를 복사하고 그를 선텍한다.
+            
+    6) 문서 객체의 특징 판별 메서드
+            is()		        문서 객체의 특징을 판별합니다. 해당한다면 true 이며 여러 조건이 
+                                    있다면 그 중한 개만 맞아도 true 가 됨
+    
+*/
+
+// html()	
+    function fn_html01(){
+        let p_01 = $(".p_01").html();
+        console.log("p_01:::::"+p_01);
+    }
+
+// html(data)
+    function fn_html02(){
+        $(".p_01").html("만나서 <mark>반갑습니다.</mark>");
+    }
+
+//text()
+    function fn_text01(){
+        let p_text01 =  $(".p_02").text();
+        console.log("p_text01:::::"+p_text01);
+
+        let p_text02 =  $(".p_02:last").text();
+        console.log("p_text02:::::"+p_text02);
+    }
+
+//text(data)
+    function fn_text02(){
+        $(".p_02").text("이번 시간은 jQuery 입니다.");
+    }
+
+//val()
+    function fn_val01(){
+        let fn_val01 = $(".p_03").val();
+        console.log("p_03_val:::"+fn_val01);
+    }
+
+//val(data)
+    function fn_val02(){
+        let call_num = "연락처는 042-719-8850 입니다."
+        $(".p_03").val(call_num);
+    }
+
+//append()
+    function fn_append(){
+        $("ol").append("<li>Appended item</li>");
+    }
+//prepend()
+    function fn_prepend(){
+        $("ol").prepend("<li>Prepended item</li>");
+    }
+
+//appendTo()  $(A).appendTo(B)  A를 B의 뒷부분에 추가합니다.
+    function fn_appendTo(){
+        $(".p_appendTo").appendTo(".div_appendTo > p");
+    }
+
+//prependTo()  $(A).prependTo(B)  A를 B의 앞부분에 추가합니다.
+    function fn_prependTo(){
+        $(".p_appendTo").prependTo(".div_appendTo > p");
+    }
+    
+//before, after
+    //05_jQuery_02_10_선택자.html
+
+//empty ( .div_empty 비움 )
+    function fn_empty(){
+        $(".div_empty").empty();
+    }
+
+//remove ( .div_empty 삭제 )
+    function fn_remove(){
+        $(".div_empty").remove();
+    }
+
+//clone
+    function fn_clone(){
+        $(".p_clone").clone().appendTo(".div_clone");
+    }
+
+$(document).ready(function(){
+
+    $(".p_clone").click(function(){
+        $(this).animate({fontSize: "+=1px"});
+    });
+
+    $(".button01_true").click(function(){
+        //기존에 있던거 제거
+        $(".div_clone > p").remove();
+// clone(true) //이벤트 처리기를 포함하여 clone 
+        $(".div_clone").append($(".p_clone").clone(true));
+    });
+    
+    $(".button01_false").click(function(){
+        //기존에 있던거 제거
+        $(".div_clone > p").remove();
+// clone(flase) // 이벤트 처리기없이 clone
+        $(".div_clone").append($(".p_clone").clone(false));
+    });
+
+//is()
+    $(".p_is").click(function(){
+        if ($(this).parent().is("div")) {
+            alert("부모태그는 div 입니다."); 
+        }else{
+            alert("부모태그는 div가 아닙니다."); 
+        }
+    });
+
+});
+</script>
+</head>
+<body>
+    
+<!-- html -->
+    <p class="p_01">안녕하세요 </p>
+    <p class="p_01">NextIT 교육센터 입니다.</p>
+    <input type="button" onclick="fn_html01()" value="fn_html01" >
+    <input type="button" onclick="fn_html02()" value="fn_html02" >
+
+<!-- text -->
+    <p class="p_02">만나서 반갑습니다. </p>
+    <p class="p_02">지금은 화면교육 수업입니다.</p>
+    <input type="button" onclick="fn_text01()" value="fn_text01" >
+    <input type="button" onclick="fn_text02()" value="fn_text02" >
+
+<!-- val -->
+    <br><br>
+    <input type="text" class="p_03" style="width:300px" value ="NextIT 교육센터는 오류동에 위치해 있습니다."><br>
+    <input type="button" onclick="fn_val01()" value="fn_val01" >
+    <input type="button" onclick="fn_val02()" value="fn_val02" >
+    
+<!-- append, preapend -->
+    <ol>
+        <li>List item 1</li>
+        <li>List item 2</li>
+        <li>List item 3</li>
+    </ol>
+    <input type="button" onclick="fn_append()" value="fn_append" >
+    <input type="button" onclick="fn_prepend()" value="fn_prepend" >
+    
+<!-- appendTo, prependTo -->
+    <div class="div_appendTo">
+        <p>안녕하세요.</p>
+        <p>NextIT 교육센터 입니다.</p>
+    </div>
+    
+    <input type="button" onclick="fn_appendTo()" value="fn_appendTo" >
+    <input type="button" onclick="fn_prependTo()" value="fn_prependTo" >
+    <p class="p_appendTo">이메일은 e-Mail :nextitcenter@gmail.com 입니다.</p>
+    <br>
+    
+<!-- empty , remove -->
+    <div class="div_empty" style="height:100px;background-color:yellow">
+        This is some text
+        <p>This is a paragraph inside the div.</p>
+    </div>
+    <br>
+    <input type="button" onclick="fn_empty()" value="fn_empty" >
+    <input type="button" onclick="fn_remove()" value="fn_remove" >
+    
+<!--clone -->
+    <p class="p_clone">안녕하세요 넥스트아이트 교육센터입니다.(클릭하면 커져요)</p>
+    <div class="div_clone" style="height:100px;background-color:orange">
+    </div>
+    <input type="button" onclick="fn_clone()" value="fn_clone" >
+    <button class="button01_true">button01_true</button>
+    <button class="button01_false">button01_false</button>
+    
+<!-- is -->
+    <div>
+        <p class="p_is">P태그의 부모태그가 div인지 확인하시려면 클릭해주세요</p>
+    </div>
+    
+
+</body>
+</html>

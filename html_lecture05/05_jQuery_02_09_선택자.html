@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+     $(function(){
+        
+
+        $("div+p").css("color", "red");
+        /* A+B 선택자 뜻은 A태그 옆에 B 태그를 선택하라는 선택자 입니다.
+                따라서 div 옆에 p태그를 뜻합니다.*/
+        
+        $("div~p").css("color", "blue");
+        /* A~B 선택자 뜻은 A태그 옆에 B 태그를 선택하라는 선택자 입니다.
+                A+B 선택자와 다른점은 이어져 있는 모든 B태그를 선택하라는 것입니다.
+                 따라서 처음 div+p 에서는 선택되지 않았던 세 번째 p 태그에 blue 색상이 
+                  적용되는 것을 볼 수 있습니다ㅣ.
+            */
+
+      
+     });
+
+    </script>
+</head>
+<body>
+<div>
+  <div>
+    <p>첫 번째 p 태그 입니다.(div 하위)</p>     
+</div>
+<p>두 번째 p 태그 입니다.</p>     
+<p>세 번째 p 태그 입니다.</p>     
+<div>
+    <p>네 번째 p 태그 입니다.(div 하위)</p>     
+</div>
+<p>다섯 번째 p 태그 입니다.</p>     
+</div>    
+</body>
+</html>

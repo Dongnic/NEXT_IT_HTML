@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+     $(function(){
+
+        /* h3 태그에 title 속성이 newspaper에 적용 */
+        $('h3[title="newspaper"]').css('color','red');
+            
+        /* h3 태그에 title 속성이 news를 포함 */
+        $('h3[title*="news"]').css('color','orange');
+        
+        /* h3 태그에 title 속성이 news를 포함하며 공백이 있는 것 */
+        $('h3[title~="news"]').css('color','green');
+
+        /* h3 태그에 title 속성이 news를 포함하며 하이픈이 잇는 것 */
+        $('h3[title|="news"]').css('color','blue');
+
+        /* h3 태그에 title 속성이 newp로 시작하는 것 */
+        $('h3[title^="newp"]').css('color','purple');
+
+        /* h3 태그에 title 속성이 ers로 끝나는 것 */
+        $('h3[title$="ers"]').css('color','gray');
+        
+
+     });
+
+    </script>
+</head>
+<body>
+    <h3 title="newspaper">newspaper</h3>
+    <h3 title="newspaper01">newspaper01</h3>
+    <h3 title="news paper">news pape</h3>
+    <h3 title="news-paper">news-pape</h3>
+    <h3 title="newpaper">newpaper</h3>
+    <h3 title="newspapers">newspapers</h3>
+
+</body>
+</html>

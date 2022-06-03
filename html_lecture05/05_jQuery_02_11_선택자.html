@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+     $(function(){
+   
+        $('#div_p p').css( "color", "red");
+
+        //not
+        $('#div_p p:not(.p_tag01)').css( "color", "green");
+            /* :not 사용법 => 선택할요소:not(제외시킬 요소)
+                #div_p 하위에 모든P태그를 선택하지만 
+                    .p_tag01은 빼고 color를 green으로 변경한다 
+            */
+
+    });
+
+    </script>
+</head>
+<body>
+    <div id="div_p">
+        <p>NextIt 교육센터입니다.</p>
+        <p class="p_tag01">지금은 화면구현 시간입니다.</p>
+        <p>만나서 반갑습니다.</p>
+     </div>
+  
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+     $(function(){
+
+       
+        $('div h1, div h2').css('color','gray');
+
+        $('div > h1').css('color','red');
+            /* h1은 div의 자손 태그 이므로 
+                "선택자 > 선택자"를 사용하여 color를 변경할수 있습니다. */
+
+        $('div > h2').css('color','orange');
+        
+        $('div > li').css('color','green');
+            /* "선택자 > 선택자" 는 자손 태그에 사용합니다. 
+                따라서 li는 div의 후손 태그이므로 green으로 
+                변경 되지 않습니다ㅣ. */
+
+        $('div li').css('color','blue');
+             /* li는 div의 후손 태그 이므로 "선택자 선택자" 방법으로 
+                css 적용할 수 있습니다. */
+        
+
+     });
+
+    </script>
+</head>
+<body>
+<div>
+    <h1>h1 태그 입니다.(h1은 div의 자손 태그이면서 더불어 후손태그 입니다.)</h1>
+    <h2>h2 태그 입니다.(h2는 div의 자손 태그이면서 더불어 후손태그 입니다.)</h2>
+    <ul>
+        <li>ul태그의 li태그 입니다(div의 후손 태그입니다.)</li>
+        <li>ul태그의 li태그 입니다(div의 후손 태그입니다.)</li>
+        <li>ul태그의 li태그 입니다(div의 후손 태그입니다.)</li>
+    </ul>
+</div>
+</body>
+</html>

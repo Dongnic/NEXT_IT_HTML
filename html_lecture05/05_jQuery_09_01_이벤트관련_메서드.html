@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<style>
+.intro {
+  font-weight: bold;
+  color: #fff;
+  background-color: orange;
+}
+.div_scroll{
+	border:1px solid black;
+	width:200px;
+	height:100px;
+	overflow:scroll;
+}
+</style>
+<script>
+
+ /*
+	jQuery 이벤트 
+		1 개요
+			이벤트에 대한 개괄적인 내용은 자바스크립트의 이벤트 부분을 공부하며
+				배웠습니다. jQuery 이벤트에는 기존 자바스크립트의 이벤트가 모두 존재
+				합니다. jQuery를 사용하면 기존 자바스크립트의 이벤트를 연결할때 보다
+				훨씬 간편하게 사용할 수 있습니다.
+			 
+
+		2 이벤트 연결 기본 ( on() )
+			2.1	개요
+				jQuery로 이벤트를 연결하는 가장 기본적인 방법은 on()메서드를 
+				 	사용하는 것입니다. 사실 on()메서드 보다 밑에 간단한 이벤트 연결 방법을
+				  	많이 사용합니다. 하지만 한번에 여러 종류의 이벤트를 연결하거나, 
+				   	간단한 이벤트 연결방법으로 연결할 수 없을때에 on()를 사용합니다.
+				   	(간단한 이벤트 연결 방법으로 연결할 수 없는 것 : 새로 표준에 추가되어 
+					   	아직 jQuery가 업데이트 하지 못한 이벤트 또는 개발자가 직접 만든
+						사용자 정의 이벤트 )	 
+
+			2.2 사용방법
+				1 $(selector).on(eventName, function(){}) 
+					//eventName 는 이벤트이름 , function(){} 는 이벤트 리스너
+				2 $(selector).on(eventName, object, functionName )  
+					//on() 메서드의 매개변수에 객체를 넣어줍니다. 속성이름과 속성값에 
+						이벤트 이름과 이벤트 리스너를 넣으면 이벤트를 쉽게 연결할 수 있습니다.
+
+			2.3 on() 이전의 기존 연결방식 ( bind(), delegate(), live() )
+				jQuery 1.9 버전 이전에는 3개( bind(), delegate(), live())의 이벤트 연결
+					방식이 있었습니다. 1.9 버전 업데이트와 함께 모든 이벤트 연결방식을 on()
+					메서드로 통일 되었습니다. 하지만 2.X 버전까지는 호환성을 위해서 bind(),
+					delegate()메서드를 유지하였는데요. 이마저도 3.X 버전 부터는 모두 제거
+					되었습니다.
+
+
+		3 간단한 이벤트 연결
+			3.1 개요
+				jQuery는 많이 사용되어지는 이벤트를 간단한 방식으로 연결할 수 있게 해줍니다
+								
+			3.2 연결 방식
+				$(selector).method(function(){});
+				예) 
+				 	$(document).read(function(){});
+					$("p").click(function(){});
+
+		4 이벤트 종류
+			4.1 기본
+				on()	이벤트를 연결합니다.
+				bind()	이벤트를 연결합니다. 
+						(As of jQuery 3.0, .bind() has been deprecated.
+							참고 https://api.jquery.com/bind/#bind-eventType-eventData-handler )
+ 
+			4.2 윈도우 관련 이벤트
+				ready()			문서 객체가 준비 완료될때 발생
+				load()			문서 객체를 불러들일때 발생
+				unload()		문서 객체를 닫을때 발생 
+								( Note: This API has been removed in jQuery 3.0;
+									 참고 https://api.jquery.com/unload/#unload-handler )
+				resize()		문서 객채의 크기를 변화 시킬 때 발생
+				scroll()		문서 객체를 스크롤할 때 발생
+				error()			에러가 있을때 발생
+
+			4.3 입력양식 관련 이벤트
+				change()		입력 양식의 내용이 변경할될때 발생합니다.
+				focus()			입력양식에 초점을 맞추면 발생합니다.
+			 	blur()			입력양식에 초점이 사라지면 발생합니다.
+				select()		입력양식을 선택할 때 발생합니다. 
+				submit()		submit 버튼을 누르면 발생합니다.
+
+			4.4 마우스 관련 이벤트
+				click()			마우스를 클릭할 때 발생합니다.
+				dblclick()		마우스를 더블클릭할 때 발생합니다.
+				mousedown()		마우스 버튼을 누를때 발생합니다.
+				mouseup()		마우스 버튼을 땔 때 발생합니다.
+				mouseenter()	마우스가 요소의 경계 외부에서 내부로 이동할 때 발생합니다.
+				mouseleave()	마우스가 요소의 경계 내부에서 외부로 이동할 때 발생합니다.
+				mousemove()		마우스를 움직일때 발생합니다.
+				mouseover()		마우스가 요소 안에 들어올때 발생합니다.
+				mouseout()		마우스가 요소를 벗어날 때 발생합니다.
+				hover()			mouseenter 이벤트와 mouseleave 이벤트를 동시에 연결합니다.
+
+			4.5 키보드 관련 이벤트
+				keydown()		키보드를 누를때 발생합니다.
+				keypress()		글자가 입력될때 발생합니다.
+				keyup()			키보드를 땔때 발생합니다.
+
+			4.6 이벤트 강제 발생
+				trigger() 		이벤트를 강제로 발생시킵니다.
+
+			4.7 이벤트 실행 및 제거
+				one()			이벤트 연결을 한 번만 연결합니다.	
+				off()			이벤트를 제거 합니다.
+
+ 
+
+
+*/
+
+function fn_event(event01){
+  console.log(event01);
+  alert(event01.data.msg);
+	/*(console에서 확인해보세요)event.data : 이벤트 과정 도중에 객체를 
+		전달할 수 있습니다. 전달한 객체는 event 객체의 data 속성에 들어있습니다.*/
+}
+
+$(document).ready(function(){
+
+// on()
+	// 방법1	on( eventName, function(){} )
+		$(".p_on_01").on("click", function(){
+			$(this).html(function(index, curr_content){
+				return curr_content + '+';
+			});
+		});
+		
+	// 방법2-1 on( eventName, object, functionName )
+		$(".p_on_02_01").on("click", {msg: "안녕하세요 NextIT 교육센터 입니다."}, fn_event);
+			
+	// 방법2-2 on( { eventname_01:function(){}}, eventname_02:function(){}} )
+		$(".p_on_02_02").on(
+			{
+				mouseover : function(){
+					// this.classList.add("intro");
+					$(this).addClass("intro");
+				},
+				mouseout : function(){
+					this.classList.remove("intro");
+					//$(this).removeClass("intro");
+				}
+			}
+		);
+		
+	//방법3 하위요소 선택  
+		$(".p_on_02_03_1").on("click", ".p_on_02_03_2", function(event) { 
+			event.currentTarget.style.color="red";
+			//this.style.backgroundColor = "blue";
+			$(this).css("background-color", "blue");
+			$(this).parent().attr("style", "background-color:yellow"); //parent() 부모요소 선택
+		});	
+
+
+// bind() 
+	// 방법 1
+		$(".p_01").bind("click", function(){
+			alert(" p태그 안녕하세요  클릭되었습니다");
+		});
+	// 방법2
+		$(".p_03").bind("click", {msg: "화면구현 수업입니다."}, fn_event);
+ 
+// ready()
+	// $(document).ready(function(){});
+	// $(function(){})  
+
+// load()
+	$(".div_load_bu").click(function(){
+		$("<img>").attr("src", "./images/img1.jpg").appendTo(".div_load");
+			
+		$(".div_load > img").load(function(){
+			alert("img1.jpg 이미지를 load 합니다.");
+		});
+	});
+
+// unload()
+	//  jQuery 3.0 부터 삭제
+
+// resize()
+	let x =0;
+	$(window).resize(function(){
+		$(".div_resize span").text(x += 1);
+	});
+
+// scroll()
+	$(".div_scroll").scroll(function(){
+		$(".span_scroll").text( x+= 1);
+	});
+
+// error()
+	$(".div_error > img").error(function(){
+    	$(".div_error > img").replaceWith("<p><mark>알림:이미지를 불러오는데 실패 하였습니다.<mark></p>");
+  	});
+
+// change()
+	$(".div_change > input").change(function(){
+		alert("아이디가 변경되었습니다.");
+		//변경 되어야지만 alert 실행
+	});
+
+// focus()
+	//05_jQuery_02_05_선택자.html
+
+// blur()
+	$(".div_blur > input").blur(function(){
+    	alert("커서가 입력창을 벗어났습니다.");
+  	});
+
+// select()
+	$(".div_select > input").select(function(){
+		alert("Text marked!");
+	});
+
+// submit()
+	$(".div_submit > form").submit(function(){
+		let conf = confirm("제출하시겠습니까?");
+		if(conf == true){
+			alert("제출되었습니다.");
+		}else{
+			alert("취소하셨습니다.");
+			return false;
+		}
+	});
+ 
+// mouse()
+	// $(".div_mouse > h2").click(function(){
+	// 	alert("click event.");
+	// });
+	$(".div_mouse > h2").dblclick(function(){
+		alert("dblclick event.");
+	});
+	// $(".div_mouse > h2").mousedown(function(){
+	// 	alert("mousedown event.");
+	// });
+	// $(".div_mouse > h2").mouseup(function(){
+	// 	alert("mouseup event.");
+	// });
+	// $(".div_mouse > h2").mouseenter(function(){
+	// 	alert("mouseenter event.");
+	// });
+	// $(".div_mouse > h2").mouseleave(function(){
+	// 	alert("mouseleave event.");
+	// });
+	// $(".div_mouse > h2").mousemove(function(){
+	// 	alert("mousemove event.");
+	// });
+	// $(".div_mouse > h2").mouseover(function(){
+	// 	alert("mouseover event.");
+	// });
+	// $(".div_mouse > h2").mouseout(function(){
+	// 	alert("mouseout event.");
+	// });
+	// $(".div_mouse > h2").hover(function(){
+	// 	alert("hover event.");
+	// });
+
+// keyboad()
+	$(".div_keyboard > input").keydown(function(){
+		$(".div_keyboard > input").css("background-color", "blue");
+	});
+	$(".div_keyboard > input").keypress(function(){
+		$(".div_keyboard > input").css("background-color", "red");
+	});
+	$(".div_keyboard > input").keyup(function(){
+		$(".div_keyboard > input").css("background-color", "orange");
+	});
+
+// trigger(type)
+	$(".p_101").on("click",function(){
+		alert("trigger_click event");
+	});
+	 //$(".p_101").trigger("click");
+		/* 주석을 해제 하고 창을 새로 고침 하면 trigger로 인하여 
+			강제로 click 이벤트가 발생합니다.*/
+	
+// trigger(type, data)
+	$(".p_102").on("my_event01", function(event, param1, param2, param3){
+		event.currentTarget.style.color="red"
+		console.log("event.currentTarget.textContent::::"+event.currentTarget.textContent);
+		alert(param1 + "\n" + param2 + "\n" + param3);
+	});
+	// $(".p_102").trigger("my_event01", ['사과', '바나나', '딸기']);
+		/* 주석을 해제 하면 trigger로 인하여 
+			강제로 my_event01 이벤트가 발생합니다.*/
+ 
+// one()
+	$(".div_one > p").one("click", {msg: " jQuery 시간입니다."}, fn_event);
+	 
+// off
+	$(".div_off > p").click(function(){
+		let conf = confirm("이벤트를 제거 하시겠습니까?");
+		if ( conf == true){
+			$(".div_keyboard > input").off();
+			alert(".div_keyboard에 keyboad 이벤트를 제거 하였습니다.")
+		}
+	});
+});
+</script>
+</head>
+<body>
+
+<!-- on -->
+	<div class="div_on">
+		<p class="p_on_01">(클릭해주세요) p_on_01</p>
+		<p class="p_on_02_01">(클릭해주세요) p_on_02_01</p>
+		<p class="p_on_02_02">(마우스를 올려주세요) p_on_02_02</p>
+		
+		<!-- <input type="button" class="p_on_02_03_1" value="p_on_02_03_1">   -->
+		<button class="p_on_02_03_1">
+			<p class="p_on_02_03_2">(class) p_on_02_03_2</p>	
+		</button>
+			<p class="p_on_02_03_2">(class) p_on_02_03_2</p>	
+			<p class="p_on_02_03_2">(class) p_on_02_03_2</p>	
+
+	</div>
+	<hr>
+
+<!-- bind -->
+	<div class="div_bind">
+		<p class="p_01">(클릭해주세요) 안녕하세요</p>
+		<p class="p_03">(클릭해주세요 ) 지금은...</p>
+	</div>
+	<hr>
+
+<!-- div_load -->
+	<div class="div_load">
+	</div>
+	<button class="div_load_bu">div_load_bu</button>
+	<hr>
+
+<!-- resize -->
+	<div class="div_resize">
+		<p>Window resized <span>0</span> times.</p>
+		<p>Try resizing your browser window.</p>
+	</div>
+	<hr>
+
+<!-- scroll -->
+	<div class="div_scroll">
+		안녕하세요 NextIT 교육센터 입니다. 지금은 화면구현 수업입니다.
+		안녕하세요 NextIT 교육센터 입니다. 지금은 화면구현 수업입니다.
+		안녕하세요 NextIT 교육센터 입니다. 지금은 화면구현 수업입니다.
+		안녕하세요 NextIT 교육센터 입니다. 지금은 화면구현 수업입니다.
+		안녕하세요 NextIT 교육센터 입니다. 지금은 화면구현 수업입니다.
+		안녕하세요 NextIT 교육센터 입니다. 지금은 화면구현 수업입니다.
+		안녕하세요 NextIT 교육센터 입니다. 지금은 화면구현 수업입니다.
+		안녕하세요 NextIT 교육센터 입니다. 지금은 화면구현 수업입니다.
+	</div>
+	<p>Scrolled <span class="span_scroll">0</span> times.</p>
+	<hr>
+
+<!-- error -->
+	<div class="div_error">
+		<img src="img1.jpg" alt="running picture">
+		<p>&lt;위 이미지는 윈도우 배경화면 입니다.&gt;</p>
+	</div>
+	<hr>
+
+<!-- change -->
+	<div class="div_change">
+		<input type="text" value="" placeholder="아이디를 입력해주세요">
+	</div>
+	<hr>
+
+<!-- blur -->
+	<div class="div_blur">
+		<input type="text" value="" placeholder="이름을 입력해주세요">
+	</div>
+	<hr>
+
+<!-- select -->
+	<div class="div_select">
+		<input type="text" style="width: 300px;" value="이부분을 선택(드레그)해주세요">
+	</div>
+	<hr>
+
+<!-- submit -->
+	<div class="div_submit">
+		<form action="./05_jQuery_08_01_문서객체조작_메서드.html">
+			<input type="text" id="mem_id" name="mem_id" value="" placeholder="id :">
+			<input type="submit" name="" id="" value="제출">
+		</form>
+	</div>
+	<hr>
+
+<!-- mouse  -->
+	<div class="div_mouse">
+		<h2 style="display:block; width: 400px; height:50px; 
+			background-color: lightblue; ">마우스 이벤트 관련 태그입니다.</h2>
+	</div>
+	<hr>
+
+<!-- keyboard -->
+	<div class="div_keyboard">
+		<input type="teext" value="" placeholder="아무키나 눌러주세요">
+	</div>
+	<hr>
+
+<!-- trigger -->
+	<div class="div_trigger">
+		<p class="p_101">trigger로 강제로 이벤트 발생시키기</p>
+		<p class="p_102">trigger로 강제로 사용자 정의 이벤트 발생시키기</p>
+	</div>
+	<hr>
+
+<!-- one -->
+	<div class="div_one">
+		<p >(클릭해주세요 ) 지금은....</p>
+	</div>
+
+<!-- off -->
+	<div class="div_off">
+		<p >.div_keyboard에 keyboad 이벤트 제거</p>
+	</div>
+
+</body>
+</html>
+

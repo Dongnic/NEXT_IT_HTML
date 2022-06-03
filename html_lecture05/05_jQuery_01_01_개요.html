@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+ 
+/*
+jQuery
+    개요
+        jQuery는 모든 브라우저에서 동작하는 클라이언트 자바스크립트 라이브러리 입니다.
+        무료로 사용 가능한 오픈 소스 라이브러리 입니다.
+        거의 완벽한 크로스 브라우저를 지원한다.
+        메서드 체인(연쇄구현)방식의 프로그래밍 패턴을 지원한다.
+        DOM상호작용부터 Ajax까지 지원한다.
+        풍부한 플러그인을 지원한다.
+        참고
+            https://api.jquery.com
+
+    기능
+        jQuery는 다음 기능을 위해 제작되었습니다.
+            문서 객체 모델과 관련된 처리를 쉽게 구현
+            일관된 이벤트 연결을 쉽게 구현
+            시각적 효과를 쉽게 구현
+            Ajax 애플리케이션을 쉽게 개발
+
+    적용방법
+            1)  CDN 호스트
+            2)  jQuery 내려 받는 방법
+
+jQuery 충돌 방지
+    개요
+        자바스크립트에서 식별자를 사용할때 $를 사용하는 경우가 있으며 이외에도 
+            여러 플러그인에서 식별자로 $를 사용합니다.
+            따라서 jQuery이외에 다른 부분에서 $를 사용할경우 충돌이 발생합니다.
+
+    방지법
+        충돌을 방지할때에는 $.noConflit() 메서드를 사용합니다. 
+            $.noConflit() 메서드를 사용한 후에는 jQuery 식별자로 
+            $ 대신 jQuery를 사용합니다.
+
+    예시)
+        $.noConflit();
+        jQuery(document).ready(function(){   //$ 대신 jQuery사용
+        });
+ 
+
+jQuery로 할수 있는 것들 
+    1 jQuery로 태그 생성
+    2 jQuery로 태그 선택 ( CSS 선택자 사용 가능 )
+    3 jQuery로 태그 속성 변경
+    4 jQuery로 태그 이벤트
+    5 jQuery로 태그 효과
+    6 jQuery utilies
+*/
+
+
+/*
+문서 객체 생성
+    개요
+        문서 객체는 크게 텍스트 노드를 갖는 문서 객체와 텍스트 노드를 갖지 않는 문서 객체로 나눌수 있습니다.
+        jQuery를 사용하면 정말 간단하게 문서 객체를 생성할 수 있습니다. 
+    
+    생성방법
+        $("생성할태그")  문서 객체를 생성합니다. 
+
+    사용법
+        $(<h1></h1>).html("안녕하세요 NextIT 교육센터 입니다.");
+*/
+function create_h1(){
+    $("<h1></h1>").text("안녕하세요 NextIT 교육센터 입니다.").appendTo(".create_h1");
+}
+function create_img(){
+    $("<img/>").attr("src", "./images/img1.jpg").appendTo(".create_img");
+}
+</script>
+</head>
+<body>
+    <div class="create_h1">
+        <!-- create_h1 -->
+    </div>
+    <input type="button" onclick="create_h1()" value="h1_태그생성">
+    <hr><br>
+    <div class="create_img">
+        <!-- create_img -->
+    </div>
+    <input type="button" onclick="create_img()" value="img_태그생성">
+
+</body>
+</html>

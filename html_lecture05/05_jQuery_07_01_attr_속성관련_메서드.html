@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<style>
+</style>
+<script>
+
+ /*
+
+속성(Atribute) 관련 메소드들
+		attr( name )
+				메치된 첫 번째 요소의 특정 어트리뷰트에 접근하여 값을 가져온다 . 
+					만일, 지정된 어트리뷰트명이 존재하지 않는다면 undefined가 반환된다.
+				
+		attr( key, value ) 
+				모든 매치되는 요소들의 단일속성의 값을 지정 한다.
+
+		attr( {key:value, key:vavlue} ) 
+				모든 매치되는 요소들의 어트리뷰트를 키/값으로 설정 한다.
+
+		attr( key, function )
+				모든 매치되는 요소들에 함수를 실행한다.
+				
+		removeAttr(name) 
+				매치 된 요소 각각으로부터 해당 속성을 제거 한다.
+
+*/
+
+$(document).ready(function(){
+
+//attr( name )
+	$(".fn_attr_01").click(function(){
+		let input_value = $(".div_attr > input:first").attr("value");
+		console.log("input_value:::::"+input_value);
+	});
+
+//attr( key:value )
+	$(".fn_attr_02").click(function(){
+		$(".div_attr > input:eq(1)").attr( "type", "button");
+	});
+	
+//attr( {key:value, key:value} )
+	$(".fn_attr_03").click(function(){
+		$(".div_attr > input:eq(2)").attr({value: "이번시간은 jQuery 입니다.", type:"button"});
+	});
+
+//attr( key, function(){})
+	$(".fn_attr_04").click(function(){
+		$(".div_attr > input").attr("type", function(index, value){
+			console.log("index:::"+index+"  , value:::"+value);
+			console.log($(this).val());
+			if(index%2==0){
+				$(this).css("color","red");
+			}else{
+				$(this).css("color","blue");
+			}
+			
+		});
+	});
+
+});
+</script>
+</head>
+<body>
+	<div class="div_attr">
+		<input type="text" value="안녕하세요"><br>
+		<input type="text" value="NextIT 교육센터 입니다."><br>
+		<input type="text" value="만나서 반갑습니다."><br>
+		<input type="text" value="지금은 화면구현 수업입니다.."><br>
+
+	</div>
+	<button class="fn_attr_01">fn_attr_01</button>
+	<button class="fn_attr_02">fn_attr_02</button>
+	<button class="fn_attr_03">fn_attr_03</button>
+	<button class="fn_attr_04">fn_attr_04</button>
+</body>
+</html>
+

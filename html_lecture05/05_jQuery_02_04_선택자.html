@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+     $(function(){
+
+        //:hover
+        $('h1').hover(function(){
+            $(this).css("color", "blue");
+            // 여기서 this는 jQuery로 선택된 요소를 뜻함!!!!!
+        },function(){
+            $(this).css("color", "red");
+        });
+        
+
+        //:active 대용
+        $('h1').click(function(){
+            $(this).css("color", "orange");
+            // 여기서 this는 jQuery로 선택된 요소를 뜻함!!!!!
+        });
+ 
+        //CSS의 :visited 과 :link 는 jQuery에 매칭되는게 없음
+
+     });
+
+    </script>
+</head>
+<body>
+    <div>
+        <h1>반응 선택자</h1>
+        <br><br>
+        <a href="https://www.naver.com">네이버</a><br>
+        <a href="https://www.naver_02.com">네이버01</a><br>
+        <a href="https://www.daum.net">다음</a><br>
+        <a href="https://www.daum_02.net">다음01</a><br>
+        
+    </div>   
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+     $(function(){
+         
+        //enabled
+        $("input:enabled").css("color","red");
+
+        //disabled
+        $("input:disabled").css("color","blue");
+     });
+    </script>
+</head>
+<body>
+<div>
+    <form >
+        <input type="text" id="FirstField" size="40" 
+            value="이 input 태그는 활성 상태입니다."><br><br>
+        <input type="text" id="SecondField" size="40" 
+            value="이 input 태그는 비활성 상태입니다." disabled="disabled">
+        <br><br>
+        <input type="button" value="이 버튼은 활성 상태 입니다.">
+    </form>
+
+</div>    
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+     $(function(){
+       
+        $("h3").click(function(){
+            //before
+             $(".p_tag").before("<p>안녕하세요</p>");
+
+            //after
+             $(".p_tag").after("<p>입니다.</p>");
+       
+        });
+    });
+
+    </script>
+</head>
+<body>
+    <div>
+        <p class="p_tag">NextIt</p>
+        <p class="p_tag">화면구현</p>
+    </div>   
+    <h3>(before, after) 클릭해주세요</h3>
+    
+</body>
+</html>

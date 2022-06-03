@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+/*
+필터선택자
+    1 개요
+        선택자 중에 :기호를 포함하는 선택자를 필터선택자라고 부릅니다.
+   
+    2 위치 필터 선택자
+        :first 			선택된 개체들중 첫 번째 요소와 일치.
+        :last 			선택된 개체들 중 마지막 요소와 일치.
+        :even 			짝수요소들과일치 (0부터 시작 ( 0, 2, 4, ~))
+        :odd 			홀수 요소들과일 치 (0부터 시 작 ) 
+
+    3 함수형태 필터 선택자
+        :not(selector) 	괄호에 주어진 셀렉터와 일치되는 모든 요소를 제외 .
+        :eq(index) 		인덱스에 해당하는 단일 요소와 일치. (0부터 시작 )
+        :gt(index) 		주어진 인덱스보다 큰 인덱스를 갖는 모든 요소.  (0부터 시작 )
+        :lt(index) 		주어진 인덱스보다 작은 인덱스를 갖는 모든 요소. (0부터 시작 )
+        :contains(text) 지정한 텍스트를 포함하는 요소들.
+                            (대소문자 구분, 자식 요소의 텍스트까지 검색）
+        :has(selector) 	지정된 셀렉터에 해당하는 요소를 갖는 모든 요소들과 일치 .
+
+    4 :hidden, :visible 필터 선택자
+        :hidden         hidden 상태인 모든 요소들   
+        :visible        visible 상태인 모든 요소들
+*/
+
+// first
+     function fn_first(){
+        //css
+        $(".div_first > p:first").css("color","red");
+        //text 
+        let p_first = $(".div_first > p:first").text();
+        console.log("p_first::::"+p_first);
+     }
+
+// last
+     function fn_last(){
+        //css
+        $(".div_first > p:last").css("color","orange");
+        //text
+        let p_last = $(".div_first > p:last").text();
+        console.log("p_last::::"+p_last);
+    }
+
+//:even (짝수, 0부터시작)
+    function fn_even(){
+        //css
+        $(".div_first > p:even").css("color","green");
+        //text
+        let p_even = $(".div_first > p:even");
+        let arr_p_even  = [];
+        //each 반복문
+        p_even.each(function(){
+            arr_p_even.push($(this).text());
+            //여기서 this는 jQuery로 선택된 요소를 뜻함!!!!!
+        });
+        console.log("arr_p_even::::"+arr_p_even);
+    }
+
+//:odd (홀수, 0부터시작)
+    function fn_odd(){
+        //css
+        $(".div_first > p:odd").css("color","blue");
+        //text
+        let p_odd = $(".div_first > p:odd");
+        let arr_p_odd  = [];
+        p_odd.each(function(){
+            arr_p_odd.push($(this).text());
+        });
+        console.log("arr_p_odd::::"+arr_p_odd);
+    }
+
+// :not(selector)   
+        // => 05_jQuery_02_11_선택자 
+
+// :eq(index)  //0부터 시작
+    function fn_eq(){
+        //css
+        $(".div_first > p:eq(2)").css("color","purple");
+        //text
+        let p_eq = $(".div_first > p:eq(2)").text();
+        console.log("p_eq::::"+p_eq);
+    }
+
+//:gt(index) //index 큰 수, 0부터 시작 	
+    function fn_gt(){
+        //css
+        $(".div_first > p:gt(2)").css("color","red");
+        //text
+        let p_gt = $(".div_first > p:gt(2)");
+        let arr_p_gt = [];
+        p_gt.each(function(){
+            arr_p_gt.push($(this).text());
+        });
+        console.log("arr_p_gt::::"+arr_p_gt);
+    }
+
+// :lt(index) //index 보다 작은수, 0부터 시작
+    function fn_lt(){
+        //css
+        $(".div_first > p:lt(2)").css("color","orange");
+        //text
+        let p_lt = $(".div_first > p:lt(2)");
+        let arr_p_lt = [];
+        p_lt.each(function(){
+            arr_p_lt.push($(this).text());
+        });
+        console.log("arr_p_lt::::"+arr_p_lt);
+    }
+
+//:contains(text)
+    function fn_contains(){
+        //css
+        $(".div_first > p:contains('입니다')").css("color","green");
+        //text
+        let p_contains = $(".div_first > p:contains('입니다')");
+        let arr_p_contains = [];
+        p_contains.each(function(){
+            arr_p_contains.push($(this).text());
+        });
+        console.log("arr_p_contains::::"+arr_p_contains);
+    }
+
+//:has(selector)
+    function fn_has(){
+        // css
+        $(".div_first > p:has('span')").css("color","blue");
+        // text
+        let p_has = $(".div_first > p:has('span')").text();
+        console.log("p_has::::"+p_has);
+    }
+
+// :hidden
+    function fn_hidden(){
+        // css
+        $(".tag_hidden:hidden").show();
+            //show 보이게하기
+    }
+
+// :visible
+    function fn_visible(){
+        // css
+        $(".tag_hidden:visible").hide();
+            //hide 숨기기
+    }
+ 
+    
+</script>
+<style>
+    
+</style>
+</head>
+<body>
+
+
+    <!-- first, last, even, odd, eq, gt, lt, contains, has -->
+    <div class="div_first">
+        <p>안녕하세요</p>
+        <p>NextIT 교육센터</p>
+        <p>입니다.</p>
+        <p><span>만나서 반갑습니다.</span></p>
+        <p>지금은 화면구현 시간입니다.</p>
+    </div>
+    <input type="button" onclick="javascript:fn_first()" value="fn_first">
+    <input type="button" onclick="javascript:fn_last()" value="fn_last">
+    <input type="button" onclick="javascript:fn_even()" value="fn_even">
+    <input type="button" onclick="javascript:fn_odd()" value="fn_odd">
+    <input type="button" onclick="javascript:fn_eq()" value="fn_eq">
+    <input type="button" onclick="javascript:fn_gt()" value="fn_gt">
+    <input type="button" onclick="javascript:fn_lt()" value="fn_lt">
+    <input type="button" onclick="javascript:fn_contains()" value="fn_contains">
+    <input type="button" onclick="javascript:fn_has()" value="fn_has">
+    
+    <!-- hidden, visible -->
+    <br><br>
+    <p class="tag_hidden" >안녕하세요.</p>
+    <p class="tag_hidden" style="display:none;">NextIT 교육센터 입니다.</p>
+    <input type="button" onclick="javascript:fn_hidden()" value="fn_hidden">
+    <input type="button" onclick="javascript:fn_visible()" value="fn_visible">
+
+ 
+</body>
+</html>

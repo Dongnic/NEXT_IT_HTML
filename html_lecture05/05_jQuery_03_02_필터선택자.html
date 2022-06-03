@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+        
+// 5 입력양식_필터선택자
+$(function(){
+    
+    //:text
+            $("form input:text").css("background-color","red");
+    //:password
+            $("form input:password").css("background-color","yellow");
+    //:button
+            $("form input:button").css("color","green");
+    //:radio
+            $("form input:radio").wrap("<span style='background-color:blue'>");
+    // redio 버튼에 클릭 이벤트    
+            $("form input:radio").click(function(){
+                alert("radio 버튼이 클릭되었습니다.");
+            });
+    //:checkbox
+            $("form input:checkbox").wrap("<span style='background-color:purple'>");
+    //:file
+            $("form input:file").wrap("<span style='background-color:red'>");  
+    //:submit
+            $("form input:submit").css("color","orange");
+    //:reset
+            $("form input:reset").css("color","yellow");
+    
+});
+    //:enabled  
+        //=> 05_jQuery_02_06_선택자
+    //:disabled  
+        //=> 05_jQuery_02_06_선택자
+
+    //:selected
+        function fn_select(){   
+            console.log("fn_select::::::");
+            // val()은 value 값
+            let selected01 = $(":selected").val();
+            console.log("selected01:::::"+selected01);
+        }
+
+    //:checked (체크박스 체크 후 함수 호출)
+        function fn_checkbox(){   
+            console.log("fn_checkbox::::::");
+            
+            let checked01 = $("input[name='region']:checked");
+            let arr_checked01 = [];
+            console.log(checked01);
+            checked01.each(function(){
+                arr_checked01.push($(this).val());
+            });
+            console.log("notice_region::::"+arr_checked01);
+        }
+    
+</script>
+</head>
+<body>
+
+<form action="" name="" method="post" onsubmit="return false">
+    <input type="text" value="" ><br><br>
+    <input type="password" ><br><br>
+    <input type="button" value="버튼태그" ><br><br>
+    <input type="radio" ><br><br>
+    <input type="checkbox" ><br><br>
+    <input type="file" ><br><br>
+    <input type="submit" ><br><br>
+    <input type="reset" ><br><br>
+</form> 
+<hr>
+
+
+<!-- selected -->
+<select>
+    <option>Volvo</option>
+    <option selected="selected">Saab</option>
+    <option>Mercedes</option>
+    <option>Audi</option>
+</select>
+<input type="button" onclick="javascript:fn_select()" value="fn_select"> 
+<br><br>
+
+<hr>
+<!-- checked -->
+<label for="Seoul">
+    <input type="checkbox" name="region" id="Seoul" value="Seoul"/>서울&nbsp;
+</label>
+<label for="Daejeon">
+    <input type="checkbox" name="region" id="Daejeon" value="Daejeon"/>대전&nbsp;
+</label>
+<label for="Gwangju">
+    <input type="checkbox" name="region" id="Gwangju" value="Gwangju"/>광주&nbsp;
+</label>
+<input type="button" onclick="javascript:fn_checkbox()" value="fn_checkbox">
+
+
+
+
+</body>
+</html>

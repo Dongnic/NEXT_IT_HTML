@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+     $(function(){
+   
+        // AND
+        $('div#div_1').css( {"width":"150px", "height":"150px",
+             "background-color": "red"});
+        // AND
+        $('div.div_2').css( {"width":"150px", "height":"150px",
+             "background-color": "blue"});
+        // OR
+        $('.div_2, #div_3').css( {"width":"150px", "height":"150px",
+             "background-color": "green"});
+       
+
+    });
+
+    </script>
+</head>
+<body>
+    <div id="div_1">div_1</div>
+	<div class="div_2">div_2</div>
+    <div id="div_3">div_3</div>
+
+</body>
+</html>

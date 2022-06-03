@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+     $(function(){
+        
+        $("ul li").css("color", "red");
+
+        //first-child
+        $("ul li:first-child").css("color", "blue");
+
+        //last-child
+        $("ul li:last-child").css("color", "orange");
+
+     });
+
+    </script>
+</head>
+<body>
+<div>
+    <ul>
+        <li>Item 1</li> 
+        <li>Item 2</li>
+        <li>Item 3
+          <ul>
+            <li>Item 3.1</li>
+            <li>Item 3.2</li>
+            <li>Item 3.3</li>
+          </ul>
+        </li>
+    </ul>
+
+</div>    
+</body>
+</html>

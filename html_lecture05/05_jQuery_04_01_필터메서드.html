@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+
+
+/* 
+ 기본 필터메서드
+        개요
+            - jQuery의 선택자를 사용하면 원하는 문서 객체를 대부분
+                선택할 수 있습니다. 다만 기본적으로 지원하지 않는 필터로 
+                문서 객체를 선택해야 한다면 기본필터 메서드를 사용해야 합니다.
+              
+        메서드
+            filter() 문서 객체를 필터링 합니다.
+
+        사용형태
+            1  $(selector).filter(selector);        
+            2  $(selector).filter(function(){});
+            //ps. 1번은 이전과 필터선택자와 사용법이 유사함
+*/
+$(function(){
+    // 방법1
+        // CSS 여러개를 사용할 경우 중괄호{} 사용
+        $("h3").filter(":even").css({backgroundColor:"black", color:"white" }); 
+    // 방법2
+        $("h3").filter(function(index){
+            return index%3 == 0; 
+        }).css({backgroundColor:"red", color:"white"});
+
+        
+    
+    // 방법 1
+        $(".p_filter_01").click(function(){
+            $(".p_filter_table td").filter(":even").css("color", "red");
+            $(".p_filter_table td").filter(":odd").css("color", "blue");
+        });
+    // 방법 2
+        $(".p_filter_02").click(function(){
+            $(".p_filter_table td").filter(":odd").css("color", "red");
+            $(".p_filter_table td").filter(":even").css("color", "blue");
+            $(".p_filter_table td").filter(function(index, element){
+                console.log ("인덱스:::"+index+"  , td값은:::"+$(element).text() );
+            });
+            
+        });
+    
+
+});
+
+ 
+</script>
+</head>
+<body>
+        <h3>header-0</h3>     
+        <h3>header-1</h3>     
+        <h3>header-2</h3>     
+        <h3>header-3</h3>     
+        <h3>header-4</h3>     
+        <h3>header-5</h3>     
+        <h3>header-6</h3>     
+
+        
+
+<!-- filter -->
+    <table class="p_filter_table">
+        <tr>
+            <td>00</td><td>11</td><td>22</td>
+        </tr>
+        <tr>
+            <td>33</td><td>44</td><td>55</td>
+        </tr>
+        <tr>
+            <td>66</td><td>77</td><td>88</td>
+        </tr>
+    </table>
+    <button class="p_filter_01">p_filter_01</button>
+    <button class="p_filter_02">p_filter_02</button>
+     
+</body>
+</html>

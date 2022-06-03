@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<style>
+.intro {
+  font-weight: bold;
+  color: #fff;
+  background-color: orange !important;
+}
+</style>
+<script>
+
+ /*
+	css 관련 메서드
+            css( name )
+                매치되 는 첫번째 요소의 스타일 속성을 반환한다.
+                    에 : var color = $(this).css('color'):
+            
+            css( name, value )
+                    매치된 모든 요소에 대해 단일 스타일 속성을설정한다.
+                    에 : $(this).css('color', 'yelllow');
+
+            css( properties )
+                    매치된 모든 요소들의 스타일 속성에 키/값을설정한다.
+                    에 : $(this).css( { 'color':'yellow','font-weight'：'bolder'});
+				
+            addClass(class) 
+                    매치된 요소들의 각 집합에 지정된 CSS 클래스를 추가한다.
+            
+            hasClass(class)
+                    지정된 클래스가 매치된 요소 집합 중 최소 한 군데 이상 적용되어 있다면 true를 반환한다.
+            
+            removeClass(class)
+                    매치된 요소들의 각 집합에서 지정된 CSS 클래스 혹은 모든 클래스를 제거 한다.
+            
+            toggleClass(class )
+                    지정된 클래스가 적용되지 않았다면 적용하고，이미 적용되어 있다면 제거한다.
+*/
+
+$(document).ready(function(){
+
+// css 정보 취득
+    $(".fn_color_01").click(function(){
+        console.log( $(".div_color > p:first").css("background-color"));
+        console.log( $(".div_color > p:nth-child(2)").css("background-color"));
+        console.log( $(".div_color > p:last").css("background-color"));
+    });
+
+// css( name, value ) 스타일 속성 설정
+    $(".fn_color_02").click(function(){
+        $(".div_color > p:first").css("background-color", "yellow");
+    });
+
+// css( properties ) 
+    $(".fn_color_03").click(function(){
+        $(".div_color > p:nth-child(2)").css({"background-color":"purple", "color":"#fff", "font-weight": "bold"});
+    });
+
+// addClass()
+    $(".fn_addClass").click(function(){
+        $(".div_color > p:last").addClass("intro");
+    });
+    
+// hasClass()
+    $(".fn_hasClass").click(function(){
+        console.log ( $(".div_color > p").hasClass("intro"));
+            // fn_addClass() 버튼 클릭 하기전에 실행하면 false 이고 fn_addClass 클릭 후 실행하면 true 
+    });
+
+// removeClass()
+    $(".fn_removeClass").click(function(){
+        $(".div_color > p:last").removeClass("intro");
+            // fn_addClass() 버튼 클릭해서 intor class 설정 후 실행하기 
+    });
+
+// toggleClass()
+    $(".fn_toggleClass").click(function(){
+        $(".div_color > p:last").toggleClass("intro");
+             
+    });
+
+
+});
+</script>
+</head>
+<body>
+
+    <div class="div_color">
+        <p style="background-color: rgb(255, 0, 0)">This is red color</p>
+        <p style="background-color:rgb(0, 128, 0)">This is green color</p>
+        <p style="background-color:rgb(0, 0, 255)">This is a blue color</p>
+    </div>
+    <button class="fn_color_01">fn_color_01</button>
+    <button class="fn_color_02">fn_color_02</button>
+    <button class="fn_color_03">fn_color_03</button>
+    <button class="fn_addClass">fn_addClass</button>
+    <button class="fn_hasClass">fn_hasClass</button>
+    <button class="fn_removeClass">fn_removeClass</button>
+    <button class="fn_toggleClass">fn_toggleClass</button>
+ 
+</body>
+</html>
+

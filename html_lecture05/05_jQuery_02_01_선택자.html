@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+   
+
+    /* $(function(){} 문서가 read 되었을때 이벤트 발생 시킴
+            $(document).ready(function(){}) 와 같으며 축약형 입니다.  */
+     $(function(){ 
+
+        $('*').css('color', 'red');
+        $('p').css('color', 'orange');
+        $('#p_tag_03').css('color', 'yellow');
+        $('.p_class_04').css('color', 'green');
+       
+     });
+
+    </script>
+</head>
+<body>
+    <h3>1 전체선택자: NextIT 화면구현 수업니다.</h3>
+
+    <p>2 태그선택자: p태그를 선택자로 사용하였습니다.</p>
+
+    <p id="p_tag_03">3 아이디 선택자: 선택자로 id 속성을 사용하였습니다.</p>
+
+    <p class="p_class_04">4 클래스선택자: 선택자로 class 속성을 사용하였습니다.</p>
+</body>
+</html>

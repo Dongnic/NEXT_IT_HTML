@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+     $(function(){
+
+        //checked
+        //방법1
+        $(':checked').wrap("<span style='background-color:red'>");
+        //방법2
+        $('input:checked').wrap("<span style='background-color:blue'>");
+        //방법3
+        $('input[type="checkbox"]:checked').wrap("<span style='background-color:orange'>");
+        
+        //focus
+        $('input[type="text"]').focus(function(){
+            $(this).css("color", "orange");
+        });
+     
+     });
+
+    </script>
+</head>
+<body>
+<div>
+    <div>
+        <input type="checkbox" id="input_checkbox" name="my-checkbox" 
+            id="opt-in" checked>
+            
+        <label for="input_checkbox">Check me!</label>
+
+        <br><br>    
+        <input type="text" size="30" value="저는 포커스를 받으면 주황색으로 됩니다.">   
+
+    </div>
+
+</div>    
+</body>
+</html>
