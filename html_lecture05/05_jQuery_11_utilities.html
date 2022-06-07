@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+
+//jQuery utilities  
+
+/*
+  jQuery Miscellaneous Methods
+  https://www.w3schools.com/jquery/jquery_ref_misc.asp
+*/
+
+/*
+each()	
+    개요
+        jQuery를 사용해 배열을 관리하고자 할때 each 메서드를 사용할 수 있습니다.
+        $.each() 메서드는 object 와 배열 모두에서 사용할 수 있는 일반적인 반복 함수입니다.
+        
+    형태
+        $.each(object, function(index, item){ }); 
+        $(selector).each(function(index, item){ })
+
+data()	
+    개요
+        해당 엘리먼트에 Javascript Type의 value를 <key, value>형태로 저장할 수 있으며, 
+          값으로 저장되어 있는 데이터를 읽습니다.
+    형태
+        $(selector).data(name)
+
+removeData()	
+    개요
+        jQery.data() 함수를 이용해 세팅했던 데이터를 제거합니다. 
+          key를 알아서 그 key로 접근하면 실제 value가 제거되게 되는 것입니다. 
+            인자를 주지 않으면 모든 value가 한꺼번에 삭제됩니다.
+    형태
+        $(selector).removeData(name)
+
+get()	
+    개요
+        .get()은 선택한 요소를 배열(Array)로 가져옵니다.
+    형태
+        $(selector).get()
+        $(selector).get(index)
+    
+toArray()	
+    개요
+        선택요소를 배열로 저장하는 메소드  
+        get()과 동일한 기능을 수행한다. 차이점이라면 get()은 인자를 사용해 원하는 값을 
+          선택할 수 있다는 점이고 toArray()는 인자를 사용하지 않고 모든값을 배열로 가져온다는 점이다.
+    형태
+      $(selector).toArray()
+
+index()	
+    개요
+        선택된 요소의 index 얻기
+    형태
+        $(selector).index()
+
+$.param()	
+    개요
+        jQuery.param() 함수를 이용하여 url parameter를 쉽게 생성하여 사용할 수 있습니다.
+          또한  한글또는 특수문자가 value로 있을 경우 인코딩 됩니다.
+    형태
+        $.param(object,trad)
+ 
+*/ 
+
+
+//each()
+    //배열 
+    function fn_each01(){
+      let arr= [ 
+        'NextIt',
+        8850,
+        true
+      ];
+      $.each(arr, function (index, item) {
+        //index는 순서, item은 value
+        let result =  index +' : ' + item; 
+        console.log(result); 
+      })
+    }
+
+    //객체 
+    function fn_each02(){
+      let product02 = {
+        name: "BMW X4",
+        type: "3000cc",
+        country: "Germany",
+        color: ["red","black","blue","white","green"]
+      };
+      
+      $.each(product02, function (index, item) { 
+        let result =  index +' : ' + item; 
+        console.log(result); 
+      
+      });
+    }
+
+    //DOM요소
+    function fn_each03(){
+      $('.list li').each(function (index, item) {
+        console.log(item);
+
+        let result =  index +' : ' + $(item).text(); 
+        console.log(result);
+      });
+    }
+
+//data()
+    function fn_data01(){
+      //객체로 저장
+      let make_view  = {};
+        make_view.subject01 = "HTML";
+        make_view.subject02 = "CSS";
+        make_view.subject03 = "javaScript";
+
+      $(".data_div").data(make_view);
+      let subject03 = $(".data_div").data("subject03");
+      console.log("subject03::::::"+subject03);
+
+      //문자열로 저장
+      $(".data_div").data("welcome_text", "Hello World");
+      console.log("welcome_text: " + $(".data_div").data("welcome_text"));
+    }
+
+//removeData()
+    //문자열로 저장 후 삭제
+    function fn_data02(){
+      
+      $(".data_div").data("welcome_text", "Hello World");
+      console.log("welcome_text: " + $(".data_div").data("welcome_text"));
+      
+      $(".data_div").removeData("welcome_text");
+      console.log("welcome_text: " + $(".data_div").data("welcome_text"));
+    }
+
+//get()
+    function fn_get01(){
+        let lis =$(".list li").get();
+        console.log("lis.length::::"+ lis.length);
+
+        $.each(lis, function(index, item){
+          let result = index +" :::: "+ $(item).text();
+            console.log(result);
+        });
+//get(index)
+        let lis_1 =$(".list li").get(1);
+        console.log("lis_1:::::"+$(lis_1).text());
+    }
+
+//toArray()
+    function fn_toArray01(){
+      let lis =$(".list li").toArray();
+      console.log("lis.length::::"+lis.length);
+      for (let i = 0; i< lis.length; i++) {
+        console.log("lis의 "+ i +" 번째 값은::: "+lis[i].textContent);
+      }
+    }
+
+//index()
+    $(function(){
+      //li 클릭하기
+      $(".list > li").click(function(){
+          alert($(this).index());
+      });
+    });    
+
+//$.param()
+    function fn_param01(){
+        let make_view  = {};
+        make_view.subject01 = "HTML_&&&입니다";
+        make_view.subject02 = "CSS_&&&입니다";
+        make_view.subject03 = "javaScript_&&&입니다";
+        let param01 = $.param(make_view)
+        $(".param_div").text(param01);
+    }
+</script>
+</head>
+<body>
+<input type="button" onclick="fn_each01()" value="fn_each01">
+<input type="button" onclick="fn_each02()" value="fn_each02"><br>
+
+<ul class="list"> 
+  <li>안녕하세요.</li> 
+  <li>NextIT_교육센터 입니다.</li> 
+  <li>지금은 화면구현 수업 입니다.</li> 
+</ul>
+<input type="button" onclick="fn_each03()" value="fn_each03">
+
+<hr><br>
+<div class="data_div">
+  <!-- data_div -->
+</div>
+<input type="button" onclick="fn_data01()" value="fn_data01">
+<input type="button" onclick="fn_data02()" value="fn_data02">
+
+<hr><br>
+<input type="button" onclick="fn_get01()" value="fn_get01">
+
+<hr><br>
+<input type="button" onclick="fn_toArray01()" value="fn_toArray01">
+
+<hr><br>
+<div class="param_div"> 
+  <!-- param_div -->
+</div>
+<input type="button" onclick="fn_param01()" value="fn_param01">
+</body>
+</html>

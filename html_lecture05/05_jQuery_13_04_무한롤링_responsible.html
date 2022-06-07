@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NextIT</title>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<style>
+*{ 
+    margin:0 auto;
+    padding:0;
+    text-decoration:none;
+    list-style: none;
+}
+.product_con{
+    height: 600px;
+    background-color: lightblue;
+}
+.product_list{
+    height: 600px;
+    background-color: lightpink;
+    position: relative;
+}
+
+
+.product_list > li{
+    height: 600px;
+    background-color: lightyellow;
+}
+.product_list > li:nth-child(1){
+    background-color: lime;
+    background: url("./images/img1.jpg");
+    background-size: 100% 600px;
+}
+.product_list > li:nth-child(2){
+    background-color: magenta;
+    background: url("./images/img2.jpg");
+    background-size: 100% 600px;
+}
+.product_list > li:nth-child(3){
+    background-color: lightslategray;
+    background: url("./images/img100.jpg");
+    background-size: 100% 600px;
+}
+.product_list > li:nth-child(4){
+    background-color: olive;
+    background: url("./images/img102.jpg");
+    background-size: 100% 600px;
+}
+.product_list > li:nth-child(5){
+    background-color: orange;
+    background: url("./images/img104.jpg");
+    background-size: 100% 600px;
+}
+
+
+.product_list > li{
+    position: absolute;
+    top: 0;
+}
+.product_list > li > a{
+    font-size: 120px;
+    color: #fff;
+}
+.product_list > li{
+    text-align: center;
+}
+
+
+.product_list{
+    overflow: hidden;
+}
+
+.product_list{
+    background-color: #fff;
+}
+
+/* 3차-1 좌우 버튼 CSS (3차-2) */
+.btn_prev, .btn_next {
+    width: 60px;
+    height: 26px;
+    background-color: lightcoral;
+}
+/* 3차-2 좌우 버튼 CSS (3차-3) */
+.btn_prev{
+    position:absolute;
+    left: 50px;
+    top: calc( 300px - 26px);
+    background-color: transparent;
+    color: #fff;
+    font-size: 25px;
+}
+/* 3차-3 좌우 버튼 CSS (All-e) */
+.btn_next{
+    position:absolute;
+    right: 60px;
+    top: calc( 300px - 26px);
+    background-color: transparent;
+    color: #fff;
+    font-size: 25px;
+}
+</style>
+<script> 
+//1차-6 page 초기값 세팅(1차-7)
+let page = "next";
+let win_size;
+
+$(function(){
+    
+    /*1차-1 함수로 분리할꺼라서 주석 처리(1차-2)
+    win_size= document.body.offsetWidth  -20;
+    console.log("screen.availWidth::::"+document.body.offsetWidth );
+    let product_con = $(".product_con");
+    let product_list = $(".product_list");
+    let product_list_li = $(".product_list > li");
+    product_con.css("width", win_size);
+    product_list.css("width", win_size);
+    product_list_li.css("width", win_size);
+    product_list_li.css("left", win_size);
+    let img =  $(".product_list > li:nth-child(1)");
+    img.css("left",0);
+    */
+
+    $(".btn_next").click(function(){
+        page = "next";
+        //2차-2 좌우버튼 클릭시 오토롤링 중지(2차-3)
+        clearInterval(time_interval);
+        find_num(page);
+
+    });
+    $(".btn_prev").click(function(){
+        page = "prev";
+        //2차-3 좌우버튼 클릭시 오토롤링 중지(2차-e)
+        clearInterval(time_interval);
+        find_num(page);
+
+    });
+
+    //1차-2 resize 이벤트 걸기(1차-3)
+    $(window).resize(function() {
+         alert("resize");
+        //1차-3 창 크기 구하는 함수 분리후 호출(1차-4)
+        fn_win_size();
+        //1차-5 사이즈 구하고 순서번호 함수 호출(1차-6)
+        find_num(page);
+    });
+
+    //1차-7 위에서 분리했으므로 로딩되면 한 번은 실행 해줘야 함(1차-e)
+    fn_win_size();
+
+    //2차-1 setInterval으로 오토롤링(2차-2)
+    let time_interval= setInterval(function(){
+        find_num(page); 
+    },3000);
+});  
+
+
+let cur_no =0; 
+let next_no =1;
+
+function find_num(page){
+    console.log("page::::"+page);
+    
+
+    if(page == "next"){
+
+         if(cur_no==0 && next_no == 5){
+            cur_no= 5;
+            next_no= 1;
+        }else{
+
+            if(cur_no == 5){
+                cur_no =1;
+            }else{
+                if(cur_no != next_no){
+                    cur_no++;
+                }
+            }
+            next_no = cur_no +1;
+            if(next_no == 6){
+                next_no =1;
+            }
+            
+        }
+        find_img(cur_no, next_no, page);
+
+    }else{
+        if(cur_no == 0 && next_no ==1 ){
+            cur_no = 1;
+            next_no = 5;
+            
+        }else{
+            cur_no = next_no;
+            next_no = cur_no -1;
+            if (next_no == 0 ){
+                next_no = 5;
+            }
+        }
+
+        find_img(cur_no, next_no, page);
+        cur_no--;
+    }
+    
+};
+
+function find_img(cur_no, next_no, page){
+    console.log("cur_no:::"+cur_no+", next_no:::"+next_no+", page::::"+page);
+    let next_size, cur_size;
+    if(page == "next"){
+        next_size = win_size;
+        cur_size = win_size*-1;
+    }else{
+        next_size = win_size*-1;
+        cur_size = win_size;
+    }
+    $(".product_list > li:nth-child("+next_no+")")
+        .css({ left : next_size, display : 'block'});
+    $(".product_list > li:nth-child("+cur_no+")")
+        .stop().animate({left : cur_size, opacity : 0});
+    $(".product_list > li:nth-child("+next_no+")")
+        .stop().animate({left : 0, opacity : 1},500);
+
+}
+
+//1차-4  1차-1에 주석 처리한 부분으로 함수 만들기(1차-5)
+function fn_win_size(){
+    win_size= document.body.offsetWidth  -20;
+    console.log("screen.availWidth::::"+document.body.offsetWidth );
+
+    let product_con = $(".product_con");
+    let product_list = $(".product_list");
+    let product_list_li = $(".product_list > li");
+
+    product_con.css("width", win_size);
+    product_list.css("width", win_size);
+    product_list_li.css("width", win_size);
+
+    product_list_li.css("left", win_size);
+    let img =  $(".product_list > li:nth-child(1)");
+    img.css("left",0);
+}
+</script>
+</head>
+<body>
+    <div class="product_con">
+		<ul class="product_list">
+            <li><a href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#">5</a></li>
+		</ul>
+	</div>
+    <div>
+        <a class="btn_prev" href="#none">&lt;prev</a>
+        <a class="btn_next" href="#none">next&gt;</a>
+    </div>
+</body>
+</html>
+
+
+

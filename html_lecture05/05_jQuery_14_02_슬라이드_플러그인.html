@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>skitter</title>
+
+<!-- CSS 수정함 -->
+<link href="./css/skitter_02.css" type="text/css" media="all" rel="stylesheet" />
+
+<script src="./js/jquery-2.1.1.min.js"></script>
+<script src="./js/jquery.easing.1.3.js"></script>
+<script src="./js/jquery.skitter.min.js"></script>
+<script> 		
+
+$(function() {
+  //$('.skitter-large').skitter();
+  $('.skitter-large').skitter({
+		dots:false,
+		theme: 'square'
+		
+  });
+
+});
+</script>
+</head>
+<body>
+<div class="skitter skitter-large with-dots">
+	<ul>
+		<li>
+		<a href="#cut">
+			<img src="./images/img1.jpg" class="directionTop" /><!--directionTop 위에서  -->
+		</a>
+		<!-- <div class="label_text">
+			<p>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+			<a href="#see-more" class="btn btn-xs btn-warning">See more</a>
+			</p>
+		</div> -->
+		</li>
+		<li>
+		<a href="#swapBlocks">
+			<img src="./images/img2.jpg" class="cubeHide" /><!--cubeHide 우측에서 세로   -->
+		</a>
+		<!-- <div class="label_text">
+			<p>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+			<a href="#see-more" class="btn btn-xs btn-warning">See more</a>
+			</p>
+		</div> -->
+		</li>
+		<li>
+		<a href="#swapBarsBack">
+			<img src="./images/img3.jpg" class="directionRight" />
+		</a>
+		<!-- <div class="label_text">
+			<p>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+			<a href="#see-more" class="btn btn-xs btn-warning">See more</a>
+			</p>
+		</div> -->
+		</li>
+	</ul>
+	 
+	</div>
+</body>
+</html>

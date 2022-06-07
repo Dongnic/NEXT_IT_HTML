@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NextIT</title>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<style>
+/* 2차 CSS  */
+*{ 
+    /* 중앙에위치시키기 */
+    margin:0 auto;
+    padding:0;
+    text-decoration:none;
+    list-style: none;
+}
+.product_con{
+    width: 1000px;
+    height: 300px;
+    background-color: lightblue;
+}
+.product_list{
+    width: 300px;
+    height: 300px;
+    background-color: lightpink;
+}
+
+/* li 세팅 */
+.product_list > li{
+    width: 200px;
+    height: 200px;
+    background-color: lightyellow;
+}
+.product_list > li:nth-child(1){
+    background-color: lime;
+}
+.product_list > li:nth-child(2){
+    background-color: magenta;
+}
+.product_list > li:nth-child(3){
+    background-color: lightslategray;
+}
+.product_list > li:nth-child(4){
+    background-color: olive;
+}
+.product_list > li:nth-child(5){
+    background-color: orange;
+}
+
+/*이제 크기 줄이기*/
+.product_con{
+    width: 300px;
+}
+.product_list{
+    width: 200px;
+}
+
+/* .product_list > li를 absolute를 사용하기 위해서 상위요소에 relative 추가하기  */
+.product_list{
+    position: relative;
+}
+/* li 초기 표시될 위치 옆에 한곳에 모아두기 */
+.product_list > li{
+    position: absolute;
+    top: 0;     
+    left: 200px;
+}
+.product_list > li > a{
+    font-size: 120px;
+    color: #fff;
+}
+.product_list > li{
+    text-align: center;
+}
+/* 이제 자리 정했으니 숨기기 */
+.product_list{
+    overflow: hidden;
+}
+/* 첫번째 li 위치 잡기  */
+.product_list > li:nth-child(1){
+    left: 0;
+}
+
+</style>
+<script> 
+//3차-1 next 버튼에 이벤트 걸기(3차-2)
+$(function(){
+    $(".btn_next").click(function(){
+        // alert("123");    
+
+        //next_img();  //3차-2 이미지변경 함수 호출하기 (3차-3)
+        find_num(); //4차-1 이미지변경함수에 순번을 넘겨주기 위해서 순번생성 함수 호출하기 (4차-2)
+
+    });
+});  
+
+
+let cur_no =0; 
+let next_no;
+
+function find_num(){
+    //console.log("cur_no:::"+cur_no);
+
+    //4차-2 단순증가 처리 (4차-3)
+    /*cur_no++
+    next_no = cur_no +1;
+    
+    */
+
+    //4차-5 cur_no가 5일때, next_no가 6일때 처리(All-e)
+    if(cur_no == 5){
+        cur_no =1;
+    }else{
+        cur_no++;
+    }
+    next_no = cur_no +1;
+    if(next_no == 6){
+        next_no =1;
+    }
+
+    //4차-3 next_img함수에 생성한 순번으로 호출하기 (4차-4)
+    next_img(cur_no, next_no);
+};
+
+//4차-4 순번으로 이미지 처리하기 (4차-5)
+function next_img(cur_no, next_no){
+    console.log("cur_no:::"+cur_no+", next_no:::"+next_no);
+
+    $(".product_list > li").hide();
+    $(".product_list > li:nth-child("+cur_no+")").show();
+    $(".product_list > li:nth-child("+next_no+")").show();
+    $(".product_list > li:nth-child("+cur_no+")").css("left","0px");
+    $(".product_list > li:nth-child("+next_no+")").css("left","200px");
+    $(".product_list > li:nth-child("+cur_no+")").animate({left:"-200px"});
+    $(".product_list > li:nth-child("+next_no+")").animate({left:"0px"});
+}
+
+
+
+//3차-3 이미지 한개만 이동시켜보고 확인후 주석 처리하기 (3차-e)
+/*
+function next_img(){
+    $(".product_list > li").hide();
+    $(".product_list > li:nth-child(1)").show();
+    $(".product_list > li:nth-child(2)").show();
+    $(".product_list > li:nth-child(1)").css("left","0px");
+    $(".product_list > li:nth-child(2)").css("left","200px");
+    $(".product_list > li:nth-child(1)").animate({left:"-200px"});
+    $(".product_list > li:nth-child(2)").animate({left:"0px"});
+}
+*/
+ 
+</script>
+</head>
+<body>
+<!-- 1차 HTML 그리기 -->
+<div class="product_con">
+    <ul class="product_list">
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+    </ul>
+</div>
+<div>
+    <a class="btn_prev" href="#">&lt;prev</a>    
+    <a class="btn_next" href="#">next&gt;</a>
+</div>
+</body>
+</html>
+
+
+

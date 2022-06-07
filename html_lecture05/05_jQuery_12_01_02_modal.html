@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>NextIT</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+ 
+<!-- https://jquerymodal.com/ -->
+
+<style>
+	#modal_div{
+		display: none;
+	}
+	#modal_div > a{
+		text-decoration: none;
+		color: gray;
+	}
+</style>
+</head>
+<body>
+<button id="join">join</button>
+<div id="modal_div" >
+	<p>안녕하세요 NextIT 교육센터 입니다.</p>
+	<a href="#" rel="modal:close">닫기0</a>
+	<a href="#" id="btn1"><button type="button">닫기1</button></a>
+	
+</div>
+ 
+ 
+<script>
+	$('#join').click(function(event) {
+		$("#modal_div").modal({
+			fadeDuration: 250
+			,escapeClose: false // ESC 키로 닫는거 비활성화
+			,clickClose: false	//아무곳이나 클릭해도 닫히는거 비활성화
+			,closeExisting: false  //기본적으로 1개의 모달만 열립니다, 그러나 동시에 여러 모달의 스택이 필요한 경우 closeExisting 옵션을 false로 설정하면 됩니다.
+			//,showClose: false	   // 닫기버튼 비활성화
+		});
+	});
+	$("#btn1").on( "click", function() {
+		alert("btn1")	
+          $('#btn1').attr("rel", "modal:close");
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<style>
+*{
+    list-style: none;
+}
+.div_animate_01 > div {
+	width: 50px;
+	height: 50px;
+	background-color:lightblue;
+	margin: 5px;
+	position: relative;
+}
+.div_animate_02 > div{
+	width: 50px;
+	height: 50px;
+	background-color:lightgreen;
+	margin: 5px;
+	position: relative;
+}
+.div_method_chaining > img{
+	width: 200px;
+	height: 150px;
+}
+
+#panel, #flip {
+  padding: 5px;
+  font-size: 18px;
+  text-align: center;
+  background-color: #555;
+  color: white;
+  border: solid 1px #666;
+  border-radius: 3px;
+}
+
+#panel {
+  padding: 150px;
+  display: none;
+}
+
+ul {
+    padding: 0 10px 0 10px;
+}
+li{
+    width:50px;
+    height:25px;
+    background:#1D87CF;
+    margin-bottom:10px;
+}
+.stop li{
+    background:#CF1D58;
+}
+</style>
+<script>
+
+/* 
+1 기본 효과
+	종류
+		hide()			문서객체를 작게 축소하여 사라집니다. ( display:none )
+		show()			문서객체를 크게 확대하여 보여줍니다. ( display:block )
+		toggle()		show()메서드와 hide()메서드를 번갈아 실행합니다.
+		slideUp()		문서 객체를 슬라이드 효과와 함께 사라지게 합니다.
+		slideDown()		문서 객체를 슬라이드 효과와 함께 보여줍니다.
+		slideToggle() 	slideDown() 과 slideUp()메서드를 번갈아 실행합니다.
+		fadeOut()		문서 객체를 흐리게 사라지게 합니다.
+		fadeIn()		문서 객체를 선명하게 보여줍니다.
+		fadeToggle()	fadeIn 메서드와 fadeOut()메서드를 번갈아 실행합니다.
+		stop() 			효과가 완료되기 전에 중지하는 데 사용됩니다.
+			
+	기본 효과는 다음 네 가지 형태로 사용가능
+		1.	$(selector).method();
+		2.	$(selector).method(speed);
+		3. 	$(selector).method(speed, callback);
+		4. 	$(selector).method(speed, easing, callback);
+
+			speed
+				- 효과를 진행할 속도를 지정
+				- 밀리 초 단위의 숫자 또는 문자열 slow, normal, fast 를 입력
+			callback
+				- 효과를 모두 완료하고 실행할 함수를 지정
+			easing
+				- 애니메이션의 easing 형태를 지정합니다.
+					
+				- 별도의 플러그인을 사용하지 않으면 liner와 swing만 입력 가능합니다.
+
+				(참고 https://www.w3schools.com/jquery/eff_animate.asp
+					"swing" - moves slower at the beginning/end, but faster in the middle
+					"linear" - moves in a constant speed)
+			
+2 메서드 체이닝
+	메서드가 객체를 반환하게 되며 메서드의 반환 값인 객체를 통해 또 다른 함수를 호출하는 것을 체인처럼  
+		연결해서 작성하고 실행 하는 방법입니다. 
+
+
+3 사용자 정의 효과
+	animate()	 사용자 지정효과를 생성합니다.
+
+	사용자 정의 효과는 다음 네가지 형태로 사용가능
+		1.	$(selector).animate(object);
+		2.	$(selector).animate(object, speed);
+		3. 	$(selector).animate(object, speed, easing);
+		4. 	$(selector).animate(object, speed, easing, callback);
+
+		animate()메서드의 첫 번째 매개변수인 object에 입력할 수 있는 
+			속성은 다음과 같습니다.
+			width
+			height
+			top
+			bottom
+			left
+			right
+			margin
+			padding
+			opacity
+
+*/
+
+$(function(){
+ 
+// hide()
+	$(".div_hide > button:eq(0)").click(function(){
+		$(".div_hide > h2").hide();
+	});
+	
+// show(speed)
+	$(".div_hide > button:eq(1)").click(function(){
+		$(".div_hide > h2").show(1000);
+	});
+
+// hide(speed, callback )
+	$(".div_hide > button:eq(2)").click(function(){
+		$(".div_hide > h2").hide(2000, function(){
+			alert("jQuery hide 메서드가 실행되었습니다.")
+		});
+	});
+	
+// show(speed, easing, callback)
+	$(".div_hide > button:eq(3)").click(function(){
+		$(".div_hide > h2").show(2000, "swing", function(){
+			alert("jQuery show 메서드가 실행되었습니다.")
+		});
+	});
+
+// toggle()
+	$(".div_hide > button:eq(4)").click(function(){
+		$(".div_hide > h2").toggle(2000, "swing", function(){
+			alert("jQuery toggle 메서드가 실행되었습니다.")
+		});
+	});
+
+// slideUp()
+	$(".div_hide > button:eq(5)").click(function(){
+		$(".div_hide > h2").slideUp();
+	});
+
+// slideDown()
+	$(".div_hide > button:eq(6)").click(function(){
+		$(".div_hide > h2").slideDown();
+	});
+
+// slideToggle()
+	$(".div_hide > button:eq(7)").click(function(){
+		$(".div_hide > h2").slideToggle();
+	});
+	
+// fadeOut()
+	$(".div_hide > button:eq(8)").click(function(){
+		$(".div_hide > h2").fadeOut();
+	});
+
+// fadeIn()
+	$(".div_hide > button:eq(9)").click(function(){
+		$(".div_hide > h2").fadeIn();
+	});
+
+// fadeToggle()
+	$(".div_hide > button:eq(10)").click(function(){
+		$(".div_hide > h2").fadeToggle(2000, "swing", function(){
+			alert("jQuery fadeToggle 메서드가 실행되었습니다.")
+		});
+	});
+
+// stop()
+	$("#flip").click(function(){
+		$("#panel").slideDown(5000);
+	});
+	$("#stop").click(function(){
+		$("#panel").stop();
+	});
+
+// 메서드 체이닝
+$(".div_method_chaining > img").click(function(){
+		$(this).fadeOut("slow").fadeIn("fast");
+	});
+
+  
+// animate()
+	$(".btn_animate:first").click(function(){
+    	$(".div_animate").animate({width: "300px"});
+	});
+  	$(".btn_animate:last").click(function(){
+    	$(".div_animate").animate({width: "100px"});
+  	});
+
+// animate()
+	$(".div_animate_01 > div").on(
+		{ mouseover : function(){
+    		$(this).animate( {left: "300px"}, 'fast');
+		  }, 	
+		  mouseout : function(){
+			$(this).animate( {left:0}, 'slow')
+		  }
+		}
+	);
+
+// animate()
+	$(".div_animate_02 > div").click(function(){
+		let wid = $(this).css("width");
+		let hei = $(this).css("height");
+
+		$(this).animate( { 
+			width: parseInt(wid)+50+"px", 
+			height: parseInt(hei)+50+"px"
+		}, "slow");
+	});
+ 
+//animate()에서 stop() 함수의 중요성  ( 참고:https://electronic-moongchi.tistory.com/75)
+	//animate with no stop()
+	$(".no-stop li").hover(
+		function () {
+			$(this).animate({width:"1500px"},500);
+		},
+		function () {
+			$(this).animate({width:"50px"},500);
+		} 
+	);
+	//animate with stop()
+	$(".stop li").hover(
+		function () {
+			$(this).stop().animate({width:"1500px"},500);
+		},
+		function () {
+			$(this).stop().animate({width:"50px"},500);
+		} 
+	);
+});
+</script>
+</head>
+<body>
+
+<!-- hide(), show() -->
+	<div class="div_hide">
+		<h2>안녕하세요 NextIT 교육센터 입니다.</h2>
+		<button>Hide()</button>
+		<button>show(speed)</button>
+		<button>hide(speed, callback)</button>
+		<button>show(speed, easing, callback )</button>
+		<button>toggle()</button>
+		<button>slideUp()</button>
+		<button>slideDown()</button>
+		<button>slideToggle()</button>
+		<button>fadeOut()</button>
+		<button>fadeIn()</button>
+		<button>fadeToggle()</button>
+	</div>
+	<hr>
+	<button id="stop">Stop sliding</button>
+	<div id="flip">Click to slide down panel</div>
+	<div id="panel">Hello world!</div>
+
+	<hr>
+<!-- 메서드 체이닝 -->
+	<div class="div_method_chaining">
+		<img src="./images/img1.jpg" alt="러닝 이미지">
+	</div>
+	<hr>	
+
+<!-- animate() -->
+	<div class="div_animate" style="width: 100px;
+		 height:100px; background-color: tomato;">
+	</div>
+	<button class="btn_animate">animate_width_300px</button>
+	<button class="btn_animate">animate_width_100px</button>
+	<hr>
+
+	<div class="div_animate_01">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+	<hr>
+
+	<div class="div_animate_02"> 
+		<div></div>
+	</div>
+	<hr>
+
+	<div>.stop() 이벤트 사용 전</div>
+	<ul class="no-stop">
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+
+	<div>.stop() 이벤트 사용 후</div>
+	<ul class="stop">
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</body>
+</html>
+
+

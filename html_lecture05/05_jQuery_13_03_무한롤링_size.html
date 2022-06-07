@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NextIT</title>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<style>
+*{ 
+    margin:0 auto;
+    padding:0;
+    text-decoration:none;
+    list-style: none;
+}
+.product_con{
+/*1차-1 크기조정(1차-2) */
+    height: 600px;
+    background-color: lightblue;
+}
+.product_list{
+/*1차-2 크기조정(1차-3) */
+    height: 600px;
+    background-color: lightpink;
+    position: relative;
+}
+
+.product_list > li{
+/*1차-3 크기조정(1차-4) */
+    height: 600px;
+    background-color: lightyellow;
+}
+.product_list > li:nth-child(1){
+    background-color: lime;
+/* 3차-1 이미지 및 크기조절(3차-2)*/
+    background: url("./images/img1.jpg");
+    background-size: 100% 600px;
+}
+.product_list > li:nth-child(2){
+    background-color: magenta;
+/*3차-2 이미지 및 크기조절(3차-3)*/
+    background: url("./images/img2.jpg");
+    background-size: 100% 600px;
+}
+.product_list > li:nth-child(3){
+    background-color: lightslategray;
+/*3차-3 이미지 및 크기조절(3차-4)*/
+    background: url("./images/img100.jpg");
+    background-size: 100% 600px;
+}
+.product_list > li:nth-child(4){
+    background-color: olive;
+/*3차-4 이미지 및 크기조절(3차-5)*/
+    background: url("./images/img102.jpg");
+    background-size: 100% 600px;
+}
+.product_list > li:nth-child(5){
+    background-color: orange;
+/*3차-5 이미지 및 크기조절 (이미지 크기가 화면에 잘 맞는지 확인하기) (3차-e)*/
+    background: url("./images/img104.jpg");
+    background-size: 100% 600px;
+}
+
+/*1차-4 필요없음(1차-5) 
+.product_con{
+    width: 300px;
+}*/
+/*1차-5 필요없음(1차-6) 
+.product_list{
+    width: 200px;
+}*/
+
+.product_list > li{
+    position: absolute;
+    top: 0;
+/*1차-6 크기조정(여기까지 크기조정 후 확인하기 화면에 높이 600px만 잡히면 됨)(1차-e)
+    left: 200px; */
+}
+
+.product_list > li > a{
+    font-size: 120px;
+    color: #fff;
+}
+.product_list > li{
+    text-align: center;
+}
+.product_list{
+    overflow: hidden;
+} 
+
+
+/* 2차-6 필요없음(여기까지 하고 실행해서 콘솔에서 win_size  확인하기)  (2차-e)
+.product_list > li:nth-child(1){
+    left: 0;
+}*/
+
+
+
+/* 4차-4 배경색 변경하기(All-e) */
+.product_list{
+    background-color: #fff;
+}
+
+
+</style>
+<script> 
+
+let page
+//2차-2 화면크기 전역변수 (2차-3)
+let win_size; 
+
+$(function(){
+
+    //2차-1 화면크기구하기(2차-2)
+    win_size= document.body.offsetWidth  -1;
+    console.log("screen.availWidth::::"+document.body.offsetWidth );
+
+    //2차-3 크기설정해주기(2차-4)
+    let product_con = $(".product_con");
+    let product_list = $(".product_list");
+    let product_list_li = $(".product_list > li");
+    product_con.css("width", win_size);
+    product_list.css("width", win_size);
+    product_list_li.css("width", win_size);
+
+    //2차-4 모든 이미지 위치잡기(2차-5)
+    product_list_li.css("left", win_size);
+    
+    //2차-5 처음 이미지 위치잡기(2차-6)
+    let img =  $(".product_list > li:nth-child(1)");
+    img.css("left",0);
+
+    
+    $(".btn_next").click(function(){
+        page = "next";
+        find_num(page);
+
+    });
+    $(".btn_prev").click(function(){
+        page = "prev";
+        find_num(page);
+
+    });
+});  
+
+
+let cur_no =0; 
+let next_no =1;
+
+function find_num(page){
+    console.log("page::::"+page);
+    
+
+    if(page == "next"){
+
+         if(cur_no==0 && next_no == 5){
+            cur_no= 5;
+            next_no= 1;
+        }else{
+
+            if(cur_no == 5){
+                cur_no =1;
+            }else{
+                if(cur_no != next_no){
+                    cur_no++;
+                }
+            }
+            next_no = cur_no +1;
+            if(next_no == 6){
+                next_no =1;
+            }
+            
+        }
+        //4차-1 find_img 공통함수로변경(4차-2)
+        //next_img(cur_no, next_no);
+        find_img(cur_no, next_no, page);
+
+    }else{
+        if(cur_no == 0 && next_no ==1 ){
+            cur_no = 1;
+            next_no = 5;
+            
+        }else{
+            cur_no = next_no;
+            next_no = cur_no -1;
+            if (next_no == 0 ){
+                next_no = 5;
+            }
+        }
+
+        //4차-2 find_img 공통함수로변경(4차-3)
+        //prev_img(cur_no, next_no);
+        find_img(cur_no, next_no, page);
+        cur_no--;
+    }
+    
+};
+//4차-3 find_img 공통함수 변경(4차-4)
+function find_img(cur_no, next_no, page){
+    console.log("cur_no:::"+cur_no+", next_no:::"+next_no+", page::::"+page);
+    let next_size, cur_size;
+    if(page == "next"){
+        next_size = win_size;
+        cur_size = win_size*-1;
+    }else{
+        next_size = win_size*-1;
+        cur_size = win_size;
+    }
+    //신규 사진을 대기장소에 위치
+    $(".product_list > li:nth-child("+next_no+")").css({ left : next_size, display : 'block'});
+    //기존 사진은 사라지게 만들기
+    $(".product_list > li:nth-child("+cur_no+")").stop().animate({left : cur_size, opacity : 0});
+    //신규 사진은 중앙으로 이동    
+    $(".product_list > li:nth-child("+next_no+")").stop().animate({left : 0, opacity : 1},500);
+
+}
+
+</script>
+</head>
+<body>
+    <div class="product_con">
+		<ul class="product_list">
+            <li><a href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#">5</a></li>
+		</ul>
+	</div>
+    <div>
+        <a class="btn_prev" href="#">&lt;prev</a>
+        <a class="btn_next" href="#">next&gt;</a>
+    </div>
+</body>
+</html>
+
+
+

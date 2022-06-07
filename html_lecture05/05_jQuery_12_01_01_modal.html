@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>NextIT</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<style>
+*{
+	margin: 0 auto;
+	text-decoration: none;
+}
+#div_table{
+	width: 700px;
+	height: 1500px;
+	background-color: lightblue;
+	text-align: center;
+	margin-top: 100px;
+}
+#div_table > table{
+	padding: 50px;
+}
+.div_board_write{
+	width: 70px;
+	height: 30px;
+	background-color: lightcoral;
+	text-align: center;
+	padding-top: 5px;
+	position: relative;
+	top: -40px;
+	left: 300px;
+}
+#modal_div1{
+	width: 100%;
+	height: 100%;
+	 /*스크롤 있어도 유지 하기 위해서 fixed 사용.*/
+	position: fixed;
+	top: 0; right: 0; bottom: 0; left: 0;
+	background-color: rgba(0,0,0,0.4);	
+	z-index: 1;
+	/* 화면생성시에는 안보이게 처리 */
+	display: none;
+}
+#modal_div2{
+	width: 400px;
+	height: 400px;
+	background-color: lightgrey;
+	text-align: center;
+	position: fixed;
+	left: calc(50% - 200px);
+	top: calc(50% - 200px);
+}
+#modal_div2 > p {
+	margin-top: 50px;
+}
+#modal_div2 > a {
+	margin-left: 300px;
+}
+</style>
+<script>
+function fn_modal_write(){
+	//$("#modal_div1").show();
+	$("#modal_div1").fadeIn();
+	//위아래로 스크롤 해보기
+} 
+
+$(function(){
+	//클릭하면 모달창 닫기
+	$(".modal_close_btn").click(function() {
+		//$("#modal_div1").hide();
+		$("#modal_div1").fadeOut();
+		
+	});
+});
+
+</script>
+</head>
+<body>
+   
+<div id="div_table">
+	<table>
+		<colgroup>
+			<col width="100">
+			<col >
+			<col width="180">
+			<col width="200">
+		</colgroup>
+		<thead>
+			<tr>
+				<th>No</th>
+				<th>제목</th>
+				<th>작성자</th>
+				<th>시간</th>
+			</tr>
+		</thead>
+		<tbody>
+			
+			<tr>
+				<td>10</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>9</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>8</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>7</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>10</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>6</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>10</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>9</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>8</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>7</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>10</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>6</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>10</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>9</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>8</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>7</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>10</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>6</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>10</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>9</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>8</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>7</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>10</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>6</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td><a href="#"></a> test_01</td>
+				<td>specialyw</td>
+				<td>2021.09.13</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<div class="div_board_write" >
+	<input type="button" onclick="fn_modal_write()" value="글쓰기">
+</div>
+
+<div id="modal_div1" >
+	<div id="modal_div2" title="클릭하면 창이 닫힙니다."> 
+		<a href="#" class="modal_close_btn">닫기</a>
+		<p>
+			안녕하세요 NextIT 입니다.<br>
+			만나서 반갑습니다. <br>
+			지금은 화면구현 시간입니다. <br>
+		</p>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+
+/*
+By 202107 머신러닝 김영찬
+*/
+
+let num = 10; //스크롤 내릴때마다 10개씩 조회
+let cnt = 1;
+let nm =0;
+let date = new Date();
+
+$(function(){
+	nm = $("table > tbody > tr:last-child > td:first-child").text();
+	nm = parseInt(nm) +1 ;
+	console.log(nm)
+});
+
+$(window).scroll(function() {
+	console.log("$(window).scrollTop()::::::"+$(window).scrollTop());   //브라우저 스크롤 높이 
+  console.log("$(document).height()::::::::::::::::::"+$(document).height()); //현재페이지문서의 높이
+  console.log("$(window).height():::::::::::::::::: "+$(window).height());     //윈도우높이
+  if($(window).scrollTop()+10 >= $(document).height() - $(window).height()){//스크롤이 하단부까지 내려가면
+    //var rownum = num*cnt
+    //fn_scrolldown(rownum);//
+    //cnt +=1;//스크롤 이벤트 발생할 때마다 데이터 개수 증가
+    fn_scrolldown();
+  }
+});
+
+function fn_scrolldown(){
+  alert("fn_scrolldown");
+  
+  for (let i=0; i<10 ; i++){
+      let str = "";
+      str+="<tr>";
+      str+="<td>"+(nm+i)+"</td>";
+      str+="<td><a href='#'></a> test_01</td>";
+      str+="<td>NextIT</td>";
+      str+="<td>"+date.toLocaleString()+"</td>";
+      str+="</tr>";
+      $("#div_table tbody").append(str);
+	  
+  }
+   nm = nm+10 
+
+
+}
+</script>
+</head>
+<body>
+<div id="div_table">
+	<table>
+		<colgroup>
+			<col width="100">
+			<col >
+			<col width="180">
+			<col width="200">
+		</colgroup>
+		<thead>
+			<tr>
+				<th>No</th>
+				<th>제목</th>
+				<th>작성자</th>
+				<th>시간</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>6</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>7</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>8</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>9</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>10</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>11</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>12</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>13</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>14</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>15</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>16</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>17</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>18</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>19</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>20</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>21</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>22</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>23</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>24</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>25</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>26</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>27</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>28</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>29</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>30</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>31</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>32</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>33</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>34</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>35</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>36</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>37</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>38</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>39</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>40</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>41</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>42</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>43</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+			<tr>
+				<td>44</td>
+				<td><a href="#"></a> test_01</td>
+				<td>NextIT</td>
+				<td>2021.09.13</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</body>
+</html>
+

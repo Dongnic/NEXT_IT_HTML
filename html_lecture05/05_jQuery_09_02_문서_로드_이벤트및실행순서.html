@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>  
+/*
+
+onload는 화면이 다 뜨고 마지막에 실행됩니다.
+onload 단점
+    페이지가 글자로만 이루어진 태그라면 상관없겠지만, 이미지나 영상이 포함되어있을 
+        경우 이미지, 영상 모두를 읽어낸 뒤의 시점이 onload입니다. 따라서 당연히 
+        느릴수밖에 없으며 그래서 이에 대한 대처로 나온것이 바로 ready 입니다.
+
+ready는 브라우저가 DOM트리 생성한 직후 실행합니다.
+
+*/
+window.onload=function(){
+    // body 태그에 onload 이벤트가 있으면 window.onload 이벤트는 무시 됩니다.
+    alert("onload");
+};
+$(document).ready(function(){
+    alert("ready");
+});
+$(function(){
+    alert("function");
+});
+</script>
+</head>
+<body onload="alert('body_load')">
+<body>
+
+
+
+</body>
+</html>
+
+
+
