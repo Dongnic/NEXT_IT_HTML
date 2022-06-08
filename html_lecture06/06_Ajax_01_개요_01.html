@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+/*
+Ajax란?
+	
+	AJAX란 비동기자바스크립트와 XML (Asynchronous JavaScript And XML)을 말합니다
+
+	AJAX는 일단 JavaScript의 라이브러리중 하나이며 'Asynchronous Javascript And Xml'의 약자이다. 
+	약자를 그대로 해석해보면 '자바스크립트와 XML을 이용해서 비동기로 서버와 통신하는 방식'이다.
+
+	AJAX는 (Asynchronous JavaScript And XML)의 약어로 언어나 프레임워크가 아닌 구현하는 방식을 의미합니다.
+	데이터를 이동하고 화면울 구성하는데 있어서 웹 화면을 갱신하지 않고(비동기) 필요한 데이터를 서버로 보내고 가져오는 방법입니다.
+
+
+비동기란?
+	비동기 = 현재 실행 중인 코드가 완료된 지와는 상관없이, 바로 다음 코드로 넘어가는 방식
+	비동기 방식을 이용하면 데이터를 불러올 때 웹페이지를 다시 로드하지 않는다. 
+		AJAX를 통해서 서버에 어떤 요청을 하고 나면, 끝날 때까지 멈췄다가 다음 동작을 하는 것이 아니라 계속해서 무언가 일을 한다는 의미이다.
+		서버가 웹페이지를 반환해 주면, 화면 전체를 갱신해야 하기 때문에 관련된 리소스(resouce)들도 모두 다시 불러와야한다.
+		이 경우에는 직관적으로도 알 수 있듯이 지나친 낭비가 발생한다. 
+		하지만 여기서 비동기식 방식을 이용하면 전체를 갱신할 필요 없이, 필요한 일부만 불러와 사용할 수 있게 된다.
+
+
+구현방법
+    1. javaScript Ajax
+		개요
+			javaScript Ajax구현은 XMLhttprequest객체를 사용합니다
+			XMLhttprequest객체는 자바스크립트 비동기 통신의 근간이 되는 객체입니다. 
+			이 객체를 사용하면 웹 페이지가 전부 로딩된 후에도 서버에 데이터를 요청하거나 
+			서버로부터 데이터를 전송받을 수 있습니다. 즉, 웹 페이지 전체를 다시 로딩하지 않고
+				일부분만을 갱신할 수 있게 됩니다. 대부분의 웹브라우저는 XMLhttprequest을 지원해 
+				주지만 인터넷 익스플로러(IE) 7이하 버전에서는 지원하지 않습니다. 따라서 IE 에서는 
+					ActiveObject를 사용합니다. 둘다 구현에는 별로 차이는 없습니다.
+			
+		예)
+			let xhr = new XMLHttpRequest(); 		// 선언
+			xhr.onreadystatechange = function() { 	// 요청에 대한 콜백
+				if (xhr.readyState === xhr.DONE) { 		// 요청이 완료되면
+					if (xhr.status === 200 || xhr.status === 201) {  
+					console.log(xhr.responseText);
+					} else {
+					console.error(xhr.responseText);
+					}
+				}
+			};
+			xhr.open('GET', '/ajax/ajaxController'); // 메소드와 주소 설정
+			xhr.send(); // 요청 전송 
+			
+
+
+
+
+    2. jQuery Ajax
+		jQuery는 Ajax의 중요성을 인식했으므로 Ajax와 관련된 다양한 종류의 메서드를 제공합니다.
+		  따라서 jQuery에서는 Ajax를 보다 다양하고 단순한 방법으로 구현할 수 있게 해줍니다. 
+		   순수 javaScript로 Ajax를 구현하는 것보다 좀 더 명시적으로 코드를 작성할 수 있다는 장점도 있습니다.
+
+		예)
+			$.ajax({
+				url : "/ajax/ajaxController", // url 필수
+				type : "post",				
+				data : { type1 : type1 },
+				success:function(data){ // success option
+					console.log(data.length);
+				}
+			});
+*/
+
+// javaScript Ajax
+	// 요청보내기
+	function javaScriptAjax01() {
+		let request = new XMLHttpRequest();
+		request.open("GET", "http://localhost:8080/sample01_ajax/test_ajax.do", true);
+		request.send();
+	}
+
+/*(전자정부프레임워크)EgovSampleController.java 추가 해야 함
+
+	// 추가할 부분
+	@RequestMapping(value = "/test_ajax.do")
+	public String test_ajax(HttpServletRequest request) {
+		System.out.println("/test_ajax.do");
+		
+		String name = request.getParameter("name");
+		String lecture = request.getParameter("lecture");
+		System.out.println("name::::"+name+",    lecture::::"+lecture);
+		
+		return "sample/test_ajax00.html";
+	}
+*/
+
+
+
+	// 요청보내기 + GET방식 + 데이터
+	function javaScriptAjax02() {
+		let request = new XMLHttpRequest();
+		request.open("GET", "http://localhost:8080/sample01_ajax/test_ajax.do?name=NextIT&lecture=화면구현", true);
+		request.send();
+	}
+
+	// 요청보내기 + POST방식 + 데이터
+	function javaScriptAjax03() {
+		let request = new XMLHttpRequest();
+		request.open("POST", "http://localhost:8080/sample01_ajax/test_ajax.do", true);
+		request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		let name = "javaScript";
+		let lecture = "Ajax";
+		request.send("name="+name+"&lecture="+lecture);
+	}
+
+// jQuery Ajax
+	// 요청보내기
+	function jQueryAjax01() {
+		$.ajax({
+			url:"http://localhost:8080/sample01_ajax/test_ajax.do",
+			type: "GET"
+		});
+	}
+
+	// 요청보내기 + GET방식 + 데이터
+	function jQueryAjax02() {
+		$.ajax({
+			url:"http://localhost:8080/sample01_ajax/test_ajax.do",
+			type: "GET",
+			data:{name:"NextIT", lecture:"화면구현"}
+		});
+	}
+
+	// 요청보내기 + POST방식 + 데이터
+	// error 콜백으로 인해 "error" 경고창 발생 ( 현재 CORS에러 발생 )
+	function jQueryAjax03() {
+		$.ajax({
+			url:"http://localhost:8080/sample01_ajax/test_ajax.do",
+			type: "post",
+			data:{name:"jQuery", lecture:"Ajax"},
+			success: function(){
+				alert("success");
+			},
+			error: function(){
+				alert("error");
+			}
+		});
+	}
+
+
+
+
+
+
+/*
+CORS (Cross-Origin Resource Sharing/ 교차 출처 리소스 공유)
+	CORS는 서로 다른 도메인끼리 통신하는 것을 의미합니다. 
+	  웹 브라우저는 보안상의 위협으로부터 사용자를 보호 하기 위해 이러한 통신을 막습니다.
+
+	Ajax에서는 보안상의 제한으로 인해 자바스크립트 파일을 가져왔던 서버하고만 통신할 수 있습니다. 
+	 자바스크립트가 있는 서버가 아닌 다른 서버와 통신한다면 웹 브라우저에서 입력한 정보를 
+	  사용자가 모르는 사이에 다른 서버로 전송할 수 있기 떄문입니다.
+
+
+Cross domain ( 크로스 도메인 )
+ 크로스 도메인은 쉽게 말해서 서로 다른 도메인 간의 호출이다.
+  불특정 다수로 부터 서로 다른 도메인 서버에 접근하는 것을 크로스 도메인이라고 합니다.
+
+
+ 크로스 도메인을 허용해야 하는 경우
+	물리적으로 분리된 서버이면서 도메인이 다른경우 각 서버끼리 
+	  통신을 하기 위해서는 크로스 도메인을 허용해야 합니다.
+
+   아래 ajax_movie() 함수는 Cross domain을 허용한 사례입니다.
+
+*/
+
+function ajax_movie(callback) {
+    console.log("비동기 시작01");
+    $.ajax({
+        type:"GET",
+        url: "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=c186cad6d4e35b106d98a646c4a98529&targetDt=20120101",
+        dataType:'json',
+        success:function(data){
+            
+            alert("success");
+            console.log(data);
+            let movie_list = data.boxOfficeResult;
+            console.log("movie_list.boxofficeType::::"+movie_list.boxofficeType);
+            
+                let movie_array = movie_list.dailyBoxOfficeList;
+                //console.log("movie_array:::::"+movie_array);
+                    
+                    // 인덱스 없는 foreach 사용할때
+                    let index = 1;
+                    movie_array.forEach(element => {
+                        //console.log("element:::::"+element.movieNm)
+                            //element:::::미션임파서블:고스트프로토콜                                
+                        
+                        let output ="";
+						output += index+"::::"+element.movieNm+"\n"
+                        index++
+                       console.log(output);
+                    });
+        },
+        error:function(e){
+            //비동기통신 에러 
+            alert("error")
+        }
+    });  
+    console.log("비동기 종료 01");
+
+}
+</script>
+</head>
+<body>
+	<input type="button" onclick="javaScriptAjax01();" value="javaScriptAjax01">
+	<input type="button" onclick="javaScriptAjax02();" value="javaScriptAjax02">
+	<input type="button" onclick="javaScriptAjax03();" value="javaScriptAjax03">
+
+	<input type="button" onclick="jQueryAjax01();" value="jQueryAjax01">
+	<input type="button" onclick="jQueryAjax02();" value="jQueryAjax02">
+	<input type="button" onclick="jQueryAjax03();" value="jQueryAjax03">
+	<input type="button" onclick="ajax_movie();" value="ajax_movie">
+</body>
+</html>
+
+
+

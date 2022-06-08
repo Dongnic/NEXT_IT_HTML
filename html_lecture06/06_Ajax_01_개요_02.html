@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+/* 
+jQuery Ajax 메서드 들
+	$.ajax()
+		범용적인 Ajax 관련 메서드 입니다.
+	$.get()
+		get 방식으로 Ajax를 수행합니다.
+	$.post()
+		post 방식으로 Ajax를 수행합니다.
+	$.getJSON()
+		get 방식으로 Ajax를 수행해 JSON 데이터를 가져옵니다.
+	$.getScript()
+		get 방식으로 Ajax를 수행해 Script 데이터를 가져옵니다.
+	$.(selector).load()
+		Ajax를 수행하고 선택자로 선택한 객체안에 집어 넣습니다.
+	$.(selector).serialize()
+		입력 양식의 내용을 요청 매개변수 문자열로 만듭니다.
+	$.(selector).serializeArray()
+		입력양식의 내용을 객체로 만듭니다.
+	$.param()
+		객체의 내용을 요청 매개변수 문자열로 만듭니다.
+
+
+$.ajax() 메서드의 속성들
+
+	url 
+		요청 url
+	type 
+		사용할 http 메서드 , 일반적으로 post나 get 사용
+	data 
+		요청할때 전달되는 매개변수를 지정 
+	contentType
+		요청할때 명시하는 콘텐츠 타입
+			- application/x-www-form-urlencoded (지정하지 않으면 기본값)
+			- application/json
+			
+	dataType
+		요청 후 서버로 부터 응답에 대한 결과로 반횐되는 데이터 종류를 
+			식별하는 키워드이다. 지정하지 않으면 MIME 타입을 참고하여 
+			자동 파싱된다.
+
+			- text
+					응답 결과를 일반 텍스트로 처리한다
+			- xml 
+					응답 결과를 XML문서로 파싱되어 XML DOM 형식으로 처리 한다
+			- html
+					응답 결과를 HTML형식으로 처리한다.
+			- json
+					응답 결과를 JSON 객체 형식으로 처리한다.
+			- jsonp
+					요청 DATA에 콜백함수를 추가해서 보내고, 응답은 JSON 객체 형식으로 받는다.
+			- script
+					응답 결과를 javaScript로 인식하여 처리한다.
+	timeout
+		Ajax 요청의 제한 시간을 밀리초 단위로 설정한다. 
+			제한 시간안에 요청이 완료되지 않으면 요청을 취소하거나, 
+			error 콜백이 정의되어 있다면 eorr를 호출한다.
+	success
+		응답이 성공할경우 호출되는 함수
+		응답은 이 함수의 첫번째 매개변수에 전달되며 , dataType 프로퍼티에 
+			명시한 형태로 구성된다.
+	error
+		응답이 에러 상태 코드를 반환하면 호출되는 함수
+
+	complete
+		요청이 완료되면 호출되는 함수 
+		success나 error 콜백을 설정하면 해당 콜백이 호출된 후에 실행 된다.
+
+	async 
+		false 이면 요청이 동기 호출로 전송된다.
+		기본값은 true(비동기 요청)이다.
+*/
+
+/*
+HTTP Status Code 
+	1xx (정보): 요청을 받았으며 프로세스를 계속한다
+
+	2xx (성공): 요청을 성공적으로 받았으며 인식했고 수용하였다
+		200(성공): 서버가 요청을 제대로 처리했다는 뜻이다. 이는 주로 서버가 요청한 페이지를 제공했다는 의미로 쓰인다.
+
+	3xx (리다이렉션): 요청 완료를 위해 추가 작업 조치가 필요하다
+		307(임시 리다이렉션): 현재 서버가 다른 위치의 페이지로 요청에 응답하고 있지만 요청자는 향후 요청 시 원래 위치를 계속 사용해야 한다.
+		308(영구 리다이렉션, RFC에서 실험적으로 승인됨)
+
+	4xx (클라이언트 오류): 요청의 문법이 잘못되었거나 요청을 처리할 수 없다
+		403(Forbidden, 금지됨): 서버가 요청을 거부하고 있다. 예를 들자면, 사용자가 리소스에 대한 필요 권한을 갖고 있지 않다. (401은 인증 실패, 403은 인가 실패라고 볼 수 있음)
+		404(Not Found, 찾을 수 없음): 서버가 요청한 페이지(Resource)를 찾을 수 없다. 예를 들어 서버에 존재하지 않는 페이지에 대한 요청이 있을 경우 서버는 이 코드를 제공한다
+		
+	5xx (서버 오류): 서버가 명백히 유효한 요청에 대해 충족을 실패했다
+		500(내부 서버 오류): 서버에 오류가 발생하여 요청을 수행할 수 없다.
+
+	참고 https://ko.wikipedia.org/wiki/HTTP_상태_코드
+*/
+
+/*
+
+데이터 전송형식
+
+CSV 형식 ( Comma Seperated Values )
+	CSV는 각 항목을 쉼표(,)로 구분해 데이터를 표현하는 방법 
+	CSV는 다른 형식에 비해 굉장히 짧습니다. 따라서 많은 양의 데이터를 전송할 때 활용하면 좋습니다.
+		하지만 CSV형식은 데이터의 가독성이 떨어집니다. 
+	
+	예시)
+		let input += 'NextIT_교육센터, Daejeon, 042-719-8850, 042-719-8851, nextitcenter@gmail.com' 
+		let input += '화면구현, HTML, CSS, javaScript, jQuery' 
+
+XML 형식 ( eXtensible Markup Language )
+	XML 형식은 HTML 형식처럼 태그로 데이터를 표현합니다. 
+	  따라서 앞서 CSV형식의 부족한 부분을 보완해주는 데이터 전송 형식입니다.
+	  하지만 여는 태그, 닫는 태그 등으로 쓸데 없이 용량을 차지하는 문제가 있음
+	
+	예시)
+		<?xml version="1.0" encoding="utf-8" ?>
+		<centers>
+			<center>
+				<name>NextIT_교육센터_1호점</name>
+				<region>DaeJeon</region>
+				<tel>042-719-8850</tel>
+				<fax>042-719-8851</fax>
+				<email>nextitcenter@gmail.com</email>
+			</center>
+			<center>
+				<name>NextIT_교육센터_2호점</name>
+				<region>Seoul</region>
+				<tel>02-719-8850</tel>
+				<fax>02-719-8851</fax>
+				<email>nextitcenter@gmail.com</email>
+			</center>
+			<center>
+				<name>NextIT_교육센터_3호점</name>
+				<region>Gwangju</region>
+				<tel>062-719-8850</tel>
+				<fax>062-719-8851</fax>
+				<email>nextitcenter@gmail.com</email>
+			</center>
+		</centers>
+
+
+JSON 형식 ( Javascript Object Notation) 
+	개요
+		텍스트 기반의 데이터 교환형식
+		방금 살펴본 CSV 형식과 XML 형식의 단점을 모두 극복한 형식이 jSON 이다.
+		공식적인 인터넷 미디어타입은 application/json 이며 파일 확장자는 .json
+		데이터 교환의 수단으로 사용하고 있는 XML보다 용량이 작고 파싱에 걸리는 시간이 적음
+		JSON은 숫자, 문자열, boolean, 배열, 객체를 표현할 수 있음
+		Ajax를 사용할 떄 거의 표준으로 사용되는 데이터 표현 방식
+	형태
+		기본적으로 중괄호 사이에 key:value 형태로 구성
+
+	예시)
+		{
+			"name":"NextIT_교육센터_1호점"
+			"region":"DaeJeon"
+			"tel":"042-719-8850"
+			"fax":"042-719-8851"
+			"email":"nextitcenter@gmail.com"
+		}
+	메서드
+		JSON.stringify()
+			JSON.stringify() 메서드는 JavaScript 값이나 객체를 JSON 문자열로 변환합니다
+
+		JSON.parse()
+			JSON.parse() 메서드는 JSON 문자열의 구문을 분석하고, 그 결과에서 JavaScript 값이나 객체를 생성합니다
+*/
+</script>
+</head>
+<body> 
+</body>
+</html>
+
+
+

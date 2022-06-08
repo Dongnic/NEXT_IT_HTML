@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+
+//(전자정부프레임워크) test_ajax01.html 에서 작성(기존에 작성되어있는거는 주석 처리 하고 하기) 
+
+
+/*블로그에서 했음  
+function fn_ajax01(){
+	 console.log("fn_ajax01:::");
+	 $.ajax({
+	  url:"/sample01_ajax/fn_ajax01.do",
+	  type:"post",
+	  data:{name:"jQuery", lecture:"Ajax"},
+	  success:function(){
+	   alert("success");
+	  },
+	  error:function(e){
+	   alert("error");
+	   console.log("e.status:::::"+e.status);
+	  }
+	 });
+}
+*/
+
+
+function fn_ajax00(){
+	console.log("fn_ajax00:::");
+	$.ajax({
+		url:"/sample01_ajax/fn_ajax00.do",
+		type:"post",
+		success:function(){
+			alert("success");
+		},
+		error:function(e){
+			alert("error");
+			console.log("e.status:::::"+e.status);
+		}
+	});
+}
+
+
+
+function fn_ajax01(){
+	console.log("fn_ajax01:::");
+	$.ajax({
+		url:"/sample01_ajax/fn_ajax01.do",
+		type:"post",
+		data:{name:"jQuery", lecture:"Ajax"},
+		success:function(){
+			alert("success");
+		},
+		error:function(e){
+			alert("error");
+			console.log("e.status:::::"+e.status);
+		} 
+	});
+	/* 
+	request
+		Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+	response
+		Content-Type: text/html 
+	*/
+}
+
+//string
+let name01 ="NextIT";
+let lecture01 = "화면구현";
+function fn_ajax02(){
+	console.log("fn_ajax02:::");
+	$.ajax({
+		url:"/sample01_ajax/fn_ajax02.do",
+		type:"post",
+		data:{name: name01, lecture: lecture01},
+		contentType:"application/x-www-form-urlencoded; charset=UTF-8",  
+		success:function(){
+			alert("success");
+		},
+		error:function(e){
+			alert("error");
+			console.log("e.status:::::"+e.status);
+		}
+	});
+	/* 
+	request
+		Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+	response
+		Content-Type: text/html 
+	*/
+}
+	
+//object
+let centerInfo = {};
+centerInfo.name = "NextIT";
+centerInfo.lecture = "화면구현";
+centerInfo.region = "Daejeon";
+centerInfo.tel = "042-719-8850";
+function fn_ajax03(){
+	console.log("fn_ajax03:::");
+	$.ajax({
+		url:"/sample01_ajax/fn_ajax03.do",
+		type:"post",
+		data:{ center_info : JSON.stringify(centerInfo)},
+		contentType:"application/x-www-form-urlencoded; charset=UTF-8",
+			//application/x-www-form-urlencoded은 에러 안남
+		//contentType:"application/json; charset=UTF-8",
+			//application/json로 하였을 경우 에러 발생
+		success:function(){
+			alert("success");
+		},
+		error:function(e){
+			alert("error");
+			console.log("e.status:::::"+e.status);
+		}
+	});
+	/*
+	request
+		Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+	response
+		Content-Type: text/html 
+	*/
+}
+
+function fn_ajax03_1(){
+	console.log("fn_ajax03_1:::");
+	$.ajax({
+	  url : "/sample01_ajax/fn_ajax03_1.do",
+	  type: "POST",
+	  //json 데이터를 보내기
+	  data: JSON.stringify(centerInfo),
+	  //data:{ centerInfo_arr : JSON.stringify(centerInfoArr)},
+	  	//이런식으로 보내도 에러 발생
+	  contentType:"application/json; charset=UTF-8;",
+	  //contentType:"application/x-www-form-urlencoded; charset=UTF-8",
+	  	//application/x-www-form-urlencoded으로 전송하면 에러 발생
+	  success : function() {
+	  	alert("success");
+	  },
+	  error: function(e) {
+	  	alert("error");
+		console.log("e.status:::::"+e.status);
+	  }
+	});
+	/*
+	request
+		Content-Type: application/json; charset=UTF-8;
+	response
+		Content-Type: text/html 
+	*/
+}
+
+
+//배열1
+let centerInfoArr = [
+"NextIT",
+"화면구현",
+"Daejeon",
+"042-719-8850"
+];
+function fn_ajax04(){
+	console.log("fn_ajax04:::");
+	$.ajax({
+		url:"/sample01_ajax/fn_ajax04.do",
+		type:"post",
+		data:{ centerInfo_arr : JSON.stringify(centerInfoArr)},
+		contentType:"application/x-www-form-urlencoded; charset=UTF-8",
+		success:function(){
+			alert("success");
+		},
+		error:function(e){
+			alert("error");
+			console.log("e.status:::::"+e.status);
+		}
+	});
+	/*
+	request
+		Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+	response
+		Content-Type: text/html 
+	*/
+}
+
+
+//배열2
+function fn_ajax04_1(){
+	console.log("fn_ajax04_1:::");
+	$.ajax({
+		url:"/sample01_ajax/fn_ajax04_1.do",
+		type:"post",
+		data:{ centerArr : centerInfoArr },
+		contentType:"application/x-www-form-urlencoded; charset=UTF-8",
+		success:function(){
+			alert("success");
+		},
+		error:function(e){
+			alert("error");
+			console.log("e.status:::::"+e.status);
+		}
+	});
+	/*
+	request
+		Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+	response
+		Content-Type: text/html 
+	*/
+}
+
+	
+
+//객체 + 배열
+// 객체안에 이름:배열 으로 넣을 예정
+let lecture_01  = [
+	"8850",
+	"NextIT",
+	"화면구현",
+	"HTML",
+	"Daejeon",
+	"042-719-8850"
+];
+let lecture_02 = [
+	"8850",
+	"NextIT",
+	"화면구현",
+	"CSS",
+	"Daejeon",
+	"042-719-8851"
+];
+let centerlecture = {};
+centerlecture.lecture01 = lecture_01 ;
+centerlecture.lecture02 = lecture_02 ;
+console.log(centerlecture);
+function fn_ajax05(){
+	console.log("fn_ajax05:::");
+	$.ajax({
+		url:"/sample01_ajax/fn_ajax05.do",
+		type:"post",
+		data:{ center_lecture : JSON.stringify(centerlecture)},
+		contentType:"application/x-www-form-urlencoded; charset=UTF-8",
+		success:function(){
+			alert("success");
+		},
+		error:function(e){
+			alert("error");
+			console.log("e.status:::::"+e.status);
+		}
+	});
+	/*
+	request
+		Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+	response
+		Content-Type: text/html 
+	*/
+}
+
+
+function fn_ajax05_1(){
+	console.log("fn_ajax05_1:::");
+	$.ajax({
+		url:"/sample01_ajax/fn_ajax05_1.do",
+		type:"post",
+		data: JSON.stringify(centerlecture),
+	    contentType:"application/json; charset=UTF-8",
+		success:function(){
+			alert("success");
+		},
+		error:function(e){
+			alert("error");
+			console.log("e.status:::::"+e.status);
+		}
+	});
+	/*
+	request
+		Content-Type: application/json; charset=UTF-8;
+	response
+		Content-Type: text/html 
+	*/
+}
+
+//============================================================================
+//데이터 받기
+
+//문자열
+function fn_ajax06(){
+	console.log("fn_ajax06:::");
+   	$.ajax({
+   		url:"/sample01_ajax/fn_ajax06.do",
+		type: 'post',
+		dataType:'text',  //받고자 하는 데이터 타입
+		success: function(result){	//서버에서 넘긴 데이터는 콜백함수 첫번째 매개변수에 할당
+			alert('success');
+			console.log(result); //"안녕하세요 NextIT 교육센터입니다."
+			console.log(JSON.parse(result)); //안녕하세요 NextIT 교육센터입니다.
+		},
+		error: function(e){
+			alert("error");
+			console.log("e.status:::::"+e.status);
+		}
+    });
+		/*dataType:'text',
+			request
+				..
+			response
+				Content-Type: application/json;charset=UTF-8
+		*/
+		
+    
+}
+//문자열
+function fn_ajax06_1(){
+	console.log("fn_ajax06_1:::");
+   	$.ajax({
+   		url:"/sample01_ajax/fn_ajax06.do",
+		type: 'post',
+		dataType:'json',
+		success: function(result){
+			alert('success');
+			console.log(result);
+			console.log(JSON.parse(result)); //에러발생 
+		},
+		error: function(e){
+			alert("error");
+			console.log("e.status:::::"+e.status);
+		}
+    });
+   	//dataType:'json',
+	   	/*
+		request
+			..
+		response
+			Content-Type: application/json;charset=UTF-8
+		*/
+}
+
+//json
+function fn_ajax07(){
+	console.log("fn_ajax07:::");
+   	$.ajax({
+   		url:"/sample01_ajax/fn_ajax07.do",
+		type: 'post',
+		dataType:'text',
+		success: function(data){
+			alert('success');
+			console.log(data);
+			let result = JSON.parse(data);
+			console.log(result);
+			console.log("center_no:::"+result.center_no);
+			console.log("name:::"+result.name);
+			console.log("lecture:::"+result.lecture);
+			console.log("region:::"+result.region);
+			
+			/*
+			result = JSON.parse(result);
+			console.log(result);
+			console.log("center_no:::"+result.center_no);
+			console.log("name:::"+result.name);
+			console.log("lecture:::"+result.lecture);
+			console.log("region:::"+result.region);
+			*/
+			
+		},
+		error: function(e){
+			alert("error");
+		}
+    });
+  	//dataType:'text',
+		/*
+		request
+			
+		response
+			Content-Type: application/json;charset=UTF-8
+		console.log
+			"{\"name\":\"NextIT\",\"center_no\":8850,\"lecture\":\"화면구현\",\"region\":\"Daejeon\"}"
+			{"name":"NextIT","center_no":8850,"lecture":"화면구현","region":"Daejeon"}
+			center_no:::undefined
+			name:::undefined
+			lecture:::undefined
+			region:::undefined
+			 
+		*/
+	 
+}
+//json
+function fn_ajax07_1(){
+	console.log("fn_ajax07_1:::");
+   	$.ajax({
+   		url:"/sample01_ajax/fn_ajax07.do",
+		type: 'post',
+		dataType:'json', 
+		success: function(data){
+			alert('success');
+			console.log(data);
+			let result = JSON.parse(data);
+			console.log(result);
+			console.log("center_no:::"+result.center_no);
+			console.log("name:::"+result.name);
+			console.log("lecture:::"+result.lecture);
+			console.log("region:::"+result.region);
+		},
+		error: function(e){
+			alert("error");
+		}
+    });
+  		
+	  	/* dataType:'json',
+			request
+				..
+			response
+				Content-Type: application/json;charset=UTF-8
+			console.log
+				{"name":"NextIT","center_no":8850,"lecture":"화면구현","region":"Daejeon"}
+				{name: 'NextIT', center_no: 8850, lecture: '화면구현', region: 'Daejeon'}
+				center_no:::8850
+				name:::NextIT
+				lecture:::화면구현
+				region:::Daejeon
+		*/
+}
+
+function fn_ajax08(){
+	console.log("fn_ajax08:::");
+   	$.ajax({
+   		url:"/sample01_ajax/fn_ajax08.do",
+		type: 'post',
+		dataType:'json', //서버에서 MAP으로 보낼꺼라서 json
+		success : function(data) {
+		alert("success");
+		console.log(data);
+		console.log("center_no:::"+data.center_no);
+		console.log("name:::"+data.name);
+		console.log("lecture:::"+data.lecture);
+		console.log("region:::"+data.region);
+	},
+	error: function(e){
+		alert("error");
+	}
+	});
+	//dataType:'json',
+		/*
+		request
+			
+		response
+			Content-Type: application/json;charset=UTF-8
+		console.log
+			{name: 'NextIT', center_no: 8850, lecture: '화면구현', region: 'Daejeon'}
+			center_no:::8850
+			name:::NextIT
+			lecture:::화면구현
+			region:::Daejeon
+		*/
+}
+/*=========================================================================================================================
+서버단
+	@RequestMapping(value = "/test_ajax01.do")
+	public String test_ajax01() {
+		System.out.println("/test_ajax01.do");
+		return "sample/test_ajax01.html";
+	}
+
+	@RequestMapping(value = "/fn_ajax00.do")
+	public String fn_ajax00(HttpServletRequest request) {
+		System.out.println("/fn_ajax00.do");
+		return "sample/test_ajax01.html";
+	}
+
+
+	@RequestMapping(value = "/fn_ajax01.do")
+	public String fn_ajax01(HttpServletRequest request) {
+		System.out.println("/fn_ajax01.do");
+		
+		String name = request.getParameter("name");
+		String lecture = request.getParameter("lecture");
+		System.out.println("name::::"+name+",    lecture::::"+lecture);
+		 
+		return "sample/test_ajax01.html";
+	}
+	
+	@RequestMapping(value = "/fn_ajax02.do")
+	public String fn_ajax02(HttpServletRequest request) {
+		System.out.println("/fn_ajax02.do");
+		
+		String name = request.getParameter("name");
+		String lecture = request.getParameter("lecture");
+		System.out.println("name::::"+name+",    lecture::::"+lecture);
+		
+		return "sample/test_ajax01.html";
+	}
+	
+	@RequestMapping(value = "/fn_ajax03.do")
+	public String fn_ajax03(HttpServletRequest request) {
+		System.out.println("/fn_ajax03.do");
+		
+		String center_info = request.getParameter("center_info");
+		System.out.println("center_info::::"+center_info);
+			//center_info::::{&quot;name&quot;:&quot;NextIT&quot;,&quot;lecture&quot;:&quot;화면구현&quot;,&quot;region&quot;:&quot;Daejeon&quot;,&quot;tel&quot;:&quot;042-719-8850&quot;}
+		
+		center_info  = center_info.replaceAll("&quot;", "\"");
+		System.out.println("center_info::::"+center_info);
+			//center_info::::{"name":"NextIT","lecture":"화면구현","region":"Daejeon","tel":"042-719-8850"}
+		 
+		  //JSONParser 사용을 위해서 
+		   //pom.xml에 추가 	
+			//<!-- jsonObject, JSONParser, JSONArray -->
+			//<dependency>
+			    //<groupId>com.googlecode.json-simple</groupId>
+			    //<artifactId>json-simple</artifactId>
+			    //<version>1.1.1</version>
+			//</dependency>
+		 JSONParser jsonParser = new JSONParser();
+		 
+		 //try catch로 처리
+		 //JSONObject jsonObject = (JSONObject) jsonParser.parse(center_info);
+		 try {
+			//JSON데이터를 넣어 JSON Object 로 만들어 준다.
+			JSONObject jsonObject = (JSONObject) jsonParser.parse(center_info);
+			System.out.println("jsonObject:::::"+jsonObject);
+			//jsonObject:::::{"name":"NextIT","lecture":"화면구현","tel":"042-719-8850","region":"Daejeon"}
+			
+			String name = (String) jsonObject.get("name");
+			String lecture = (String) jsonObject.get("lecture");
+			String region = (String) jsonObject.get("region");
+			String tel = (String) jsonObject.get("tel");
+			
+			System.out.println("name::"+name+",  "+"lecture::"+lecture+",  "+"region::"+region+",  "+"tel::"+tel); 
+
+			Iterator iterator= jsonObject.keySet().iterator();
+	        while(iterator.hasNext()){
+	           
+				String key = iterator.next().toString(); // key 순차적으로 추출
+				System.out.println("key:::"+key+", value::"+jsonObject.get(key));
+	        }
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return "sample/test_ajax01.html";
+	}
+	
+	
+	//dispacher-servlet.xml에 @RequestBody 사용을 위한 bean 추가 해야함 
+		<!-- @RequestBody를 사용하기 위해 property name="messageConverters"property 추가 -->
+		<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+			<property name="webBindingInitializer">
+				<bean class="egovframework.example.cmmn.web.EgovBindingInitializer"/>
+			</property>
+			<property name="messageConverters">
+				<list>
+					<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+				</list>
+			</property>
+		</bean>
+
+	@RequestBody 사용하기위해서
+	 	<!-- ObjectMapper -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>2.9.2</version>
+		</dependency>
+
+	@RequestMapping(value = "/fn_ajax03_1.do")
+	public String fn_ajax03_1 (@RequestBody Map<String, Object> map){
+		System.out.println("/fn_ajax03_1");
+		System.out.println("name:"+map.get("name"));
+		System.out.println("lecture:"+map.get("lecture"));
+		System.out.println("region:"+map.get("region"));
+		System.out.println("tel:"+map.get("tel"));
+		return "sample/test_ajax01.html";
+	}
+	
+
+	@RequestMapping(value = "/fn_ajax04.do")
+	public String fn_ajax04(HttpServletRequest request) {
+		System.out.println("/fn_ajax04.do");
+		
+		String centerInfo_arr = request.getParameter("centerInfo_arr");
+		System.out.println("centerInfo_arr::::"+centerInfo_arr);
+			//centerInfo_arr::::[&quot;NextIT&quot;,&quot;화면구현&quot;,&quot;Daejeon&quot;,&quot;042-719-8850&quot;]
+		
+		centerInfo_arr  = centerInfo_arr.replaceAll("&quot;", "\"");
+		System.out.println("centerInfo_arr::::"+centerInfo_arr);
+			//centerInfo_arr::::["NextIT","화면구현","Daejeon","042-719-8850"]
+		 
+		JSONParser jsonParser = new JSONParser();
+		try {
+			//JSON데이터를 넣어 JSON Object 로 만들어 준다.
+			JSONArray jsonArray = (JSONArray) jsonParser.parse(centerInfo_arr);
+			System.out.println("jsonArray:::::"+jsonArray);
+				//jsonArray:::::["NextIT","화면구현","Daejeon","042-719-8850"]
+			System.out.println("jsonArray.size():::::"+jsonArray.size());
+				//jsonArray.size():::::4
+			for(int i =0 ; i< jsonArray.size(); i++) {
+					System.out.println("인덱스  "+i+"::"+ jsonArray.get(i));             
+					
+					 // 인덱스 0::NextIT 
+					 // 인덱스 1::화면구현 
+					 // 인덱스 2::Daejeon 
+					 // 인덱스 3::042-719-8850
+					 
+			}
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return "sample/test_ajax01.html";
+	}
+	
+	
+	@RequestMapping(value = "/fn_ajax04_1.do")
+	public String fn_ajax04_1(@RequestParam(name = "centerArr[]", required = false) List<String> centerArr) {
+		System.out.println("/fn_ajax04_1.do");
+	 
+		System.out.println(centerArr);
+		
+		for(int i=0; i<centerArr.size(); i++) {
+			System.out.println("인덱스  "+i+"::"+ centerArr.get(i));   
+		}
+		
+		return "sample/test_ajax01.html";
+	}
+	
+	
+	
+	@RequestMapping(value = "/fn_ajax05.do")
+	public String fn_ajax05(HttpServletRequest request) {
+		
+		System.out.println("/fn_ajax05.do");
+		
+		String center_lecture = request.getParameter("center_lecture");
+		System.out.println("center_lecture::::"+center_lecture);
+			//center_lecture::::{&quot;lecture01&quot;:[&quot;8850&quot;,&quot;NextIT&quot;,&quot;화면구현&quot;,&quot;HTML&quot;,&quot;Daejeon&quot;,&quot;042-719-8850&quot;],&quot;lecture02&quot;:[&quot;8850&quot;,&quot;NextIT&quot;,&quot;화면구현&quot;,&quot;CSS&quot;,&quot;Daejeon&quot;,&quot;042-719-8851&quot;]}
+		
+		center_lecture  = center_lecture.replaceAll("&quot;", "\"");
+		System.out.println("center_lecture::::"+center_lecture);
+			//center_lecture::::{"lecture01":["8850","NextIT","화면구현","HTML","Daejeon","042-719-8850"],"lecture02":["8850","NextIT","화면구현","CSS","Daejeon","042-719-8851"]}
+		 
+		 JSONParser jsonParser = new JSONParser();
+		 try {
+			//JSON데이터를 넣어 JSON Object 로 만들어 준다.
+			JSONObject jsonObject = (JSONObject) jsonParser.parse(center_lecture);
+			System.out.println("jsonObject:::::"+jsonObject);
+				//jsonObject:::::{"lecture02":["8850","NextIT","화면구현","CSS","Daejeon","042-719-8851"],"lecture01":["8850","NextIT","화면구현","HTML","Daejeon","042-719-8850"]}
+			
+			JSONArray  lecture01 = (JSONArray) jsonObject.get("lecture01");
+			JSONArray  lecture02 = (JSONArray) jsonObject.get("lecture02");
+			System.out.println(lecture02);
+				//["8850","NextIT","화면구현","CSS","Daejeon","042-719-8851"]
+			
+			for(int i =0 ; i< lecture02.size(); i++) {
+				System.out.println("인덱스  "+i+"::"+ lecture02.get(i));             
+				 
+					//인덱스  0::8850
+					//인덱스  1::NextIT
+					//인덱스  2::화면구현
+					//인덱스  3::CSS
+					//인덱스  4::Daejeon
+					//인덱스  5::042-719-8851
+				  
+			}
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "sample/test_ajax01.html";
+	}
+	
+	
+	@RequestMapping(value = "/fn_ajax05_1.do")
+	public String fn_ajax05_1 (@RequestBody Map<String, Object> map) {
+		System.out.println("/fn_ajax05_1");
+		System.out.println(map); 
+		System.out.println(map.get("lecture01"));
+		List<String> list =  (List<String>) map.get("lecture01");
+		System.out.println(list.size());
+		for(int i=0; i<list.size(); i++) {
+			System.out.println("인덱스  "+i+"::"+ list.get(i));       
+		}
+		
+	    return "sample/test_ajax01.html";
+	}
+	  
+//Ajax 화면에서 서버로 데이터 보내기 e============================================================================
+
+	
+	// @ResponseBody => 서버에서 화면으로 데이터를 넘겨주기위해서
+	// produces="text/plain; charset=UTF-8" => 서버에서 화면으로 데이터 보낼때 한글 깨짐 방지 
+	@RequestMapping(value = "/fn_ajax06.do")
+	@ResponseBody
+	public String fn_ajax06() {
+		System.out.println("/fn_ajax06.do");
+		String message = "안녕하세요 NextIT 교육센터입니다.";
+		return message;
+	}
+	
+	@RequestMapping(value = "/fn_ajax07.do")
+	@ResponseBody
+	public String fn_ajax07() {
+		System.out.println("/fn_ajax07.do");
+		
+		//Java Object to JSON
+		ObjectMapper objectMapper = new ObjectMapper(); 
+		String send_data = ""; 
+		Map<String, Object> map = new HashMap<String, Object>(); 
+		map.put("center_no", 8850);
+		map.put("name", "NextIT");
+		map.put("lecture", "화면구현");
+		map.put("region", "Daejeon");
+		try {
+			send_data = objectMapper.writeValueAsString(map);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		System.out.println(send_data);
+		
+		return 	send_data;
+	}
+	
+	@RequestMapping(value = "/fn_ajax08.do")
+	@ResponseBody
+	public Map<String, Object> fn_ajax08() {
+		System.out.println("/fn_ajax08.do");
+		
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("center_no", 8850);
+	 	resultMap.put("name", "NextIT");
+	 	resultMap.put("lecture", "화면구현");
+	 	resultMap.put("region", "Daejeon");
+	 	
+	 	return resultMap;
+	}
+	
+//서버단에서 화면으로 보내기 e ======================================================================================================
+	
+*/
+</script>
+</head>
+<body>
+	<h3>test_ajax01 페이지 입니다.</h3>
+	<input type="button" onclick="fn_ajax00()" value="fn_ajax00">
+	<input type="button" onclick="fn_ajax01()" value="fn_ajax01">
+	<input type="button" onclick="fn_ajax02()" value="fn_ajax02">
+	<input type="button" onclick="fn_ajax03()" value="fn_ajax03">
+	<input type="button" onclick="fn_ajax03_1()" value="fn_ajax03_1">
+	<input type="button" onclick="fn_ajax04()" value="fn_ajax04">
+	<input type="button" onclick="fn_ajax04_1()" value="fn_ajax04_1">
+	<input type="button" onclick="fn_ajax05()" value="fn_ajax05">
+	<input type="button" onclick="fn_ajax05_1()" value="fn_ajax05_1">
+	<input type="button" onclick="fn_ajax06()" value="fn_ajax06">
+	<input type="button" onclick="fn_ajax06_1()" value="fn_ajax06_1">
+	<input type="button" onclick="fn_ajax07()" value="fn_ajax07">
+	<input type="button" onclick="fn_ajax07_1()" value="fn_ajax07_1">
+	<input type="button" onclick="fn_ajax08()" value="fn_ajax08">
+</body>
+</html>
