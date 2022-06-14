@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<title></title>
+<script>
+/*
+Cookie 쿠키란?
+	1. 개요
+	        웹 서버가 브라우저에게 지시하여 사용자 로컬 컴퓨터에 저장하는 4K 이하의 작은 데이터
+	
+	    Cookie 도입 배경
+	        HTTP의 통신의 기본 약점
+	            브라우저와 웹서버 사이의 통신은 무상태(stateless) 프로토콜임
+	                따라서 쿠키는 HTTP 의 무상태 프로토콜의 약점을 보완하기 위해 도입
+	2. 사용법
+	        서버에서 브라우저로
+	            웹 서버는 HTTP 응답 헤더의 "Set-Cookie" 뒤에 쿠키 데이터를 보냄
+	        
+	        브라우저에서는
+	            Cookie를 읽거나 쓸수 있음
+	                읽기    
+	                    let cookie  = document.cookie ;
+	                쓰기 
+	                    읽어들인 쿠키에 쓰기 
+	                    let cookieStr = "안녕하세요 NextIT 교육센터입니다.";
+	                    document.cookie = cookieStr;
+                    
+   	3. window인 경우 
+   		C:\Users\[pc_name]\AppData\Local\Google\Chrome\User Data\Default\Cookies
+   
+	4. Cookies 내용 확인
+   		ChromeCookiesView로 확인 가능
+   		브라우저 개발자도구에서 확인 가능
+   			Application -> Cookies
+   		
+  	5. Cookie 보안 취약점
+  		개요
+		  	대부분의 Cookie를 이용한 공격은 서버 수준에서 직접 침해를 일으키기 위한 공격은 아니며 
+		  	  해당 서버를 이용하는 일반 사용자를 대상으로 한다는 점이다. ( 사용자 pc에 저장 하므로 ) 
+	  	취약점
+	  		Cookie Theft (쿠키 절도 )	
+			XSS, XST 등의 취약점
+            Cookie Spoofing ...
+            
+       	결론
+       		따라서 Cookie를  사용하는것은 권고 하지 않습니다.
+       		
+       		
+Web Storage
+	1 개요
+		HTML5에서 웹 스토리지(web storage) 도입
+		웹 애플리케이션은 실행 도중 로컬 컴퓨터에 데이터 저장 공간 필요
+		쿠키의 한계 (쿠키의 크기는 4KB로 제한- 충분한 량의 정보 저장 한계)
+	2 종류
+		Web Storage
+			Session Storage
+				브라우저 혹은 탭을 종료할 경우 데이터가 삭제 된다.
+			Local Storage
+				브라우저를 종료해도 데이터들은 삭제되지 않는다.
+   	3 Web Storage 보안 취약점
+   		Cookie와 마찬가지로  웹사이트와 관련된 컨텐츠를 사용자의 컴퓨터에 저장하고 
+   		  자바스크립트를 이용하여 접근 및 통제를 할 수 있다. 
+		
+*/ 
+$(function(){
+	//Cookie
+	console.log("document.cookie::::"+document.cookie);
+	let cookie = document.cookie;
+	let cookie_arr = cookie.split(";");
+	console.log(cookie_arr);
+	console.log(cookie_arr.length);
+	for(let i=0; i<cookie_arr.length; i++){
+		let cookie_arr02 = cookie_arr[i].split("=");
+		console.log(cookie_arr02[0]);
+		console.log(cookie_arr02[1]);
+		if(cookie_arr02[1]=="NextIT")
+		$("span").text(cookie_arr02[1]);
+	}
+	
+});
+/*
+@RequestMapping(value="/cookie.do")
+	public String cookie(HttpServletResponse response){
+		System.out.println("/cookie.do");
+		
+		Cookie cookie = new Cookie("name0101", "NextIT"); 
+		response.addCookie(cookie);
+		return "sample/cookie01.html";
+}
+*/  			
+
+
+// web Storage
+function webStorage01(){
+	let set_name = "NextIT" 	
+
+	//로컬스토리지		
+	let localStorage = window.localStorage;
+	if (!localStorage) {
+	     alert("로컬스토리지를 지원하지 않습니다.");
+	     return;
+	}
+	localStorage.setItem("name", set_name);
+	
+	//세션스토리지
+	let sessionStorage = window.sessionStorage;
+	if(!sessionStorage){
+		alert("세션스토리지를 지원하지 않습니다.");
+		return;
+	}
+    sessionStorage.setItem("name", set_name);
+}
+
+function webStorage02(){
+	let get_name_loacal = localStorage.getItem("name");
+	let get_name_session = sessionStorage.getItem("name");
+	console.log("get_name_loacal:::::"+get_name_loacal);
+    console.log("get_name_session:::::"+get_name_session);
+    /*localStorage는 창을닫고 다시 페이지를 로딩하면 스토리지에 값이 있지만
+        sessionStorage는 창을 닫고 다시 열면 스토리지에 값이 없다.*/
+}
+</script>
+</head>
+<body>
+<h1>안녕하세요 <span> </span> 입니다.</h1>
+<input type="button" onclick="webStorage01()" value="webStorage01">
+<input type="button" onclick="webStorage02()" value="webStorage02">
+
+
+</body>
+</html>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+//test_ajax02.html
+function fn_ajax00(){
+$.ajax({
+	url:"/sample01_ajax/fn_ajax01.do",
+    type: 'post',
+    success: function(){
+      console.log('1 번째');
+      fn_ajax00_1();
+      fn_ajax00_2();
+      fn_ajax00_3();
+      fn_ajax00_4();
+      console.log('1_1 번째');
+    },
+    error: function(){
+	      alert('요청하신 페이지에 문제가 있어 표시할 수 없습니다.');
+    }    
+ });
+}	
+
+function fn_ajax00_1(){
+	console.log('2 번째');
+}
+function fn_ajax00_2(){
+	console.log('3 번째');
+}
+function fn_ajax00_3(){
+	console.log('4 번째');
+}
+function fn_ajax00_4(){
+	console.log('5 번째');
+}
+
+//-------------------------------------------------------------------------
+//비동기일때는 순서가 뒤죽박죽...
+function fn_ajax01(){
+	$.ajax({
+		url:"/sample01_ajax/fn_ajax01.do",
+	    type: 'post',
+	    success: function(){
+	      console.log('1 번째');
+	    },
+	    error: function(){
+		      alert('요청하신 페이지에 문제가 있어 표시할 수 없습니다.');
+	    }    
+	 });
+	$.ajax({
+		url:"/sample01_ajax/fn_ajax01.do",
+	    type: 'post',
+	    success: function(){
+	      console.log('2 번째');
+	    },
+	    error: function(){
+		      alert('요청하신 페이지에 문제가 있어 표시할 수 없습니다.');
+	    }    
+	 });
+	$.ajax({
+		url:"/sample01_ajax/fn_ajax01.do",
+	    type: 'post',
+	    success: function(){
+	      console.log('3 번째');
+	    },
+	    error: function(){
+		      alert('요청하신 페이지에 문제가 있어 표시할 수 없습니다.');
+	    }    
+	 });
+	$.ajax({
+		url:"/sample01_ajax/fn_ajax01.do",
+	    type: 'post',
+	    success: function(){
+	      console.log('4  번째');
+	    },
+	    error: function(){
+		      alert('요청하신 페이지에 문제가 있어 표시할 수 없습니다.');
+	    }    
+	 });
+	$.ajax({
+		url:"/sample01_ajax/fn_ajax01.do",
+	    type: 'post',
+	    success: function(){
+	      console.log('5 번째');
+	    },
+	    error: function(){
+		      alert('요청하신 페이지에 문제가 있어 표시할 수 없습니다.');
+	    }    
+	 });
+ 
+	
+
+}
+//방법1-------------------------------------------------------------------------
+// success안에 ajax 사용으로 순서를 맞춤. 하지만 success 안에서 순서는 맞지 않음
+function fn_ajax02(){
+	$.ajax({
+		url:"/sample01_ajax/fn_ajax01.do",
+	    type: 'post',
+	    error: function(){
+	      alert('요청하신 페이지에 문제가 있어 표시할 수 없습니다.');
+	    },
+	    success: function(){
+	      console.log('첫 번째');
+	        $.ajax({
+	        	url:"/sample01_ajax/fn_ajax01.do",
+	          	type: 'post',
+	          	error: function(){
+	            	alert('요청하신 페이지에 문제가 있어 표시할 수 없습니다.');
+	          	},
+	          	success: function(){
+	            	console.log('두 번째');
+	           		$.ajax({ 
+	           			url:"/sample01_ajax/fn_ajax01.do",
+	            	  	error: function(){
+	                		alert('요청하신 페이지에 문제가 있어 표시할 수 없습니다.');
+	           			},
+		           		success: function(){
+		                	console.log('세 번째');
+		                	$.ajax({
+		               			url:"/sample01_ajax/fn_ajax01.do",
+		                	  	error: function(){
+		                    		alert('요청하신 페이지에 문제가 있어 표시할 수 없습니다.');
+		               			},
+		    	           		success: function(){
+		    	                	console.log('네 번째');
+		    	                	$.ajax({
+		    	               			url:"/sample01_ajax/fn_ajax01.do",
+		    	                	  	error: function(){
+		    	                    		alert('요청하신 페이지에 문제가 있어 표시할 수 없습니다.');
+		    	               			},
+		    	    	           		success: function(){
+		    	    	                	console.log('다섯 번째');
+		    	    	           	  	}
+		    	                	});
+									// 이부분 순서확인
+		    	                	console.log('4_1 번째');
+		    	           	  	}
+		                	});   		
+							// 이부분 순서확인
+		                	console.log('3_1 번째');
+		           		
+		           		}
+	            	});
+	       		}
+	     	});
+		}
+	});
+}
+
+//방법2-------------------------------------------------------------------------
+//위와 마찬가지로 비동기 순서는 처리했지만  success 안에서 순서는 처리 못함 
+function fn_ajax03(){
+	$.ajax({
+		url:"/sample01_ajax/fn_ajax01.do",
+	    type: 'post',
+	    success: function(){
+	      console.log('1 번째');
+	      fn_ajax03_1();
+	      console.log('1_1 번째');
+	    },
+	    error: function(){
+		      alert('요청하신 페이지에 문제가 있어 표시할 수 없습니다.');
+	    }    
+	 });
+}	
+function fn_ajax03_1(){
+	$.ajax({
+		url:"/sample01_ajax/fn_ajax01.do",
+	    type: 'post',
+	    success: function(){
+	      console.log('2 번째');
+	      fn_ajax03_2();
+	      console.log('2_1 번째');
+	    },
+	    error: function(){
+		      alert('요청하신 페이지에 문제가 있어 표시할 수 없습니다.');
+	    }    
+	});
+}
+function fn_ajax03_2(){
+	$.ajax({
+		url:"/sample01_ajax/fn_ajax01.do",
+	    type: 'post',
+	    success: function(){
+	      console.log('3 번째');
+	      fn_ajax03_3();
+	      console.log('3_1 번째');
+	    },
+	    error: function(){
+		      alert('요청하신 페이지에 문제가 있어 표시할 수 없습니다.');
+	    }    
+	 });
+}
+function fn_ajax03_3(){
+	$.ajax({
+		url:"/sample01_ajax/fn_ajax01.do",
+	    type: 'post',
+	    success: function(){
+	      console.log('4 번째');
+	      fn_ajax03_4();
+	      console.log('4_1 번째');
+	    },
+	    error: function(){
+		      alert('요청하신 페이지에 문제가 있어 표시할 수 없습니다.');
+	    }    
+	 });
+}	
+	 
+function fn_ajax03_4(){
+	$.ajax({
+		url:"/sample01_ajax/fn_ajax01.do",
+	    type: 'post',
+	    success: function(){
+	      console.log('5 번째');
+	    },
+	    error: function(){
+		      alert('요청하신 페이지에 문제가 있어 표시할 수 없습니다.');
+	    }    
+	 });
+}
+
+ 
+
+//방법3-------------------------------------------------------------------------
+//  async: false를 사용하여 success 안에서 순서 처리  
+
+function fn_ajax04(){
+	$.ajax({
+		url:"/sample01_ajax/fn_ajax01.do",
+	    type: 'post',
+	    async: false,
+	    success: function(){
+	      console.log('1 번째');
+	      fn_ajax04_1();
+	      console.log('1_1 번째');
+	    },
+	    error: function(){
+		      alert('요청하신 페이지에 문제가 있어 표시할 수 없습니다.');
+	    }    
+	 });
+}	
+
+function fn_ajax04_1(){
+	  $.ajax({
+		url:"/sample01_ajax/fn_ajax01.do",
+	    type: 'post',
+	    async: false,
+	    success: function(){
+	      console.log('2 번째');
+	      fn_ajax04_2();
+	      console.log('2_1 번째');
+	    },
+	    error: function(){
+		      alert('요청하신 페이지에 문제가 있어 표시할 수 없습니다.');
+	    }    
+	 });  
+}
+
+function fn_ajax04_2(){
+	  $.ajax({
+		url:"/sample01_ajax/fn_ajax01.do",
+	    type: 'post',
+	    async: false,
+	    success: function(){
+	      console.log('3 번째');
+	      fn_ajax04_3();
+	      console.log('3_1 번째');
+	    },
+	    error: function(){
+		      alert('요청하신 페이지에 문제가 있어 표시할 수 없습니다.');
+	    }    
+	 });  
+}
+function fn_ajax04_3(){
+	  $.ajax({
+		url:"/sample01_ajax/fn_ajax01.do",
+	    type: 'post',
+	    async: false,
+	    success: function(){
+	      console.log('4 번째');
+	      fn_ajax04_4();
+	      console.log('4_1 번째');
+	    },
+	    error: function(){
+		      alert('요청하신 페이지에 문제가 있어 표시할 수 없습니다.');
+	    }    
+	 });  
+}
+function fn_ajax04_4(){
+	  $.ajax({
+		url:"/sample01_ajax/fn_ajax01.do",
+	    type: 'post',
+	    async: false,
+	    success: function(){
+	      console.log('5 번째');
+	      console.log('5_1 번째');
+	    },
+	    error: function(){
+		      alert('요청하신 페이지에 문제가 있어 표시할 수 없습니다.');
+	    }    
+	 });  
+}
+
+//방법4-------------------------------------------------------------------------
+// $.ajaxSetup({async:false});으로 success 안에서 순서 맞춤 
+function fn_ajax05(){
+	$.ajax({
+		url:"/sample01_ajax/fn_ajax01.do",
+	    type: 'post',
+	    success: function(){
+	    	$.ajaxSetup({async:false});
+			console.log('1 번째');
+			fn_ajax05_1();
+			console.log('1_1 번째');
+			$.ajaxSetup({async:true});
+	    },
+	    error: function(){
+		      alert('요청하신 페이지에 문제가 있어 표시할 수 없습니다.');
+	    }    
+	 });
+}	
+function fn_ajax05_1(){
+	  $.ajax({
+		url:"/sample01_ajax/fn_ajax01.do",
+	    type: 'post',
+	    success: function(){
+	      console.log('2 번째');
+	      fn_ajax05_2();
+	      console.log('2_1 번째');
+	    },
+	    error: function(){
+		      alert('요청하신 페이지에 문제가 있어 표시할 수 없습니다.');
+	    }    
+	 });  
+}
+function fn_ajax05_2(){
+	  $.ajax({
+		url:"/sample01_ajax/fn_ajax01.do",
+	    type: 'post',
+	    success: function(){
+	      console.log('3 번째');
+	      fn_ajax05_3();
+	      console.log('3_1 번째');
+	    },
+	    error: function(){
+		      alert('요청하신 페이지에 문제가 있어 표시할 수 없습니다.');
+	    }    
+	 });  
+}
+function fn_ajax05_3(){
+	  $.ajax({
+		url:"/sample01_ajax/fn_ajax01.do",
+	    type: 'post',
+	    success: function(){
+	      console.log('4 번째');
+	      fn_ajax05_4();
+	      console.log('4_1 번째');
+	    },
+	    error: function(){
+		      alert('요청하신 페이지에 문제가 있어 표시할 수 없습니다.');
+	    }    
+	 });  
+}
+function fn_ajax05_4(){
+	  $.ajax({
+		url:"/sample01_ajax/fn_ajax01.do",
+	    type: 'post',
+	    success: function(){
+	      console.log('5 번째');
+	      console.log('5_1 번째');
+	    },
+	    error: function(){
+		      alert('요청하신 페이지에 문제가 있어 표시할 수 없습니다.');
+	    }    
+	 });  
+}
+/*
+서버단
+@RequestMapping(value = "/fn_ajax01.do")
+	public String fn_ajax01(HttpServletRequest request) {
+		System.out.println("/fn_ajax01.do");
+		
+		String name = request.getParameter("name");
+		String lecture = request.getParameter("lecture");
+		System.out.println("name::::"+name+",    lecture::::"+lecture);
+		 
+		return "sample/test_ajax01.html";
+	}
+ */
+</script>
+</head>
+<body>
+	<h3>test_ajax02 페이지 입니다.</h3>
+	<input type="button" onclick="fn_ajax00()" value="fn_ajax00">
+	<input type="button" onclick="fn_ajax01()" value="fn_ajax01">
+	<input type="button" onclick="fn_ajax02()" value="fn_ajax02">
+	<input type="button" onclick="fn_ajax03()" value="fn_ajax03">
+	<input type="button" onclick="fn_ajax04()" value="fn_ajax04">
+	<input type="button" onclick="fn_ajax05()" value="fn_ajax05">
+ 
+ 
+</body>
+</html>
