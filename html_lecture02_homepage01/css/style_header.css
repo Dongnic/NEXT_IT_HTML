@@ -1,0 +1,60 @@
+/* 전체 스타일 */
+*{
+    font-family: 'Noto Sans KR', sans-serif;
+    list-style: none;
+    text-decoration: none;
+    margin: 0 auto;
+    padding: 0;
+    color: black;
+}
+
+/* header START  */
+
+.header{
+    width: 100%;
+    height: 100px;
+    background-color: lightblue;
+}
+.top_nav{
+    width: 1280px;
+    height: 100px;
+    background-color: lightcoral;
+    display: flex;
+}
+.nav{
+    display: flex;
+}
+.searchArea{
+    width: 300px;
+    height: 40px;
+    background-color: lightgreen;
+}
+.searchArea > form > input{
+    width: 200px;
+    height: 25px;
+    background-color: rgba(0,0,0,0.1);
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    padding-left: 15px;
+}
+.searchArea > form > span{
+    width: 50px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.searchArea, .nav{
+    margin-top: 30px;
+}
+
+.nav > li > a{
+    margin-left: 84px;
+    font-weight: bold;
+}
+
+.header, .top_nav, .searchArea{
+    background-color: white;
+}
+
+/* header END */
