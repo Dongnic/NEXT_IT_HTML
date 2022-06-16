@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS_for문</title>
+<script>
+    //반복문에 사용할 배열 생성
+    const num01= 10;
+    let array01 = [];
+    for(let i =0 ; i<num01; i++){
+        let random01 =Math.floor((Math.random()*10)+1);
+        array01.push(random01);
+    }
+    console.log("array01::::::"+array01);
+    console.log("array01::::::"+array01.length);
+
+
+    // 일반 for문
+    function fn_nomal_for() {
+        for(let i=0; i < array01.length; i++){
+            console.log("fn_nomal_for 인덱스 i 는 "+ ( parseInt(i)+1)+"값은"+ array01[i]);
+        }
+    } 
+    //for in 반복문
+    function fn_for_in01() {
+        for(let i in array01){
+            console.log("fn_for_in01 인덱스 i 는 "+ ( parseInt(i)+1)+"값은"+ array01[i]);
+        }
+    }
+
+    
+    /* 참고 (문서 객체 배열에 for in 반복문을 사용하면 안됩니다. 
+            이유는 문서 객체 이외의 속성에도 접근 하기 때문입니다.) */
+    function fn_for_in02() {
+        let tag_input01 = document.getElementsByTagName('input');
+        console.log(tag_input01);
+
+        //for in 반복문에서 length 속성까지 인덱스로 접근함   
+        for(let i in tag_input01){
+            console.log("tag_input01 인덱스 i 는 "+ i+"값은"+ tag_input01[i].value);
+        }
+        
+
+        //따라서 Array.prototype.slice.call을 사용해서 배열형태로 전환하면 사용 가능
+        // let nodesArray = Array.prototype.slice.call(tag_input01);
+        // for(let i in nodesArray){
+        //     console.log("nodesArray 인덱스 i 는 "+ i+"값은"+ nodesArray[i].value);
+        // }
+    }
+
+</script>
+</head>
+<body>
+<h3>JS_for문</h3>
+<hr>
+<input type="button" onclick="javascript:fn_nomal_for()" value="일반 for문">
+<input type="button" onclick="javascript:fn_for_in01()" value="fn_for_in01 반복문">
+<input type="button" onclick="javascript:fn_for_in02()" value="fn_for_in02 반복문">
+ 
+</body>
+</html>

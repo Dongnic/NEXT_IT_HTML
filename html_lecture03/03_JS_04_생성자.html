@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS_생성자</title>
+<script>
+ /*생성자
+    생성자는 객체를 생성할 때 사용하는 함수라고 생각하시면 됩니다.
+        꽤 상급 내용이므로 너무 어렵다면 간단하게 용어만 살펴보시기 바랍니다.
+        참고: ./images/newFunction01.jpg
+
+    생성자 함수 생성 방법
+        //생성자 함수 이름은 일반적으로 대문자로 시작하는 것이 관례 입니다.
+        function Student (){
+
+        }
+
+    이렇게 생성한 생성자 함수는 new 키워드로 객체를 생성합니다ㅣ.
+        function Student (){
+
+        }
+        let student = new Student();
+
+    생성자 함수 안에서 this 키워드를 통해 생성자 함수로 생성될 객체의 속성을 지정합니다.
+        function Student (name, english, science ){
+            this.name = name;
+            this.english = english;
+            this.science = science;
+        }
+        let student = new Student('신용우', 63, 61 );
+    
+    이제 생성자 함수 안에 메서드를 만들어 봅니다.
+        function Student (name, english, science ){
+            this.name = name;
+            this.english = english;
+            this.science = science;
+
+            this.getSum = function(){
+                return this.english + this.science;
+            };
+
+            this.getAverage = function(){
+                return this.getSum/2;
+            };
+
+            this.toString = function(){
+                return this.name + '\t' + this.getSum() + '\t' + this.getAverage();
+            }
+        }
+        let student = new Student('신용우', 63, 61 );
+
+
+ */
+//생성자 함수를 사용한 객체 배열 생성
+function Student (name, english, science ){
+    this.name = name;
+    this.english = english;
+    this.science = science;
+
+    this.getSum = function(){
+        return this.english + this.science;
+    };
+
+    this.getAverage = function(){
+        return this.getSum()/2;
+    };
+
+    this.toString = function(){
+        return this.name + ' 점수 합은 ' + this.getSum() + ' 평균은 ' + this.getAverage();
+    }
+}
+let student = new Student('nextit', 80, 58 );
+console.log(student.toString());
+
+
+let students = [];
+students.push(new Student('신용우', 63, 61));
+students.push(new Student('한창희', 73, 71));
+students.push(new Student('이태욱', 83, 81));
+
+console.log("students.length:::"+students.length);
+
+let output = '이름  총점  평균\n';
+for ( let i in students){
+    output += students[i].toString() + '\n';
+}
+console.log(output);
+
+
+
+
+
+</script>
+</head>
+<body>
+ <h3>JS_생성자</h3>
+ <hr>
+</body>
+</html>

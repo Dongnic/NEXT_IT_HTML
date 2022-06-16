@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head><title>setInterval()로 텍스트 회전</title></head>
+<body>
+<!-- 
+    setInterval : 지정한 시간으로 반복 실행 
+    clearInterval : setInterval 작업 취소
+
+    사용법
+    시작
+        myTimeout = setInterval(function, milliseconds);
+    종료
+        clearInterval(myTimeout);
+-->
+<h3>텍스트가 자동 회전하며, 마우스로 클릭하면 중단합니다.</h3>
+<hr>
+<div>
+    <span id="span_1" style="background-color:yellow">
+        자동 회전하는 텍스트입니다.</span>
+</div>
+<script>
+
+let span_1 = document.getElementById("span_1");
+
+// 0.1초 주기로 doRotate() 호출
+let timerID = setInterval("doRotate()", 100); 
+
+//글자회전
+function doRotate() {
+    let str = span_1.textContent;
+    let firstChar = str.substr(0, 1);
+    let remains = str.substr(1, str.length-1);
+    str = remains + firstChar;
+    span_1.textContent = str; 
+}
+
+//span_1에 onclick 이벤트 걸기
+span_1.onclick = function (e) {
+    //(마우스 클릭시) 타이머 해제. 문자열 회전 중단 
+    clearInterval(timerID); 
+}
+
+</script>
+</body>
+</html>

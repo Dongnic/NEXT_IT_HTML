@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html><head><title>onclick</title>
+<script>
+// PPT 9장(이벤트 기초 및 활용) 예제
+function calculate() {
+
+    let exp = document.getElementById("exp");
+    let result = document.getElementById("result");
+    /*내장 함수 eval을 사용하면 문자열 형태의 코드를 실행할 수 있습니다.
+       eval() 사용은 보안 문제 관련됩니다. 예를 들어 네트워크에서 
+       가져온 코드를 실행시키게 될수 있기 때문입니다.
+       따라서 eval() 사용을 권하지 않습니다.
+    */
+    result.value = eval(exp.value);
+}
+</script>
+</head>
+<body >
+<h3> onclick, 계산기 만들기</h3>
+<hr>
+계산하고자 하는 수식을
+입력하고 계산 버튼을 눌러봐요.’
+<p>
+<form>
+계산 식 <input type="text" id="exp" value="">
+<input type="button" value=" 계산 " onclick="calculate()">
+<br>
+계산 값 <input type="text" id ="result" readonly> 
+</form>
+</body>
+</html>

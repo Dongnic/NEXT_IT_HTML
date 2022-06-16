@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS_배열</title>
+  <script>
+  /* 배열
+      선언방법 2가지
+        1. 배열 리터럴 대괄호를 사용하여 생성 
+           let array01 = []; 
+        2. Array() 생성자 함수를 사용하여 생성  
+           let array03 = new Array();
+            ( 참고 : 자바스크립트에서는 배열을 사용 시 배열 리터럴([])을 
+              사용할 것을 권장 합니다.
+                https://www.w3schools.com/js/js_arrays.asp
+                  There is no need to use new Array().
+                    For simplicity, readability and execution speed, 
+                    use the first one (the array literal method). )
+
+      자바스크립트 배열이 다른 언어와 다른 점 
+        1 배열 내부의 데이터 타입이 서로 다를 수 있다
+        2 배열의 크기는 동적으로 변경될 수 있다   
+  */  
+
+    // 방법 1-1 ([])
+      let array01 = [];
+        array01[0] = 'NextIt';    
+        array01[1] =  8850;
+        array01[2] =  true;
+        
+      console.log("array01.length:::::"+array01.length);
+      console.log(typeof(array01));
+      array01.length = 1;  // 배열크기 재 지정
+
+      array01[6] =  "화면구현"; 
+      console.log("array01.length:::::"+array01.length);
+      console.log("array01::::"+array01);//3번째 값이 없음
+
+      array01[5] =  "자바스크립트"; 
+      console.log("array01.length:::::"+array01.length);
+      console.log("array01::::"+array01);
+
+      // 방법 1-2 
+      let array02 = [
+          'NextIt',
+           8850,
+           true
+      ];   
+
+
+    //방법 2-1 (new Array())
+      let array03 = new Array();
+        array03[0] = 'NextIt';
+        array03[1] =  8850;
+        array03[2] =  true;
+        console.log("array03::::"+array03);
+        //방법 2-2
+        var array04 = new Array('NextIt', 8850, true); 
+        console.log("array04::::"+array04);
+        
+    // 정리
+    /*
+      변수
+        var str01 = "NextIT" ;
+        var str01 = "화면구현" ;
+          // 재선언, 재할당 가능
+
+        let str02 = "NextIT" ;
+        str02 = "화면구현" ;
+          // 재선언 불가능, 재할당 가능
+
+      상수
+        const  pi01 = 3.14159265;
+          // 재선언, 재할당 불가능
+
+      배열 
+        1. let array01 = []; 
+            // 리터럴 방식을 권장
+        2. let array02 = new Array();
+            
+
+      객체 
+        1. let course01 = {};
+        2. let place01 = new Object();  
+
+
+    */
+  
+  </script>
+</head>
+<body>
+ <h3>JS_배열</h3>   
+<hr>
+</body>
+</html>

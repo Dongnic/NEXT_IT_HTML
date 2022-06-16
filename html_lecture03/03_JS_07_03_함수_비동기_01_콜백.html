@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS_함수_비동기_콜백_01</title>
+<script>
+
+//일반적인 동기처리
+function add(x, y) {                                (6)
+  return x + y;                                     (7)
+}
+function add2(x) {                                  (4)
+  return add(x, 2); // add를 호출                   (8)(5)
+}
+function add2AndPrint(x) {                          (2)
+  const result = add2(x); // add2를 호출            (9)(3)
+  console.log(result); // console.log를 호출        (10)
+}
+add2AndPrint(3); // add2AndPrint를 호출             (1)
+/*
+    CALL STACK 실행순서
+    1               2                           3                           4                               5                           6                           7
+                                                                            function add(x,y)                
+                                                function add2(x)            function add2(x)                function add2(x)                    
+                    function add2AndPrint(x)    function add2AndPrint(x)    function add2AndPrint(x)        function add2AndPrint(x)    function add2AndPrint(x)
+    add2AndPrint    add2AndPrint                add2AndPrint                add2AndPrint                    add2AndPrint                add2AndPrint                 add2AndPrint        
+
+*/
+
+//비동기 방식 실행 순서
+//참조 : ./image/setTimeout.gif
+function fn_first (){
+    console.log("first");
+} 
+function fn_second (){
+    setTimeout(function(){
+        console.log("second")
+    }, 0);
+}
+function fn_thrid (){
+    console.log("thrid");
+} 
+fn_first();
+fn_second();
+fn_thrid();
+
+ 
+
+//콜백함수를 통한 비동기처리 예제------------------------------------------------------------
+
+//(일반적인) 처리 방식
+function buySweetPotato01(item, price, quantity) {
+    console.log(item + " 상품을 " + quantity + "개 골라서 점원에게 주었습니다.");
+    console.log("(buySweetPotato01) 계산이 필요합니다.");
+    let total = price*quantity;
+    return total;
+}
+function pay01(tot) {
+    console.log("(buySweetPotato01) "+tot + "원을 지불하였습니다1.");
+}
+
+let tot01 = buySweetPotato01("고구마", 1000, 5);
+pay01(tot01);
+
+
+//(잘못된) setTimeout(비동기) 처리
+function buySweetPotato02(item, price, quantity) {
+    console.log(item + " 상품을 " + quantity + "개 골라서 점원에게 주었습니다.");
+    setTimeout(function() {
+        console.log("(buySweetPotato02) 계산이 필요합니다.");
+        let total = price*quantity;
+        return total;
+    }, 1000);
+}
+function pay02(tot) {
+    console.log("(buySweetPotato02) "+tot + "원을 지불하였습니다.");
+}
+
+let tot02 = buySweetPotato02("고구마", 1000, 6);
+pay02(tot02);
+
+
+
+//(올바른)콜백 함수를 이용한 비동기 처리방법 
+function buySweetPotato03(item, price, quantity, callback) {
+    console.log(item + " 상품을 " + quantity + "개 골라서 점원에게 주었습니다.");
+    setTimeout(function() {
+        console.log("(buySweetPotato03) 계산이 필요합니다.");
+        let total = price*quantity;
+        callback(total);
+    }, 1000);
+}
+/*function pay03(tot) {
+    console.log("(buySweetPotato03) "+tot + "원을 지불하였습니다.");
+}*/
+let pay03 = function (tot) {
+    console.log("(buySweetPotato03) "+tot + "원을 지불하였습니다.");
+}
+buySweetPotato03("고구마", 1000, 7, pay03);
+
+
+</script>
+</head>
+<body>
+ <h3>JS_함수_비동기_콜백_01</h3>   
+<hr>
+ 
+ 
+</body>
+</html>

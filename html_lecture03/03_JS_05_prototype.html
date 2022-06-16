@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS_prototype</title>
+<script>
+ /*prototype (프로토타입)
+    앞에서 살펴본 생성자 함수 에서 속성은 모든 객체가 다른 값을 갖습니다. 
+     하지만 메서드는 모두 같은 값을 갖습니다. 따라서 객체가 생성되어질 때 마다
+      동일한 함수를 계속 생성하게 됩니다. 만약 생성할 객체 1000개 이면 객체별로 
+       동일한 메서드가 1000번씩 생성하는 일이 발생합니다. 이는 메모리를 쓸데없이 
+        잡아 먹는 굉장히 비효율적인 일입니다.
+    
+    이러한 문제를 해결하고자 자바스크립트는 prototype이라고 불리는 공간을 만들었습니다.
+     prototype은 생성자 함수로 생성된 객체가 공통으로 가지는 공간입니다.
+      메서드를 하나만 생성해도 모든 객체가 해당 메서드를 사용할 수 있습니다.
+       따라서 생성자 함수로 객체를 만들 때는 생성자 함수 내부에는 속성만 넣습니다
+        그리고 메서드는 모두 prototype 안에 넣어 줍니다.
+
+    참고 
+        생성자함수 일때 =>  ./images/newFunction01.jpg
+        prototype 일때 =>  ./images/prototype01.jpg
+
+    예시
+        function Student (name, english, science ){
+            this.name = name;
+            this.english = english;
+            this.science = science;
+        }
+
+        Student.prototype.getSum = function(){
+            return this.english + this.science;
+        }
+        Student.prototype.getAverage = function(){
+            return (this.english + this.science)/2;
+        }
+        Student.prototype.toString = function(){
+            return this.name + '\t' + this.getSum() + '\t' + this.getAverage();
+        }
+
+        let student = new Student('신용우', 63, 61 );
+  
+ */
+
+/*
+    Object 객체
+        Object 객체는 모든 자바스크립트 객체의 최상위 객체입니다. 따라서 Object 객체의 프로토 타입에
+        속성 또는 메서드를 추가하면 모든 객체에서 활용할 수 있습니다.
+*/
+    //let object = new Object()      
+    Object.prototype.test = function(){
+        console.log("Object_prototype:::"+ this);
+    }
+    //Number 객체의 test() 메서드를 호출 합니다.
+    let number = 273;
+    number.test();
+
+
+
+
+//생성자 함수를 사용한 객체 배열 생성
+function Student (name, english, science ){
+            this.name = name;
+            this.english = english;
+            this.science = science;
+}
+
+Student.prototype.getSum = function(){
+    return this.english + this.science;
+}
+Student.prototype.getAverage = function(){
+    return (this.english + this.science)/2;
+}
+Student.prototype.toString = function(){
+    return this.name + '\t' + this.getSum() + '\t' + this.getAverage();
+}
+
+
+let students = [];
+students.push(new Student('신용우', 63, 61));
+students.push(new Student('한창희', 73, 71));
+students.push(new Student('이태욱', 83, 81));
+
+console.log("students.length:::"+students.length);
+
+let output = '이름  총점  평균\n';
+for (let i=0; i<students.length; i++){
+    output += students[i].toString() + '\n';
+}
+console.log(output);
+
+ 
+
+</script>
+</head>
+<body>
+ <h3>JS_prototype</h3>
+ <hr>
+</body>
+</html>

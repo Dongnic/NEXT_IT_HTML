@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS_switch문_01</title>
+<script>
+    /* 
+    switch 문
+        값에 따라 서로 다른 코드를 실행할 때, switch 문 적합
+        case 문의 ‘값’은 상수만 가능 변수 또는 조건문 사용 불가 
+    */
+    let city="Paris";
+    switch(city) {
+        case "Seoul":
+            console.log("서울");
+            break;
+        case "NewYork":
+            console.log("뉴욕");
+            break;
+        case "Paris":
+            console.log("파리");
+            break;
+    }
+    
+    let day="월";
+    switch(day) {
+        case "월":
+        case "화":
+        case "수":
+        case "목":
+        case "금": 
+            console.log("정상영업");
+            break;
+        case "토":
+        case "일": 
+            console.log("휴일");
+            break;
+    }
+    /*여러 case에 대해 동일한 코드를 실행하도록
+        의도적으로 break; 를 생략한 경우 */
+</script>
+</head>
+<body>
+<h3>JS_switch문_01</h3>
+<hr>
+</body>
+</html>

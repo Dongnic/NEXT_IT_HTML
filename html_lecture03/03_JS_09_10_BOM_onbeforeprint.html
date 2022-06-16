@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>onbeforeprint와 onafterprint</title>
+<style>
+#logoDiv {
+display : none;
+float: left;
+width : 100%;
+height : 100%;
+}
+</style>
+<script>
+/*
+
+onbeforeprint : 프린트 화면 호출 전 발생하는 이벤트
+onafterprint:  프린트 출력 후 발생하는 이벤트
+
+*/
+
+
+//프린트 하기 이전에 호출 
+//display를 blocke으로 변경하여 페이지에 로그 보이게
+window.onbeforeprint=function() {
+    let logoDiv = document.getElementById("logoDiv");
+    logoDiv.style.display = "block"; // block으로 변경. 로고가 화면에 나타나게 함
+    
+}
+
+//(onafterprint)프린트 하고 나서 이후에는 
+    //display를 none으로 변경하여 페이지에서 로그 숨기기
+window.onafterprint=hideLogo;  //함수를 변수에 저장
+
+function hideLogo() {
+    logoDiv = document.getElementById("logoDiv");
+    logoDiv.style.display = "none"; // <div> 영역이 보이지 않게 함
+} 
+</script></head>
+<body>
+<h3>onbeforeprint, onafterprint 이벤트 예</h3>
+<hr>
+<div id="logoDiv">
+    <img src="./images/nextit_log.jpg" alt="이미지 없습니다.">
+</div>
+<p>안녕하세요. 브라우저 윈도우에서는 보이지 않지만, 프린트 시에 회사 로고가 출력되는 예제를
+보입니다. 마우스 오른쪽 버튼을 눌러 인쇄 메뉴를 선택해 보세요.</p>
+</body>
+</html>

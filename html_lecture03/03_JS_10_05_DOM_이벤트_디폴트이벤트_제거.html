@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS_DOM_디폴트_제거</title>
+<script>
+/*
+디폴트 이벤트 제거 방법
+    1. return false
+    2. preventDefault()
+*/
+
+//1. a 태그 디폴트 이벤트 제거
+ window.onload= function(){
+    //방법1 return false 사용
+    let a_tag_01 = document.getElementById("a_tag_01");
+    a_tag_01.onclick = function(){
+        return false;
+    }
+    //방법2 preventDefault 사용
+    document.getElementById("a_tag_02").addEventListener("click", function(event){
+        event.preventDefault();
+    });
+
+};
+
+//2. form submit 디폴트 이벤트 제거 
+//방법 1) 버튼 클릭 후 return false;
+function form_submit01(){
+    let login_id = document.getElementById("login_id02").value;
+    let login_pw = document.getElementById("login_pw02").value;
+    let login_form = document.getElementById("login_form");
+    
+    if (login_id == null || login_id == undefined || login_id =="" ){     
+        alert("아이디 가 입력되지 않았습니다."); 
+        return false; 
+    }else if(login_pw == null || login_pw == undefined || login_pw ==""){
+        alert("패스워드가 입력되지 않았습니다.");
+        return false;
+    }else{
+        login_form.submit();
+    }
+}
+
+
+//방법2 ) form 태그에서 onsubmit(폼 전송하기 전에 수행하게 하는 이벤트) 사용 
+function form_submit02(){
+    // 확인 다이얼 로그
+      let ret = confirm("전송할까요");
+    if(ret == true) {
+      // 사용자가 "확인" 버튼을 누른 경우
+      alert("전송하였습니다.");
+    }
+    else {
+      alert("취소하셨습니다.");
+      return false;
+    }
+}
+
+</script>
+</head>
+<body >
+<h3>JS_DOM_디폴트_제거</h3>   
+<hr> 
+<!-- 1. a 태그 디폴트 이벤트 제거 -->
+<a id="a_tag_01" href="http://www.naver.com">네이버 사이트로 이동</a>
+<br>
+<a id="a_tag_02" href="http://www.daum.net">다음 사이트로 이동</a>
+<hr>
+
+<!-- 2. form submit 디폴트 이벤트 제거  -->
+<!-- 일반 -->
+<form action="./03_JS_10_02_DOM_이벤트_개요.html">
+    id <input type="text" id="login_id01" name="login_id01" value="" >
+    <br>
+    pw <input type="password" id="login_pw01" name="login_pw01" value="" >
+    <br>
+    <input type="submit" value="전송">
+</form>
+<hr>
+
+<!-- 방식1 -->
+<form id="login_form" action="./03_JS_10_03_01_DOM_이벤트_모델.html" >
+    id <input type="text" id="login_id02" name="login_id02" value="" >
+    <br>
+    pw <input type="password" id="login_pw02" name="login_pw02" value="" >
+    <br>
+    <input type="button" onclick="form_submit01()" value="전송">
+</form>
+<hr>
+
+<!-- 방식2 -->
+<form action="./03_JS_10_04_01_DOM_이벤트_객체.html" onsubmit="return form_submit02()">
+    id <input type="text" id="login_id03" name="login_id03" value="" >
+    <br>
+    pw <input type="password" id="login_pw03" name="login_pw03" value="" >
+    <br>
+    <input type="submit" value="전송">
+</form>
+<hr>
+</script>
+</body>
+</html>

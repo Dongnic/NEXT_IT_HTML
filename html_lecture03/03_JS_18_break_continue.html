@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS_break_continue</title>
+<script>
+    
+    //break
+    function fn_break(){
+        let text = "";
+        for (let i = 0; i < 10; i++) {
+            if (i == 3) { 
+                break; //i == 3이면 for문을 벗어남
+            }
+            text = "The number is " + i ;
+            let node_p01 = document.createElement("p");  
+                //p요소 생성
+            let textnode01 = document.createTextNode(text); 
+                // 텍스트 노드만 생성
+            node_p01.appendChild(textnode01);   
+                //생성한 p요소에 텍스트 노드 추가
+            document.getElementById("div_1").appendChild(node_p01); 
+                //p요소를 div_1 자식노드로 추가
+        }
+    
+    }
+
+
+    /*continue
+        continue는 반복문 안의 현재 반복 작업을 멈추고 다시 반복문의 
+          처음으로 돌아가 다음 반복작업을 진행시키는 키워드입니다.
+    */    
+    function fn_continue(){
+        let outPut =0;
+        for(let i=0; i<=10; i++){
+            
+            //continue;를 사용한 경우 
+            if(i%2 ==1){
+                //홀수 이면 현재 루프를 중지하고 다음 반복을 수행합니다.
+                continue;
+            }
+            outPut = i;
+            console.log("for_outPut::::"+outPut);
+            
+
+            /*
+            // continue 사용하지 않을경우 
+            if(i%2 ==1){
+                //홀수 이므로 pass
+            }else{
+                //짝수 이므로 +1
+                outPut = i;
+            }
+            console.log("for_outPut::::"+outPut);
+            */
+
+
+        }
+        console.log("fn_outPut::::"+outPut);
+    }
+</script>
+</head>
+<body>
+<h3>JS_break_continue</h3>
+<hr>
+<div id="div_1">
+<!-- text -->
+</div>
+ <input type="button" onclick="javascript:fn_break()" value="fn_break">
+ <input type="button" id="input_tag01" onclick="javascript:fn_continue()" value="fn_continue">
+</body>
+</html>

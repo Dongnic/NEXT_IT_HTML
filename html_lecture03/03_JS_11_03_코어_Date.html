@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Date 객체로 현재 시간 알아내기</title>
+</head>
+<body>
+<h3>Date 객체로 현재 시간 알아내기</h3>
+<hr>
+<div id="div_1">
+    <div id="div_1_1"></div>
+</div>
+<div id="div_2">
+    <div id="div_2_1"></div>
+</div>
+
+<script>
+let now = new Date(); // 현재 시간 값을 가진 Date 객체 생성
+let div_1_1 = document.getElementById("div_1_1");
+let str = "현재 시간 : " + now.toUTCString()+ "<br>";
+str += now.getFullYear() + "년<br>";
+str += now.getMonth() + 1 + "월<br>";
+str += now.getDate() + "일<br>";
+str += now.getHours() + "시<br>";
+str += now.getMinutes() + "분<br>";
+str += now.getSeconds() + "초<br>";
+str += now.getMilliseconds() + "밀리초<br><hr>";
+str += now.toLocaleDateString()+ "<br>";
+str += now.toLocaleTimeString()+ "<br>";
+str += now.toLocaleString()+ "<br><hr>";
+
+
+
+
+div_1_1.insertAdjacentHTML("afterend", str);
+
+
+
+//초단위로 색상변경하기
+let div_2 = document.getElementById("div_2");
+let div_2_1 = document.getElementById("div_2_1");
+
+setInterval(function(){
+    let current = new Date(); // 현재 시간을 가진 Date 객체 생성
+
+    //기존꺼 지우고 
+    div_2.removeChild(div_2.lastChild);
+
+    //텍스트 넣고 
+    let str = "<p>초단위로 색상 변경하기 "+current.getHours();
+    str += current.getHours()+ "시,";
+    str += current.getMinutes()+ "분,"
+    str += current.getSeconds()+ "초</p>";
+    div_2_1.insertAdjacentHTML("afterend", str);
+    
+    //색상변경하기
+    if(current.getSeconds() % 2 == 0){
+        document.body.style.backgroundColor = "violet";
+    }else{
+        document.body.style.backgroundColor = "lightskyblue";
+    }
+
+},1000);
+
+
+</script>
+</body>
+</html>

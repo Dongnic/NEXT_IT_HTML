@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS_while문</title>
+<script>
+
+    //while문
+    function fn_while(){
+        let n = window.prompt("0보다 큰 정수를 입력하세요", 0); 
+        n = parseInt(n); // 문자열 n을 숫자로 바꿈
+        
+        let i=0, sum=0;
+        while(i<=n) { // i가 0에서 n까지 반복
+            sum += i;
+            i++;
+        }
+        alert("0에서 " + n + "까지 합은 " + sum);
+    }
+
+
+    /*do while
+        while 반복문은 조건을 먼저 검사하고 코드 블럭을 반복적으로 
+         실행합니다. 따라서 처음 조건을 검사했을때 조건이 거짓이라면 
+          내부의 문장을 한번도 실행하지 않습니다. 그런데 어떠한 경우에는
+           조건의 참, 거짓의 여부와 상관없이 내부의 문장을 최소한 한번은 
+            실행해야 하는 경우가 있습니다. 이때 do while문을 사용합니다.
+    */
+    let cnt_try =0 ;
+    function fn_do_while(){
+        //10 이하의 수를 입력해주세요
+        let n = prompt("10 이하의 수를 입력해주세요", 0); 
+        n = parseInt(n); // 문자열 n을 숫자로 바꿈
+
+        let i=0, sum=0, cnt_end=10; 
+        do { 
+            sum += i;
+            i++;
+            (n <= cnt_end)? cnt_try =0 : cnt_try++ ;  
+                // 잘못된 시도할 경우 횟수 추가 , 10이하 입력시 잘못된 횟수 초기화
+
+        } while(i<=n && n <= cnt_end  ) //10을 초과하는 수를 넣어도 while문 한번은 실행되어짐
+            
+        alert( (n>10)?  "잘못된 시도횟수"+cnt_try+" 10보다큰수를 입력하셨습니다." : "0에서 "+n+"까지 합은 "+sum);
+            //최소 1회를 시도했다는 것을 사용자에게 알려줌
+        
+    }
+
+
+</script>
+</head>
+<body>
+<h3>JS_while문</h3>
+<hr>
+<input type="button" onclick="javascript:fn_while();" value="while문">
+<input type="button" onclick="javascript:fn_do_while();" value="do_while문">
+</body>
+</html>

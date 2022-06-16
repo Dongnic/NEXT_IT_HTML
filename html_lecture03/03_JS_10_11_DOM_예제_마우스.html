@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html><head><title>마우스 이벤트 객체의 프로퍼티</title>
+<style>
+ /* PPT 9장(이벤트 기초 및 활용) 예제 */
+
+ div {
+    background : skyblue;
+    width : 700px;
+    height: 500px;
+    overflow-y: scroll;
+}
+img{
+    width: 700px;
+    height: 500px;
+
+}
+</style>
+</head>
+<body>
+<h3>마우스 이벤트 객체의 프로퍼티와 onmousemove</h3>
+<hr>
+이미지 위에 마우스를 움직일 때 onmousemove 리스너가 실행되고, 
+마우스의 위치를 보여줍니다.
+
+<p><img src="./images/img1.jpg" onmousemove="fn_where(event)"><p>
+<div id="div_1">
+    <p id="p_01"></p>
+</div>
+
+<script>
+
+let p_01 = document.getElementById("p_01");
+function fn_where(e) {
+    let text = "버튼=" + e.button + "<br>";
+    text += "(screenX, screenY)=" + e.screenX + "," + e.screenY + "<br>";
+    text += "(clientX, clientY)=" + 
+    e.clientX + "," + e.clientY + "<br>";
+    text += "(offsetX, offsetY)=" + 
+    e.offsetX + "," + e.offsetY + "<br>";
+    text += "(x, y)=" + e.x + "," + e.y + "\n";
+
+    p_01.insertAdjacentHTML("afterend", text);
+          
+}
+</script>
+</body>
+</html>

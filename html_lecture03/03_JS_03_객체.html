@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS_객체</title>
+<script>
+
+    //선언방법
+        //객체선언 방법1  ( new Object() )
+        let place01 = new Object();
+            place01.name="NextIT";
+            place01.address="Daejon";
+
+        //객체선언 방법2 
+        let course01 = {
+            name:"화면구현",
+            subject:"javascript"
+        };
+        
+        console.log("6. Objec 자료형");  
+        console.log("place01::::"+place01); 
+        console.log(place01);
+        console.log("course01::::"+course01); 
+        console.log("course01", course01);
+
+    //사용 방법 
+        let product01 = {
+            name: "BMW X5",
+            type: "3000cc",
+            country: "Germany"
+        };
+
+        //출력방법 1
+        console.log("product01.name::::"+product01.name);
+        console.log("product01.type::::"+product01.type);
+        console.log("product01.country::::"+product01.country);
+
+        //출력방법2
+        console.log("product01['name']::::"+product01['name'] );
+        console.log("product01['type']::::"+product01['type'] );
+        console.log("product01['country']::::"+product01['country'] );
+
+        // 객체에 속성(배열)추가
+        let product02 = {
+            name: "BMW X4",
+            type: "3000cc",
+            country: "Germany",
+            color: ["red","black","blue","white","green"]
+
+        };
+        
+        /* 배열은 단순 for 문 , for in 문으로 접근 가능 
+            하지만 객체는 "for in" 문으로만 키와 속성을 가져올 수 있음*/
+        for(let i in product02){
+            console.log("속성: "+i+" 속성값: "+product02[i] );
+            if( i == "color"){
+                for(let j=0; j< product02[i].length; j++){
+                    console.log("color::::"+product02[i][j]);
+                }
+            }
+        }
+
+        // 객체에 속성(메소드)추가
+        let product03 = {
+            name: "BMW X4",
+            type: "3000cc",
+            country: "Germany",
+            fuel: function(oil){
+                console.log( this.name+" 의 연료는 "+ oil + " 입니다");
+                    //this 키워드 ( 객체 자기 자신이 가지고 있는 속성을 표시할때 this 사용)
+            }
+        };
+        product03.fuel("gasoline");
+</script>
+</head>
+<body>
+ <h3>JS_객체</h3>
+ <hr>
+</body>
+</html>

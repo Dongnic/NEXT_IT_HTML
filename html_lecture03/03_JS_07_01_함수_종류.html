@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS_함수_선언적_익명_콜백함수</title>
+<script>
+
+/*
+  함수란?
+    목적을 가지고 작성된 코드 블록
+    데이터 전달받아 처리한 후 결과를 돌려주는 코드 블록
+
+  함수 종류
+      선언적함수
+      익명함수 
+      콜백함수
+*/
+
+
+//---------------------------------------------------------------------------------------------------
+//선언적함수
+
+//실행방법1 onclick
+    function fn_nomal01 () {
+      console.log("fn_nomal01 함수입니다.");
+    }
+    //세미콜론은 실행 가능한 JavaScript 문을 구분하는 데 사용됩니다.
+    //함수 선언은 실행 가능한 문이 아니기 때문에 세미콜론을 붙이지 않습니다.
+
+    function fn_nomal02 (a, b) {
+      let str_sum = a+b;
+      console.log("fn_nomal02::::::"+str_sum);
+    }
+
+//실행방법2_1 함수명으로 호출
+    function fn_nomal03 () {
+      let fn_nomal03_str01 ="fn_nomal03 함수입니다."
+      console.log("fn_nomal03_str01::::::"+fn_nomal03_str01);
+    }
+    fn_nomal03();
+
+//실행방법2_2 변수에 함수명을 담아서 호출
+    function fn_nomal04 () {
+      let fn_nomal04_str01 ="fn_nomal04 함수입니다."
+      return fn_nomal04_str01;
+    }
+    let fn_nomal04_str02 = fn_nomal04();
+    console.log("fn_nomal04_str02::::::"+fn_nomal04_str02);
+
+    function fn_nomal05 (a, b) {
+      let str_sum = a+b;
+      return str_sum;
+    }
+    let fn_nomal05_str01 = fn_nomal05(5,9);
+    console.log("fn_nomal05_str01::::::"+fn_nomal05_str01);
+
+//---------------------------------------------------------------------------------------------------
+
+
+//익명 함수  (이름이 없는 함수)
+/* 
+  - 변수를 호출하면 함수안에 로직을 처리하여 결과값을 받으려고 할때 사용
+  - 변수명을 마치 함수처럼 사용해서 함수를 호출하거나 변수값을 이동시키는데 
+      사용할 수 있습니다.
+  - 변수에 저장된 함수에는 함수 이름이 필요하지 않습니다.
+       항상 변수 이름을 사용하여 호출됩니다.
+  - 익명 함수는 실행 가능한 문의 일부이므로 세미콜론으로 끝납니다.
+*/
+
+//실행방법1 onclick
+    let fn_let01 = function() {
+        console.log("fn_let01 익명 함수입니다.");
+    };
+
+    let fn_let02 = function (a, b) {
+      let str_sum = a+b;
+      console.log("fn_let02_str_sum::::::"+str_sum);
+    };
+    //fn_let02은 input 태그에서 호출하여 매개변수를 받아서 실행 
+
+
+//실행방법2_1 변수명 + () 으로  호출
+    let fn_let03 = function(){
+        let fn_let03_str01 = "fn_let03 익명 함수입니다.";
+        console.log("fn_let03_str01::::::"+fn_let03_str01);
+    };
+    fn_let03();
+    // fn_let03(); 으로 호출 
+
+//실행방법2_2 함수()를 변수에 담고 변수로 함수를 호출
+    let fn_let04 = function(){
+        let fn_let04_str01 = "fn_let04 익명 함수입니다.";
+        return fn_let04_str01;
+    };
+    let fn_let04_str02 = fn_let04();
+    console.log("fn_let04_str02::::::"+fn_let04_str02);
+    //fn_let04(); 으로 호출해서 반환값 받아옴
+
+    let fn_let05 = function(a, b) {
+      let str_sum = a*b;
+      return str_sum;
+    };
+    let fn_let05_str01 = fn_let05(7,11);
+    console.log("fn_let05_str01::::::"+fn_let05_str01);
+
+//실행방법2_3 함수명을 변수에 담고 변수에 소괄호를 사용하여 호출
+    function fn_let06(){
+      let str_sum = 5*2;
+      return str_sum;
+    };
+    let fn_let06_str01 = fn_let06;
+    // fn_let06_str01 변수에 () 사용하여 값을 출력
+    console.log("fn_let06_str01::::::"+fn_let06_str01() );
+
+//---------------------------------------------------------------------------------------------------
+//즉시 실행이 필요할 경우 사용합니다.
+(function () {
+    console.log("(즉시 실행) 익명함수입니다");
+})();
+//---------------------------------------------------------------------------------------------------
+
+// 콜백함수 (함수를 호출 할때 매개변수로 함수를 사용하는 함수)
+
+//콜백함수 01
+function fn_call01(callback01){
+    //2회 반복
+    for(let i=0; i<2; i++){
+      // 매개변수로 전달된 함수를 호출합니다.
+      callback01();
+    }
+}
+let callback01 =function(){
+  //alert("함수 호출01"); //주석해제해보기
+};
+fn_call01(callback01);
+
+
+//콜백함수 02
+function fn_call02(callback02){
+    //2회 반복
+    for(let i=0; i<2; i++){
+      // 매개변수로 전달된 함수를 호출합니다.
+      callback02();
+    }
+}
+fn_call02(function(){
+  //alert("함수 호출02") //주석해제해보기
+});
+
+//---------------------------------------------------------------------------------------------------
+
+
+
+</script>
+</head>
+<body>
+ <h3>JS_함수_선언적_익명_콜백함수</h3>   
+<hr>
+<input type="button" onclick="javascript:fn_nomal01()" value="fn_nomal01">
+<input type="button" onclick="javascript:fn_nomal02(4,8)" value="fn_nomal02">
+<!-- 전달값이 없는경우 -->
+<input type="button" onclick="javascript:fn_nomal02()" value="fn_nomal03">
+<input type="button" onclick="javascript:fn_let01()" value="fn_let01">
+<input type="button" onclick="javascript:fn_let02(6,10)" value="fn_let02">
+
+<div id="div_1">  
+</div>
+ 
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS_출력</title>
+  <script>
+  /*  자바스크립트
+        1 개요
+            - 1995년 넷스케이프의 브랜든 아이히(Brendan Eich) 에 의해 모카라는 이름으로 개발
+            - Netscape Navigator 2.0 브라우저에 최초 탑재되면서 JavaScript 라는 이름을 갖게 됨
+            - 웹페이지의 동적 구성
+				    - 웹 페이지에서 사용자로부터 특정 이벤트나 입력 값을 받아 동적인 처리를 목적으로 고안된 
+                객체 기반의 스크립트 프로그래밍 언어.
+
+        2 특징
+            - HTML 문서에 내장 
+            - 스크립트 언어 
+              컴파일 필요 없음
+            - 단순 
+              C언어 구조 차용
+              배우기 쉬움
+        3 하는일
+            - 사용자의 입력 및 계산
+            - 웹페이지 내용 및 모양의 동적 제어
+            - 브라우저 제어
+            - 웹 서버의 통신
+            - 웹 애플리케이션 작성
+
+        4 사용방법
+            - 방법1: html 에서 script 선언 ( helloWorld_js_01.html )
+              <script>
+                alert("hello_world")
+              <script>
+            
+            - 방법2: js 파일 (	js_helloWorld_02.js)
+            
+        5 기본문법
+            - 표현식과 문장
+                표현식
+                  자바 스크립트에서 값을 만들어 내는 간단한 코드를 표현식이라고 부릅니다. 
+                  예)
+                    273
+                    10+20+30*2
+                    'JavaScript'
+                문장
+                  표현식이 모이면 문장이 됩니다. 문장 끝에 세미클론을 찍어 문장의 종결을 알립니다.
+                    사실 문장 끝에 세미클론을 입력하지 않아도 문제는 없습니다. 하지만 입력하는 것을 권고합니다.
+                    ( 하나의 표현식도 세미클론만 찍으면 문장이라고 부릅니다 )
+            - 키워드
+                개요
+                  자바스크립트에서 특별한 의미가 부여된 단어
+                종류
+                  break, else, case, false, new, try, catch, finally, null, typeof,
+                  continue, for, return, var, if, ..........
+              
+            - 식별자
+                개요
+                    사용자가 자바스크립트에서 이름을 붙일 때 사용하는 단어
+                종류
+                    변수명
+                    함수명
+                    속성명
+                    메소드명
+                규칙
+                    키워드를 사용하면 안 된다. 
+                      ( break )
+                    숫자로 시작하면 안 된다	
+                      ( 123identifier )
+                    공백 문자를 포함할 수 없다.	
+                      ( has space )
+                    특수 문자는 _와 $만 허용된다. 
+                      
+                예시)
+                    board1
+                    fn_board
+                    board_no
+                    _board
+                    $board
+                
+                관례
+                  1. 변수와 인스턴스, 함수, 메소드의 이름은 항상 소문자로 시작한다.
+                    예)
+                      var boardList 
+                      
+                  2. 여러 단어로 이루어진 식별자는 각 단어의 첫 글자를 대문자로 한다.
+                    예)
+                      board list => boardList
+                        
+        6 출력
+            1. 경고창에 출력 ( alert() )
+                
+            2. HTML 문서에 출력 ( document.write() )
+                
+            3. HTML 요소에 출력 (innerHTML )
+                
+            4. 브라우저 콘솔에 출력 (console.log() )
+
+        7 자바스크립트 주석	
+            한 줄 주석 
+            블록주석      
+                      
+      */
+  </script>
+  <script>
+    function fn_sum(){
+      var sum = document.getElementById("sum");
+      console.log("sum.value::::"+sum.value);
+      if (sum.value == "42"){
+        alert("정답입니다.");
+      }else{
+        alert("틀렸습니다. 다시 입력해주세요.");
+        sum.value ="";
+      }
+    }
+  </script>
+</head>
+<body>
+ <h3>JS_출력</h3>   
+<hr>
+<div id="div_1">
+7x6 = <input type="text" id="sum" value="" placeholder="합을 입력해주세요">
+<input type="button" onclick="javascript:fn_sum()" value="확인">
+</div>
+</body>
+</html>

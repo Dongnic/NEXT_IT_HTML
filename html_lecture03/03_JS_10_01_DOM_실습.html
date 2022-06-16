@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>html_28_03_01_02_JS_DOM</title>
+<style>
+    .mystyle_01 {
+        width: 300px;
+        height: 50px;
+        background-color: coral;
+        font-size: 25px;
+    }
+    .mystyle_add {
+        width: 300px;
+        height: 50px;
+        background-color: blue;
+        font-size: 25px;
+    }
+    .mystyle_add02 {
+        width: 300px;
+        height: 50px;
+        background-color: green;
+        font-size: 25px;
+    }
+    .mystyle_02 {
+        width: 300px;
+        height: 50px;
+    }
+    .anotherClass {
+        background-color: gray;
+    }
+    .thirdClass {
+        font-size: 25px;
+    }
+
+
+    .mystyle_03 {
+        width: 300px;
+        height: 50px;
+        background-color: coral;
+        color: white;
+        font-size: 25px;
+    }
+    .newClassName {
+        width: 300px;
+        height: 50px;
+        background-color: purple;
+        color: white;
+        font-size: 25px;
+    }
+
+    .input_tags03:nth-child(3){
+        color: red;
+    }
+    .div_5_p_class{
+        color: red;
+    }
+</style>
+<script>
+
+//document.getElementById()
+function fn_get_id() {
+  document.getElementById("fn_get_id_p").textContent = "NextIt 교육센터입니다.";
+}
+
+//document.querySelector()
+//처음것만 가져옴
+function fn_qu() {
+    alert(document.querySelector(".p_tags01").textContent);
+}
+
+//document.getElementsByClassName()
+//배열형태로 저장
+function fn_get_className() {
+  let li_tags = document.getElementsByClassName("li_tags01");
+  console.log(li_tags);
+  console.log("li_tags_[0]::::::"+li_tags[0].textContent);
+  console.log("li_tags_[1]::::::"+li_tags[1].textContent);
+  console.log("li_tags_[2]::::::"+li_tags[2].textContent);
+}
+
+//document.getElementsByName()
+function fn_get_Name() {
+    let input_date01 = document.getElementsByName("input_date");
+    console.log(input_date01);
+    console.log("input_date01_[0]::::::"+input_date01[0].value);
+    console.log("input_date01_[1]::::::"+input_date01[1].value);
+}
+
+//document.getElementsByTagName()
+function fn_get_TagName() {
+    let h4_tags01 = document.getElementsByTagName("h4");
+    console.log(h4_tags01);
+    console.log("h4_tags01_[1]::::::"+h4_tags01[1].textContent);
+}
+
+//document.querySelectorAll()
+function fn_qu_all() {
+    let p_tags02 = document.querySelectorAll(".p_tags02");
+    console.log(p_tags02);
+    console.log("input_date01_[1]::::::"+p_tags02[1].textContent);
+}
+
+//HTML 객체 집합(object collection)을 이용한 선택
+function fn_object() {
+    //문서 제목 취득
+    let title01 = document.title;
+    console.log("fn_object::::"+title01);
+    //문서 제목 변경
+    document.title = "DOM_실습";
+}
+
+//DOM 객체 생성, DOM 객체추가 (appendChild)
+function fn_create_el01(){
+    //(DOM 객체 생성) P태그 생성
+    let create_p01 = document.createElement("p");
+    //텍스트 노드 생성
+    let create_text01 = document.createTextNode("안녕하세요 NextIT 교육센터입니다.");
+    //생성한 P태그에 텍스트 노드 추가
+    create_p01.appendChild(create_text01);
+    //문서에 P요소 추가
+    document.getElementById("div_1").appendChild(create_p01);
+}
+
+//DOM 객체 생성, DOM 객체추가 (insertBefore)
+function fn_create_el02(){
+    let create_p02 = document.createElement("p");
+    let create_text02 = document.createTextNode("insertBefore");
+    create_p02.appendChild(create_text02);
+    // insertBefore([추가할 요소], [추가할 위치])
+    document.getElementById("div_2").insertBefore(create_p02, document.querySelector("#div_2 > p:nth-child(2)") );
+
+}
+
+//글자수정
+    //innerHTML  ( 취약 )
+    //textContent   ( 권장 ) 
+    //innerText 
+    //insertAdjacentHTML   ( innerHTML 대용 )
+
+//DOM 객체 수정
+//내용 수정
+function fn_in_ad_html() {
+  let in_ad_html01 = document.getElementById("in_ad_html");
+  in_ad_html01.insertAdjacentHTML("afterend", "<p>안녕하세요 <mark>NextIT 교육센터</mark> 입니다. .</p>");
+    // 참고( https://developer.mozilla.org/ko/docs/Web/API/Element/insertAdjacentHTML )
+}
+ 
+//속성 수정
+// CSS 스타일 변경 01
+function fn_css_change01() {
+let span01 = document.getElementById("css_change_span"); 
+span01.style.color = "green"; 
+span01.style.fontSize = "25px";
+span01.style.width = "10em"; 
+span01.style.border = "3px solid blue"; 
+span01.style.margin = "20px"; 
+}
+
+//속성 수정
+// CSS 스타일 변경 02
+function fn_css_change02() {
+let div_3 = document.getElementById("img_div1"); 
+div_3.style.width="700px";
+div_3.style.height="500px";
+div_3.style.backgroundColor="gray";
+div_3.style.backgroundImage="url('../html_lecture01/images/button.png')";
+div_3.style.backgroundSize ="50px 50px";             
+div_3.style.backgroundRepeat="no-repeat";
+div_3.style.backgroundPosition="center center";
+}
+
+//속성값 변경 
+//일반 속성 변경 (value)
+function fn_attribute01() {
+   let h5_tag01 = document.getElementById("input_content01");
+   if( h5_tag01.hasAttribute("value")){
+       h5_tag01.setAttribute("value", "화면구현 시간입니다.");
+       h5_tag01.removeAttribute("name");
+   }
+}
+
+//속성값 변경 
+//일반 속성 변경 (class)
+function fn_attribute02() {
+   let div_5_p_id = document.getElementById("div_5_p_id");
+   if( div_5_p_id.hasAttribute("class")){
+        div_5_p_id.setAttribute("class", "div_5_p_class");
+        div_5_p_id.removeAttribute("name");
+   }
+}
+ 
+
+//class 속성 변경
+function fn_className() {
+  document.getElementById("myDIV_01").className = "mystyle_01";
+}
+ function fn_classList_add() {
+  document.getElementById("myDIV_01").classList.add("mystyle_add");
+}
+function fn_classList_remvoe() {
+  document.getElementById("myDIV_01").classList.remove("mystyle_add");
+}// 개발자도구에서 class 확인해보기
+
+function fn_classList_item() {
+  let classList_item01 = document.getElementById("myDIV_02").classList.item(2);
+  document.getElementById("myDIV_02_p").textContent = classList_item01;
+}
+
+/*toggle, 전등 스위치를 껐다 켰다 하는 행위 처럼, 0과 1이 반복되는 행위를 의미합니다.
+즉, 기존 값이 0이었다면 1로 바뀌고 기존 값이 1이었다면, 0으로 바뀌게 됩니다.
+그래서 toggle 메서드는 클래스가 존재한다면 클래스를 제거하고, 
+클래스가 존재하지 않는다면 클래스를 추가하는 메서드입니다.*/
+function fn_classList_toggle() {
+  document.getElementById("myDIV_03").classList.toggle("newClassName");
+}
+
+
+// DOM 객체 삭제 ( removeChild(child) )
+function fn_remove_child(){
+    let div_5_tag = document.getElementById("div_5_remove");
+    
+    //보이지 않는 공백으로 인하여 두번 눌러여 지워짐
+    //console.log(div_5_tag.childNodes[0]);
+    div_5_tag.removeChild(div_5_tag.firstChild );
+    
+    //firstElementChild는 처음요소를 지움
+    //div_5_tag.removeChild(div_5_tag.firstElementChild );
+}
+</script>
+</head>
+<body>
+ <h3>html_28_03_01_02_JS_DOM</h3>   
+<hr>
+
+
+<!-- document.getElementById() -->
+<input type="button" onclick="javascript:fn_get_id()" value="fn_get_id">
+<p id="fn_get_id_p"></p>
+<br>
+
+
+<!-- document.querySelector() -->
+<input type="button" onclick="javascript:fn_qu()" value="fn_qu">
+<p class="p_tags01">p_tags_first</p>
+<p class="p_tags01">p_tags_second</p>
+<br>
+
+
+<!-- document.getElementsByClassName() -->
+<input type="button" onclick="javascript:fn_get_className()" value="fn_get_className">
+<ul>
+  <li class="li_tags01">NextIT 교육센터입니다.</li>
+  <li class="li_tags01">화면구현 시간입니다.</li>
+  <li class="li_tags01">만나서 반갑습니다.</li>
+</ul>
+<br>
+
+<!-- document.getElementsByName() -->
+<input type="button" onclick="javascript:fn_get_Name()" value="fn_get_Name">
+<br>
+<input type="month" name="input_date" value="">
+<input type="month" name="input_date" value="">
+ 
+
+<br><br><br>
+<!-- document.getElementsByTagName() -->
+<input type="button" onclick="javascript:fn_get_TagName()" value="fn_get_TagName">
+<h4 >NextIT 교육센터입니다.</h4>
+<h4 >화면구현 시간입니다.</h4>
+<h4 >만나서 반갑습니다.</h4>
+
+
+<br>
+<!-- document.querySelectorAll() -->
+<input type="button" onclick="javascript:fn_qu_all()" value="fn_qu_all">
+<p class="p_tags02">NextIT 교육센터입니다.</p>
+<p class="p_tags02">화면구현 시간입니다.</p>
+<p class="p_tags02">만나서 반갑습니다.</p>
+
+<br>
+<!--  HTML 객체 집합(object collection)을 이용한 선택 -->
+<input type="button" onclick="javascript:fn_object()" value="fn_object">
+
+
+<br><br><br>
+<!--DOM 객체 생성, 출력  appendChild -->
+<input type="button" onclick="javascript:fn_create_el01()" value="fn_create_el01">
+<div id="div_1">
+    <!-- create_p01 -->
+</div>
+
+<br><br>
+<!--DOM 객체 생성, 출력  insertBefore -->
+<input type="button" onclick="javascript:fn_create_el02()" value="fn_create_el02">
+<div id="div_2">
+    <P class="div_2_p">NextIT 교육센터입니다.</P>
+    <P class="div_2_p">화면구현 시간입니다.</P>
+    <P class="div_2_p">만나서 반갑습니다.</P>
+</div>
+
+<!--DOM 객체 수정
+//내용 수정 -->
+<br><br>
+<input type="button" onclick="javascript:fn_in_ad_html()" value="fn_in_ad_html">
+<h2 id="in_ad_html">insertAdjacentHTML</h2>
+
+
+<!--
+//속성 수정
+// CSS 스타일 변경 01 -->
+<br><br>
+<input type="button" onclick="javascript:fn_css_change01()" value="fn_css_change01">
+<p>안녕하세요<span id="css_change_span" >NextIT 교육센터 </span>입니다.</p>
+
+
+<!--
+//속성 수정
+// CSS 스타일 변경 02 -->
+<br><br>
+<input type="button" onclick="javascript:fn_css_change02()" value="fn_css_change02">
+<div id="img_div1">
+    <!-- img1.jpg -->
+</div>
+
+
+<!--
+//속성값 변경 
+//일반 속성 변경 (value) -->
+<br><br>
+<input type="button" onclick="javascript:fn_attribute01()" value="fn_attribute01">
+<div id="div_4">
+    <input type="text" id="input_title" name="input_title" value="NextIT 교육센터입니다."/><br>
+    <input type="text" id="input_content01" name="input_content01" value=""><br>
+    <input type="text" id="input_content02" name="input_content02" value="만나서 반갑습니다."><br>
+</div>
+
+
+<!--
+//속성값 변경 
+//일반 속성 변경 (class) -->
+<br><br>
+<input type="button" onclick="javascript:fn_attribute02()" value="fn_attribute02">
+<div id="div_5">
+    <p  id="div_5_p_id" class="div_5_p">(div_5_p)NextIT 교육센터입니다.</p>
+</div>
+ 
+
+<!-- 
+//class 속성 변경 -->
+<br><br>
+<input type="button" onclick="javascript:fn_className()" value="fn_className">
+<input type="button" onclick="javascript:fn_classList_add()" value="fn_classList_add">
+<input type="button" onclick="javascript:fn_classList_remvoe()" value="fn_classList_remvoe">
+<div id="myDIV_01">
+    NextIT 교육센터입니다.
+</div>
+
+<br><br>
+<input type="button" onclick="javascript:fn_classList_item()" value="fn_classList_item">
+<div id="myDIV_02" class="mystyle_02 anotherClass thirdClass">
+    화면구현 시간입니다.
+</div>
+<p id="myDIV_02_p"></p>
+
+<br><br>
+<input type="button" onclick="javascript:fn_classList_toggle()" value="fn_classList_toggle">
+<div id="myDIV_03" class="mystyle_03">
+    만나서 반갑습니다.
+</div>
+
+
+<!-- 
+// DOM 객체 삭제 ( removeChild(child) ) -->
+<br><br>
+<input type="button" onclick="javascript:fn_remove_child()" value="fn_remove_child">
+  <div id="div_5_remove">
+    <p>NextIT 교육센터입니다.</p>
+    <p>화면구현 시간입니다.</p>
+    <p>만나서반갑습니다.</p>
+</div> 
+ 
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS_함수_다른페이지함수호출</title>
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<style></style>
+<script>
+$(function () {
+    //header분리
+    $("#header").load("./header/header01.html"); 
+});
+
+function fn_html_js() {
+  fn_header_01();
+  
+}
+
+</script>
+</head>
+<body>
+ <h3>JS_함수_다른페이지함수호출</h3>   
+ <hr>
+ <div id="header">
+    <!-- header -->
+</div>
+ <div id="content">
+    content 
+ </div>
+ <input type="button" onclick="javascript:fn_html_js()" value="header_fn_호출">
+</body>
+</html>

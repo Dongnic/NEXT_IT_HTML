@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS_변수_var</title>
+  <script>
+/* 변수
+	개요
+		변수는 값을 저장할 때 사용하는 식별자 입니다. 
+		이름은 변수지만 숫자뿐만 아니라 모든 자료형을 저장할 수 있습니다.
+		변수를 만드는것을 "변수를 선언한다"라고 표현합니다.
+		변수에 값을 저장하는 것을 "변수에 값을 할당한다" 라고 표현합니다.
+		변수는 var 키워드 뒤에 식별자를 입력하는 방법으로 선언합니다.
+*/
+    // 방법 1
+      // 변수 선언
+        var pi01;
+
+      // 변수 초기화(값을 할당)  
+        pi01 = 3.14159265;
+        console.log("pi01::::"+pi01);
+
+    //방법 2
+      // 변수를 선언하고 초기화(값을 할당)
+        var pi02 = 3.14159265;
+        console.log("pi02::::"+pi02);
+    
+    // 여러 변수 한번에 선언
+      var radius01, pi03
+      radius01 = 10;
+      pi03 = 3.14159265;
+      console.log("반지름이 10인 원의 둘레::::"+ ( 2 * pi03 * radius01));
+
+    // 자료형별 변수 선언
+      // 문자
+        var str01 = "NextIT";
+      // 숫자
+        var num01 = 8850;
+      // Boolean 
+        var Boolean = true;
+      // 객체
+        var obj01 = {};
+      // 함수
+       var fn_var = function () {};
+
+  </script>
+</head>
+<body>
+ <h3>JS_변수_var</h3>   
+<hr>
+</body>
+</html>

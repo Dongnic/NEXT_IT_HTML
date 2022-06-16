@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS_DOM_이벤트_객체</title>
+<script>
+/*
+    1 이벤트 객체 전달받기
+        사용법
+            1 익명함수 일때 객체 전달받기  
+                방법 1 event 사용
+                    old_event01.onclick = function (e){     // e: event object
+                        e.target.style.color="green";
+                    }
+
+                방법 2 this 사용
+                    old_event01.onclick = function () {     
+                        this.style.color="red";             // 이때 this는 DOM 요소를 가리킨다. 
+                    }
+
+            2 이름이 있는 이벤트 리스너 일때 객체 전달받기
+                방법 1 event 사용
+                    old_event02.onclick = fn_old_event02;
+                    function fn_old_event02(e){             // e: event object
+                        e.target.style.color="gray";
+                    }
+
+                방법 2 this 사용
+                    old_event02.onclick = fn_old_event02;    // onclick 속성에 이벤트처리함수 할당
+                    function fn_old_event02(){                  
+                        this.style.color="green";           // 이때 this는 DOM 요소를 가리킨다. 
+                    }
+    
+            3 HTML 태그에 이벤트 리스너 ( event )
+                방법 1 event 사용 ( 꼭 event 이어야함 )
+                    <h3 onclick="inline_event02(event)">(인라인 이벤트 모델 방식 2)h1 Click</h3>  
+
+                    function inline_event02(e) {            // e: event object
+                        e.target.style.color="red";
+                    }
+
+                방법 2 this 사용 ( 꼭 this 이어야함 )
+                    <p onclick="inline_event02_1(this)">(인라인 이벤트 모델 방식 2)h1 Click_this</p>  
+                                                            
+                    function inline_event02_1(obj) {        
+                        obj.style.color="red";              // this를 obj로 받음
+                    }
+
+*/
+
+let h1_event01;
+let h1_event02;
+function fn_event () {
+    h1_event01 = document.getElementById("h1_event01");
+    h1_event02 = document.getElementById("h1_event02");
+
+//1 익명함수 일때
+    //1-1 event
+    h1_event01.onmouseover = function (e){          // e: event 
+        e.target.style.color="red";
+    }
+    //1-2 this
+    h1_event01.onclick = function () {              // onmouseover 속성에 이벤트 처리 할당
+        this.style.color="orange";                  // 이때 this는 DOM 요소를 가리킨다. 
+    }
+
+//2 이름이 있는 이벤트 리스너 일때
+    //2-1 event
+    h1_event02.onmouseover = fn_h1_event01;
+    //2-2 this
+    h1_event02.onclick = fn_h1_event02;
+               
+}
+
+//2-1 event
+function fn_h1_event01(e){      // e: event object
+    e.target.style.color="yellow";           // 이때 this는 DOM 요소를 가리킨다. 
+}
+//2-2 this
+function fn_h1_event02(){      // e: event object
+    this.style.color="green";           // 이때 this는 DOM 요소를 가리킨다. 
+}
+
+
+//3 HTML 태그에 이벤트 리스너 ( event )
+//3-1 event
+function inline_event01(e) {            // e: event object
+    e.target.style.color="blue";
+}
+//3-1 this
+function inline_event02(obj) {        // this를 obj로 받음
+    obj.style.color="purple";
+}
+
+
+</script>
+</head>
+<body onload="fn_event()">
+<h3>JS_DOM_이벤트_객체</h3>   
+<hr> 
+<h1 id="h1_event01"> 1_NextIT 교육센터입니다.</h1>
+<h1 id="h1_event02"> 2_NextIT 교육센터입니다.</h1>
+
+<!--  꼭 event 이어야함 -->
+<h1 onclick="inline_event01(event)">(3-1 event) NextIT 교육센터입니다. </h1> 
+<!--  꼭 this 이어야함 -->
+<h1 onclick="inline_event02(this)">(3-1 this) NextIT 교육센터입니다. </h1>    
+
+</body>
+</html>
